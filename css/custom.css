@@ -260,7 +260,8 @@ div.tooltip {
  height: 40px;
  padding: 2px;
  font-size: 22px;
- background: #3BB9FF;
+ background: #C2DFFF;
+ color: #000000;
  border: 2px;
  border-radius: 100px;
  pointer-events: none;
