@@ -434,6 +434,13 @@
                 }
             },
             {
+                name: "Grand Canyon, AZ",
+                location: {
+                    latitude: 36.06,
+                    longitude: -112.13
+                }
+            },
+            {
                 name: "Solvang, CA",
                 location: {
                     latitude: 34.60,
@@ -446,11 +453,11 @@
             .data(places)
             .enter().append("circle", ".pin")
             .attr("r", width/150)
-            .attr('fill', "#FF0000")
+            .attr('fill', "#9E7BFF")
             .on("mouseover", function(d) { 
                 var name = d.name;
                 d3.select(this).transition().duration(300).style("opacity", 1)
-                .attr('fill', "#33FF00").attr("r", width/100);
+                .attr('fill', "#8E35EF").attr("r", width/100);
                 div.transition().duration(300)
                 .style("opacity", 1)
                 div.text(name)
@@ -461,7 +468,7 @@
              d3.select(this)
              .transition().duration(300)
              .style("opacity", 0.8)
-             .attr('fill', "#FF0000").attr("r", width/150);
+             .attr('fill', "#9E7BFF").attr("r", width/150);
              div.transition().duration(300)
              .style("opacity", 0);
              })
