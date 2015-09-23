@@ -15,12 +15,12 @@ header {
     width: 100%;
     text-align: center;
     color: #fff;
-    filter: alpha(opacity=85);
+    filter: alpha(opacity=92);
     /* IE */
-    -moz-opacity: 0.85;
+    -moz-opacity: 0.92;
     /* Mozilla */
-    opacity: 0.85;
-    background: url(../images/bg.jpg) no-repeat center center scroll;
+    opacity: 0.92;
+    background: url(../images/bg.jpg) no-repeat center center fixed;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -199,7 +199,7 @@ footer {
 }
 
 .self-info {
-  
+  background-color: rgba(3, 3, 3);
 }
 
 .map {
@@ -266,21 +266,37 @@ div.tooltip {
  pointer-events: none;
 }
 
-  .textInChart {
-    fill: white;
-    text-anchor: middle;
-  }
+.textInChart {
+  fill: white;
+  text-anchor: middle;
+}
 
-  .axis path,
-  .axis line{
-    fill: none;
-    stroke: black;
-  }
+.axis path,
+.axis line{
+  fill: none;
+  stroke: black;
+}
 
-  .axis text {
-    font-family: sans-serif;
-    font-size: 11px;
-  }
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.page2 {
+  background-color: rgba(3, 3, 3, 0.6);
+  height: 100%;
+  width: 100%;
+}
+
+.page1 {
+  
+}
+
+.page0 {
+  background-color: rgba(3, 3, 3, 0.2);
+  height: 100%;
+  width: 100%;
+}
 
 /* ajust the page by different size*/
 

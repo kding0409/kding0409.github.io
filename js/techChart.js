@@ -73,6 +73,7 @@ var texts = chart.selectAll(".textInChart")
     .data(data)
     .enter()
     .append("text")
+    .attr("style","font-size:20px;")
     .attr("class","textInChart")
     .attr("transform","translate(" + padding.left + "," + padding.top + ")")
     .attr("x", function(d,i){
@@ -98,7 +99,7 @@ var texts = chart.selectAll(".textInChart")
     .duration(2000)
     .ease("bounce")
     .attr("y",function(d){
-        return y(d.value) + 20 ;
+        return y(d.value) + height*0.1 ;
     }
 );
 // y axis and label
