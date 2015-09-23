@@ -373,7 +373,7 @@
                 })
                 .attr('d', path)
                 .attr('fill', function(d, i) {
-                    return "#DDDDDD";
+                    return "#BBBBBB";
                 })
         });
 
@@ -523,6 +523,8 @@
         svg.selectAll(".pin")
             .data(places)
             .enter().append("circle", ".pin")
+            .attr("stroke","white")
+            .attr("stroke-width","2")
             .attr("r", width/150)
             .attr('fill', "#E0B0FF")
             .on("mouseover", function(d) { 
