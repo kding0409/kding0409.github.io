@@ -453,7 +453,7 @@
             .data(places)
             .enter().append("circle", ".pin")
             .attr("r", width/150)
-            .attr('fill', "#9E7BFF")
+            .attr('fill', "#E0B0FF")
             .on("mouseover", function(d) { 
                 var name = d.name;
                 d3.select(this).transition().duration(300).style("opacity", 1)
@@ -467,8 +467,7 @@
             .on("mouseout", function() {
              d3.select(this)
              .transition().duration(300)
-             .style("opacity", 0.8)
-             .attr('fill', "#9E7BFF").attr("r", width/150);
+             .attr('fill', "#E0B0FF").attr("r", width/150);
              div.transition().duration(300)
              .style("opacity", 0);
              })
