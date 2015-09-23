@@ -266,9 +266,25 @@ div.tooltip {
  pointer-events: none;
 }
 
+  .textInChart {
+    fill: white;
+    text-anchor: middle;
+  }
+
+  .axis path,
+  .axis line{
+    fill: none;
+    stroke: black;
+  }
+
+  .axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+  }
+
 /* ajust the page by different size*/
 
-@media(min-width:768px) {
+@media(min-width:1280px) {
     .intro .intro-body .brand-heading {
         font-size: 60px;
     }
@@ -284,6 +300,35 @@ div.tooltip {
       height: 100%;
     }
 }
+
+@media(max-width:1280px) {
+    .intro .intro-body .brand-heading {
+        font-size: 40px;
+    }
+
+    div.tooltip {
+      font-size: 12px;
+    }
+
+    .section-heading {
+        margin-top: 10%;
+    }
+
+    .head_img {
+      width: 15%;
+    }
+
+    .intro .intro-body .intro-text {
+        font-size: 20px;
+    }
+
+    .self-info {
+        padding-bottom: 30px;
+    }
+
+    .map {
+        padding-bottom: 30px;
+    }
 
 @media(max-width:768px) {
     .intro .intro-body .brand-heading {
