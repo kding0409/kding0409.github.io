@@ -1,0 +1,301 @@
+/* Dkev 2015*/
+
+html,body {
+  height:100%;
+}
+
+header {
+  height:100%;
+}
+
+/* header conf */
+
+.intro {
+    display: table;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    filter: alpha(opacity=85);
+    /* IE */
+    -moz-opacity: 0.85;
+    /* Mozilla */
+    opacity: 0.85;
+    background: url(../images/bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.intro .intro-body .brand-heading {
+    font-size: 40px;
+}
+
+.intro .intro-body .intro-text {
+    font-size: 20px;
+}
+
+/* botton conf*/
+
+.btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 50px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 100%!important;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out;
+    transition: background .5s ease-in-out;
+}
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #fff;
+    background: rgba(255,255,255,0.3);
+}
+
+.btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1.5s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1.5s;
+}
+
+.btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+/* animation of the icon */
+
+@-webkit-keyframes pulse {
+    40% {
+        -webkit-transform: translate(0,2px);
+        transform: translate(0,2px);
+    }
+
+    80% {
+        -webkit-transform: translate(0,-1px);
+        transform: translate(0,-1px);
+    }
+}
+
+@-moz-keyframes pulse {    
+    40% {
+        -moz-transform: translate(0,2px);
+        transform: translate(0,2px);
+    }
+
+    80% {
+        -moz-transform: translate(0,-1px);
+        transform: translate(0,-1px);
+    }
+}
+
+/* text center */
+.text-center {
+  text-align: center;
+}
+
+footer {
+    margin: 20px 20px 20px 20px;
+}
+
+/* changing the navbar to transparent */
+.navbar {
+  background-color: transparent;
+  background: transparent;
+  border: none;
+  color: white;
+  z-index: 100;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Adjusting the brand and link colors */
+
+.navbar-default .navbar-brand {
+  color: white;
+  font-weight: 500;
+}
+.navbar-default .navbar-brand:hover {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: lowercase;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:active {
+  color: white;
+  text-decoration: underline;
+}
+.navbar-default .navbar-nav > li > a:visited, .navbar-default .navbar-nav > li > a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-text {
+  coloer: white;
+}
+
+/* opaque class which will be attached on scroll */
+
+.navbar.opaque {
+  background-color: white;
+  background: white;
+  transition: background-color 1s ease 0s; /* Transition effect to make it fade in (optional) */
+  box-shadow: 0px 0px 4px #969696;
+}
+.navbar.opaque .navbar-brand {
+  color: #969696;
+  transition: color 1s ease 0s;
+}
+.navbar.opaque .navbar-nav > li > a {
+  color: #969696;
+  transition: color 1s ease 0s;
+}
+.navbar.opaque .navbar-nav > li > a:active {
+  text-decoration: underline;
+}
+
+
+.head_img {
+  width: 12%;
+  border: 1px black;
+  box-shadow: 1px 1px 1px #888888;
+}
+
+.about {
+  height: 100%;
+}
+
+.self-info {
+  height: 100%;
+}
+
+.map {
+  height: 100%;
+}
+
+.section-heading {
+    margin-top: 8%;
+}
+
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+
+
+/* for the bar chart */
+.bar {
+  fill: steelblue;
+}
+.bar:hover {
+  fill: turquoise;
+}
+
+.chart text {
+  font: 10px sans-serif;
+}
+.chart .title {
+  font: 15px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+/* map pin */
+path {
+ stroke:white;
+ stroke-width: 1px;
+}
+ 
+div.tooltip {
+ position: absolute;
+ text-align: center;
+ width: 25%;
+ height: 40px;
+ padding: 2px;
+ font-size: 22px;
+ background: #3BB9FF;
+ border: 2px;
+ border-radius: 100px;
+ pointer-events: none;
+}
+
+/* ajust the page by different size*/
+
+@media(min-width:768px) {
+    .intro .intro-body .brand-heading {
+        font-size: 60px;
+    }
+
+    .intro .intro-body .intro-text {
+        font-size: 30;
+    }
+}
+
+@media(max-width:768px) {
+    .intro .intro-body .brand-heading {
+        font-size: 40px;
+    }
+
+    div.tooltip {
+      font-size: 12px;
+    }
+
+    .section-heading {
+        margin-top: 19%;
+    }
+
+    .head_img {
+      width: 22%;
+    }
+
+    .intro .intro-body .intro-text {
+        font-size: 20px;
+    }
+}

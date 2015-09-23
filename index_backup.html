@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DkevDou backyard</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/BootSideMenu.css">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/scrollToTop.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/BootSideMenu.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+</head>
+<body id="page-top">
+
+
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-list">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="images/pika.png" id="pika" class="navbar-brand scroll" alt="Smiley face" href="#page-top">
+                <a class="navbar-brand scroll" href="#page-top">DkevDou</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-list">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="scroll" data-transition="slide" href="#self-info">About</a>
+                    </li>
+                    <li class="dropdown">
+				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				          <li><a href="#">Project A</a></li>
+				          <li><a href="#">Project B</a></li>
+				          <li><a href="#">Project C</a></li>
+				        </ul>
+				    </li>
+                    <li>
+                        <a class="scroll" data-transition="slide" href="#portfolio">Blog</a>
+                    </li>
+                    <li>
+                        <a class="scroll" data-transition="slide" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <img src="images/pika.png" id="pika" class="img-circle head_img" href="#page-top">
+                        <h1 class="brand-heading">DkevDou</h1>
+                        <p class="intro-text">I LOVE Sleeping In On Weekends!</p>
+                        <a href="#self-info" class="btn btn-circle scroll" >
+                            <i class="animated fa fa-angle-double-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-success self-info" id="self-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Backend developer</h2>
+                    <hr class="light">
+                    <p class="text-faded">To sleep, or to code, that is the question</p>
+                    <div class="col-lg-12 text-center" id="skill-set">
+                        <h4 class="section-heading">Skill Sets</h4>
+                    </div>
+                    <br/>
+                    <a href="#map" class="btn btn-circle scroll" >
+                        <i class="animated fa fa-angle-double-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-info map" id="map">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Traver map</h2>
+                    <hr class="light">
+                    <p class="text-faded">traverl the world</p>
+                    <a href="#" class="btn btn-default btn-xl scroll">Get Started!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 text-center ">
+                <p>Copyright &copy; DkevDou 2015</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+
+    (function($){
+    $(window).scroll(function() {
+
+        if($(this).scrollTop() > $( window ).height() - 51 )  { 
+            $('.navbar').addClass('opaque'); 
+            $('#pika').show();
+        } else {
+            $('.navbar').removeClass('opaque'); 
+            $('#pika').hide();
+        }
+    });
+    })(jQuery);
+        
+    </script>
+
+    <script type="text/javascript">
+        (function($) {
+            $('a.scroll').bind('click', function(event) {
+                $('html, body').stop().animate({
+                    scrollTop: ($($(this).attr('href')).offset().top)
+                }, 1000, 'easeOutBack');
+                event.preventDefault();
+            });
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 50
+            })
+
+        })
+        (jQuery);
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script type="text/javascript">
+
+    var diameter = $( window ).height() - 51 ,
+        format = d3.format(",d"),
+        color = d3.scale.category20c();
+
+    var bubble = d3.layout.pack()
+        .sort(null)
+        .size([diameter, diameter])
+        .padding(1.5);
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
+
+    d3.json("data/flare.json", function(error, root) {
+      if (error) throw error;
+
+      var node = svg.selectAll(".node")
+          .data(bubble.nodes(classes(root))
+          .filter(function(d) { return !d.children; }))
+        .enter().append("g")
+          .attr("class", "node")
+          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+      node.append("title")
+          .text(function(d) { return d.className + ": " + format(d.value); });
+
+      node.append("circle")
+          .attr("r", function(d) { return d.r; })
+          .style("fill", function(d) { return color(d.packageName); });
+
+      node.append("text")
+          .attr("dy", ".3em")
+          .style("text-anchor", "middle")
+          .text(function(d) { return d.className.substring(0, d.r / 3); });
+    });
+
+    // Returns a flattened hierarchy containing all leaf nodes under the root.
+    function classes(root) {
+      var classes = [];
+
+      function recurse(name, node) {
+        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+        else classes.push({packageName: name, className: node.name, value: node.size});
+      }
+
+      recurse(null, root);
+      return {children: classes};
+    }
+
+    d3.select(self.frameElement).style("height", diameter + "px");
+
+    </script>
+
+
+</body>
+</html>
