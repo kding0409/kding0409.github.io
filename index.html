@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="homepage of kevin">
+    <meta name="author" content="kevin">
 
     <title>DkevDou backyard</title>
 
@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/BootSideMenu.css">
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
@@ -29,17 +28,31 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
-    <script src="js/pace.min.js"></script>
     <script src="js/angular.min.js"></script>
-    <script src="js/BootSideMenu.js"></script>
     <script type="text/javascript" src="js/techChart.js"></script>
 
-     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
-     <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/queue.v1.min.js"></script>
+    <script type="text/javascript" src="js/topojson.v1.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
-    <link rel="stylesheet" type="text/css" href="css/pace.css">
+    <link rel="stylesheet" href="css/fakeLoader.css">
+    <link rel="stylesheet" href="css/nprogress.css">
+
+    <script type="text/javascript" src="js/nprogress.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            NProgress.configure({
+                template: $('#splash-template').html()
+            });
+            NProgress.start();
+        });
+        
+        $(window).load(function(){
+            NProgress.done();
+        })
+    </script>
+
 
     <script type="text/javascript">
 
@@ -55,11 +68,21 @@
 </head>
 
 
-<style>
-
-</style>
-
 <body id="page-top">
+
+    <script type="text" id="splash-template">
+        <div class="splash card">
+            <div role="spinner">
+                <div class="spinner-icon"></div>
+            </div>
+            <p class="lead" style="text-align:center">page coming soon...</p>
+            <div class="progress">
+                <div class="mybar" role="bar">
+                </div>
+            </div>
+        </div>
+       </script>
+
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -122,10 +145,9 @@
     <section class="self-info bg-info" id="self-info">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Backend developer</h2>
-                    <hr class="light"/>
+                <div class="col-lg-12 text-center" style="margin-top:10%;">
                     <div class="col-lg-4 text-center">
+                        <h2 class="section-heading">Backend developer</h2>
                         <p>To sleep, or to code, that is the question</p>
                         <p>To sleep, or to code, that is the question</p>
                         <p>To sleep, or to code, that is the question</p>
@@ -134,7 +156,7 @@
                         <p>To sleep, or to code, that is the question</p>
                     </div>
                     <div class="col-lg-8 text-center wrapper" id="skill-set">
-                        <h4>Skill Sets</h4>
+                        <h4>Skill Sets ( self evaluation )</h4>
                         <svg class="chart"></svg>
                     </div>
                     <a href="#map" class="btn btn-circle scroll" >
@@ -456,7 +478,6 @@
         );
 
         </script>
-
 
 
 </body>
