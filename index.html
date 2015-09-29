@@ -36,7 +36,11 @@
     <script type="text/javascript" src="js/queue.v1.min.js"></script>
     <script type="text/javascript" src="js/topojson.v1.min.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/pace.css">
 
     <script type="text/javascript">
@@ -48,6 +52,11 @@
      window.location.reload();
     }
 
+    </script>
+
+    <script src="js/wow.min.js"></script>
+          <script>
+          new WOW().init();
     </script>
 
 </head>
@@ -116,8 +125,8 @@
     <section class="self-info bg-info" id="self-info">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center" style="margin-top:10%;">
-                    <div class="col-lg-4 text-center">
+                <div class="col-lg-12 text-center" style="margin-top:5%;">
+                    <div class="col-lg-4 text-center wow slideInLeft" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10" >
                         <h2 class="section-heading">Backend developer</h2>
                         <p>To sleep, or to code, that is the question</p>
                         <p>To sleep, or to code, that is the question</p>
@@ -126,9 +135,10 @@
                         <p>To sleep, or to code, that is the question</p>
                         <p>To sleep, or to code, that is the question</p>
                     </div>
-                    <div class="col-lg-8 text-center wrapper" id="skill-set">
-                        <h4>Skill Sets ( self evaluation )</h4>
-                        <svg class="chart"></svg>
+                    <div class="col-lg-8 text-center wrapper wow slideInRight" id="skill-set" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="10" >
+                        <h2 style="margin-top:3%;">Skill Sets ( self evaluation )</h2>
+                        <br/>
+                        <svg class="chart" style="margin-top:3%;"></svg>
                     </div>
                     <a href="#map" class="btn btn-circle scroll" >
                         <i class="animated fa fa-angle-double-down"></i>
@@ -144,15 +154,15 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Travel map</h2>
                     <hr class="light"/>
-                    <div class="col-lg-4 text-center">
+                    <div class="col-lg-4 text-center wow lightSpeedIn" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10">
                         <p>travel the world</p>
                         <p>travel the world</p>
                         <p>travel the world</p>
                         <p>travel the world</p>
                         <p>travel the world</p>
                         <p>travel the world</p>
-                    </div>
-                    <div class="col-lg-8 d3-map"></div>
+                    </div> 
+                    <div class="col-lg-8 d3-map wow zoomIn" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10" ></div>
                     <a href="#top" class="btn btn-circle scroll" >
                         <i class="animated fa fa-angle-double-down"></i>
                     </a>
