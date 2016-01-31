@@ -85,21 +85,16 @@
             <div class="collapse navbar-collapse" id="navbar-list">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="scroll" data-transition="slide" href="#self-info">About</a>
+                        <a class="scroll" data-transition="slide" href="#self-info">About me</a>
                     </li>
-                    <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
-				        <ul class="dropdown-menu">
-				          <li><a href="#">Project A</a></li>
-				          <li><a href="#">Project B</a></li>
-				          <li><a href="#">Project C</a></li>
-				        </ul>
+                    <li>
+                        <a class="scroll" data-transition="slide" href="#projects">Projects</a>
 				    </li>
                     <li>
                         <a class="scroll" data-transition="slide" href="http://www.dingkevin.com/blog/">Blog</a>
                     </li>
                     <li>
-                        <a class="scroll" data-transition="slide" href="#contact">Contact</a>
+                        <a class="scroll" data-transition="slide" href="#"></a>
                     </li>
                 </ul>
             </div>
@@ -112,61 +107,67 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <img src="images/pika.gif" id="pika" class="img-circle head_img" href="#page-top">
-                        <h1 class="brand-heading">DkevDou</h1>
-                        <p class="intro-text">I LOVE Sleeping In On Weekends!</p>
-                        <a href="#self-info" class="btn btn-circle scroll" >
-                            <i class="animated fa fa-angle-double-down"></i>
-                        </a>
+                        <div class="title">
+                            <h1 class="brand-heading">Hi, I am Kevin Ding</h1>
+                        </div>
                     </div>
                 </div>
+                <a href="#self-info" class="btn btn-circle scroll" >
+                    <i class="animated fa fa-angle-double-down"></i>
+                </a>
             </div>
         </div>
     </header>
 
     <!-- page 1 -->
-    <section class="self-info bg-info" id="self-info">
+    <section class="page1" id="self-info">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center" style="margin-top:5%;">
+                <div class="col-lg-12 text-center" style="margin-top:7%;">
                     <div class="col-lg-4 text-center wow slideInLeft" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10" >
-                        <h2 class="section-heading">Backend developer</h2>
-                        <p>To sleep, or to code, that is the question</p>
-                        <p>To sleep, or to code, that is the question</p>
-                        <p>To sleep, or to code, that is the question</p>
-                        <p>To sleep, or to code, that is the question</p>
-                        <p>To sleep, or to code, that is the question</p>
-                        <p>To sleep, or to code, that is the question</p>
+                        <img src="images/pika.gif" id="pika" class="img-circle pika">
+                        <h2 class="section-heading">Kevin Ding</h2>
+                        <h4>Sr. Application Developer</h4>
+                        <p>San Mateo, CA, 94403</p>
+                        <p>kding0409@gmail.com</p>
+                        <hr class="style-four"></hr>
                     </div>
-                    <div class="col-lg-8 text-center wrapper wow slideInRight" id="skill-set" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="10" >
-                        <h2 style="margin-top:3%;">Skill Sets ( self evaluation )</h2>
+                    <div class="col-lg-8 wrapper wow slideInRight" style="margin-top:1%;" id="skill-set" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="10" align="left">
+                        <h2 style="margin-top:2%;">About Me</h2>
+                        <p> &nbsp;&nbsp; Aloha, I am Kevin, working as a Big Data engineer in Silicon Valley now, mainly use Java, also familiar with Python/C++. To be honest, pure backend dev work is hard to make me satisfied, so learning web and mobile development as a interest. Not a social animal but not a nerd, like gym exercise, like basketball -- Golden Gate Warriors for sure, but can not afford the ticket now (sad face), like watch movies and animes, also like travel.</p>
+                        <h2 style="margin-top:2%;">Skill</h2>
+                        <ul>
+                            <li><b>Bid Data:</b> Hadoop MR, Hive, Pig, Oozie, Sqoop, Cdap.</li>
+                            <li><b>Language:</b> Java, Python, C/C++, SQL, Shell, groovy.</li>
+                            <li><b>Web:</b> HTML, CSS, Json, Javascript, XML.</li>
+                            <li><b>Learning now:</b> Spark, Airflow, Swift, Scala, AngularJS.</li>
+                        </ul>
+                        <h2 style="margin-top:2%;">Certification</h2>
+                        <ul>
+                            <li>Oracle Certification Professional, Java SE 6 Programmer</li>
+                            <li>Oracle Certification Expert, Java Platform, EE 6 Web Component Developer </li>
+                        </ul>
                         <br/>
-                        <svg class="chart" style="margin-top:3%;"></svg>
                     </div>
-                    <a href="#map" class="btn btn-circle scroll" >
+                    <a href="#projects" class="btn btn-circle scroll" >
                         <i class="animated fa fa-angle-double-down"></i>
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
-    <!-- page 2 -->
-    <section class="intro map" id="map">
-        <div class="container page2">
+
+     <!-- page 2 -->
+    <section class="projects page2" id="projects">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading" >Travel map</h2>
-                    <div class="col-lg-4 text-center wow lightSpeedIn" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10">
-                    </div> 
+                <div class="col-lg-12 text-center" style="margin-top:5%;">
+                    <h2 class="section-heading">Projects</h2>
 
-                    <div class="col-lg-8 d3-map wow zoomIn" data-wow-duration="2s" data-wow-delay=".2s" data-wow-offset="10" ></div>
-
-                    <a href="#top" class="btn btn-circle scroll" >
-                        <i class="animated fa fa-angle-double-down"></i>
-                    </a>
+                    <h2 class="section-heading">Under Construction</br></br></br></br></br></br></br></br></br></br></h2>
 
                 </div>
-
             </div>
         </div>
     </section>
@@ -241,224 +242,6 @@
             });
     })(jQuery);
     </script>
-
-
-    <!-- script for map -->
-     <script type="text/javascript">
-        var width = ($( window ).width()/4*3/6*5) ,
-            height = $( window ).height()/7*3.2 ;
-
-        var projection = d3.geo.albersUsa().scale(width/4*3.0).translate([width/1.7, height/2]);
-
-        var svg = d3.select('.d3-map').append('svg')
-            .attr('width', width)
-            .attr('height', height);
-
-        var path = d3.geo.path().projection(projection);
-
-        var g = svg.append('g');
-
-        var div = d3.select("body").append("div")
-             .attr("class", "tooltip")
-             .style("opacity", 0);
-
-        d3.json('us.json', function(error, topology) {
-            g.selectAll('path')
-                .data(topojson.feature(topology, topology.objects.states).features)
-                .enter().append('path')
-                .attr('class', function(d) {
-                    return 'states ' + d.properties.STATE_ABBR;
-                })
-                .attr('d', path)
-                .attr('fill', function(d, i) {
-                    return "#BBBBBB";
-                })
-        });
-
-        var places = [
-            {
-                name: "San Francisco, CA",
-                location: {
-                    latitude: 37.47,
-                    longitude: -122.25
-                }
-            },
-            {
-                name: "Los Angelos, CA",
-                location: {
-                    latitude: 34.05,
-                    longitude: -118.24
-                }
-            },
-            {
-                name: "San Diego, CA",
-                location: {
-                    latitude: 32.72,
-                    longitude: -117.16
-                }
-            },
-            {
-                name: "Rochester, NY",
-                location: {
-                    latitude: 43.15,
-                    longitude: -77.62
-                }
-            },
-            {
-                name: "Miami, FL",
-                location: {
-                    latitude: 25.77,
-                    longitude: -80.19
-                }
-            },
-            {
-                name: "Key West, FL",
-                location: {
-                    latitude: 24.56,
-                    longitude: -81.78
-                }
-            },
-            {
-                name: "Philadelphia, PA",
-                location: {
-                    latitude: 39.95,
-                    longitude: -75.16
-                }
-            },
-            {
-                name: "Yosemite National Park, CA",
-                location: {
-                    latitude: 37.77,
-                    longitude: -119.51
-                }
-            },
-            {
-                name: "Las Vegas, NV",
-                location: {
-                    latitude: 36.11,
-                    longitude: -115.17
-                }
-            },
-            {
-                name: "Boston, MA",
-                location: {
-                    latitude: 42.35,
-                    longitude: -71.06
-                }
-            },
-            {
-                name: "Acadia national park, ME",
-                location: {
-                    latitude: 44.34,
-                    longitude: -68.27
-                }
-            },
-            {
-                name: "Niagara Falls, NY",
-                location: {
-                    latitude: 43.09,
-                    longitude: -79.06
-                }
-            },
-            {
-                name: "Washington D.C",
-                location: {
-                    latitude: 38.90,
-                    longitude: -77.03
-                }
-            },
-            {
-                name: "Corning, NY",
-                location: {
-                    latitude: 42.14,
-                    longitude: -77.06
-                }
-            },
-            {
-                name: "Death Valley, CA",
-                location: {
-                    latitude: 36.27,
-                    longitude: -116.52
-                }
-            },
-            {
-                name: "Antelope Valley, AZ",
-                location: {
-                    latitude: 36.65,
-                    longitude: -113.05
-                }
-            },
-            {
-                name: "New York, NY",
-                location: {
-                    latitude: 40.75,
-                    longitude: -73.98
-                }
-            },
-            {
-                name: "Big Sur, CA",
-                location: {
-                    latitude: 36.27,
-                    longitude: -121.80
-                }
-            },
-            {
-                name: "Grand Canyon, AZ",
-                location: {
-                    latitude: 36.06,
-                    longitude: -112.13
-                }
-            },
-            {
-                name: "Solvang, CA",
-                location: {
-                    latitude: 34.60,
-                    longitude: -120.14
-                }
-            }
-
-        ];
-        svg.selectAll(".pin")
-            .data(places)
-            .enter().append("circle", ".pin")
-            .attr("stroke","white")
-            .attr("stroke-width","2")
-            .attr("r", width/150)
-            .attr('fill', "#E0B0FF")
-            .on("mouseover", function(d) { 
-                var name = d.name;
-                var dis_left = d3.event.pageX;
-                var dis_top = d3.event.pageY;
-                var tooltip_x = dis_left + 15;
-                var tooltip_y = dis_top - 50;
-                if (dis_left > width)
-                {
-                    var tooltip_x = dis_left - width/5*2;
-                }
-                d3.select(this).transition().duration(300).style("opacity", 1)
-                .attr('fill', "#9E7BFF").attr("r", width/100);
-                div.transition().duration(300)
-                .style("opacity", 1)
-                div.text(name)
-                .style("left", (tooltip_x) + "px")
-                .style("top", (tooltip_y) + "px");
-            })
-            .on("mouseout", function() {
-             d3.select(this)
-             .transition().duration(300)
-             .attr('fill', "#E0B0FF").attr("r", width/150);
-             div.transition().duration(300)
-             .style("opacity", 0);
-             })
-            .attr("transform", function(d) {
-                return "translate(" + projection([
-                        d.location.longitude,
-                        d.location.latitude
-                    ]) + ")"
-            }
-        );
-
-        </script>
 
 
 </body>
