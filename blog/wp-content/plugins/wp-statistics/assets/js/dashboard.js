@@ -6,6 +6,7 @@ function wp_statistics_get_widget_contents( widget, container_id ) {
 	var data = {
 		'action': 'wp_statistics_get_widget_contents',
 		'widget': widget,
+		'format': 'dashboard'
 	};
 	
 	container = jQuery("#" + container_id);
@@ -35,6 +36,7 @@ function wp_statistics_refresh_widget() {
 	
 	var widget = container_id.replace( 'wp-statistics-', '' );
 	widget = widget.replace( '-div', '' );
+	widget = widget.replace( '-', '.' );
 
 	container = jQuery("#" + container_id);
 	container.html(wp_statistics_loading_image);
@@ -52,6 +54,7 @@ function wp_statistics_refresh_on_toggle_widget() {
 	var container_id = this.value.replace( '-widget', '-div' );
 	var widget = container_id.replace( 'wp-statistics-', '' );
 	widget = widget.replace( '-div', '' );
+	widget = widget.replace( '-', '.' );
 
 	wp_statistics_get_widget_contents( widget, container_id );
 }

@@ -1,7 +1,7 @@
 <?php
 /*
 index.php
-Version: 20150918.01
+Version: 20160311.01
 Author: Red Sand
 http://www.redsandmarketing.com/plugins/
 
@@ -17,9 +17,9 @@ You can avoid the need for pages like this by adding a single line of code to th
 error_reporting(0);
 
 /* We're going to redirect bots and human visitors to the website root. */
-rs_wpss_getenv();
+idx_getenv();
 $new_url = idx_get_site_url();
-header( 'Location: '.$new_url, true, 301 );
+header( 'Location: '.$new_url, TRUE, 301 );
 
 function idx_getenv( $e = FALSE, $add_vars = array() ) {
 	global $_IDX_ENV;

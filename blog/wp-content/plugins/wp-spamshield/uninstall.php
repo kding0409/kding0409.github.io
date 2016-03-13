@@ -1,7 +1,7 @@
 <?php
 /*
 WP-SpamShield - uninstall.php
-Version: 1.9.6.1
+Version: 1.9.7.3
 
 This script uninstalls WP-SpamShield and removes all options and traces of its existence.
 */
@@ -36,7 +36,7 @@ function rs_wpss_uninstall_plugin() {
 		if( FALSE !== strpos( $option, 'spamshield' ) ) { delete_option( $option ); }
 	}
 	/* Delete User Meta */
-	$del_user_meta = array( 'wpss_user_ip', 'wpss_admin_status', 'wpss_new_user_approved', 'wpss_new_user_email_sent', 'wpss_nag_status', 'wpss_nag_notices' );
+	$del_user_meta = array( 'wpss_user_ip', 'wpss_admin_status', 'wpss_new_user_approved', 'wpss_new_user_email_sent', 'wpss_cpn_status', 'wpss_cpn_notices', 'wpss_nag_status', 'wpss_nag_notices', );
 	$user_ids = get_users( array( 'blog_id' => '', 'fields' => 'ID' ) );
 	foreach ( $user_ids as $user_id ) { foreach( $del_user_meta as $i => $key ) { delete_user_meta( $user_id, $key ); } }
 	/* Clear Banned IP Info */

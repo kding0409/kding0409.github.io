@@ -1,7 +1,7 @@
 <?php
 /*
 WP-SpamShield Dynamic JS File
-Version: 1.9.6.2
+Version: 1.9.7.1
 */
 
 /* Security Sanitization - BEGIN */
@@ -268,6 +268,7 @@ setcookie($wpss_ck_key,$wpss_ck_val,0,'/'); /* Secondary benefit is cache contro
 /* Control caching */
 if(function_exists('header_remove')){@header_remove('Cache-Control');@header_remove('Last-Modified');@header_remove('ETag');}
 header('Cache-Control: private, no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0, no-transform',TRUE); /* HTTP/1.1 - Tell browsers and proxies not to cache this */
+header('Surrogate-Control: no-cache, must-revalidate, max-age=0',TRUE); /* Tell surrogates (gateway caches/reverse proxies) not to cache this */
 header('Pragma: no-cache',TRUE); /* HTTP 1.0 */
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT',TRUE); /* Date in the past */
 header('Vary: *'); /* Force no caching */
