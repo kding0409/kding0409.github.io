@@ -127,7 +127,7 @@
                                     <option value=6 <?php echo $select_value == 6 ? 'selected="selected"' : ''?> >mi 英里</option>
                                     <option value=7 <?php echo $select_value == 7 ? 'selected="selected"' : ''?> >yd 码</option>
                                 </select>
-                                <input class="btn"  type=submit value=Convert>
+                                <input class="btn submit"  type=submit value=Convert>
                                 <?php include 'php/length.php';?>
                                 </form>
                             </div>

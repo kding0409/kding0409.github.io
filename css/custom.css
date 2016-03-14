@@ -251,6 +251,7 @@ footer {
   opacity: .5;
 }
 
+.submit { -webkit-appearance: none; }
 
 /* for the bar chart */
 .bar {
