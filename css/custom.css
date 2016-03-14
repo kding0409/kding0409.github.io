@@ -433,6 +433,15 @@ div.tooltip {
       height: 88%;
     }
 
+    .wow {
+      visibility: visible !important;
+      -webkit-animation: none !important;
+         -moz-animation: none !important;
+           -o-animation: none !important;
+          -ms-animation: none !important;
+              animation: none !important;
+    }
+
 }
 
 
