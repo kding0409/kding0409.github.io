@@ -362,6 +362,10 @@ div.tooltip {
     .page3{
       height: 83%;
     }
+
+    .page2 {
+      height: 90%;
+    }
 }
 
 @media(max-width:1080px) {
@@ -424,6 +428,11 @@ div.tooltip {
     .height-control {
         min-height: 400px;        
     }
+
+    .page2 {
+      height: 88%;
+    }
+
 }
 
 
