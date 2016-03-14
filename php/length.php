@@ -35,7 +35,7 @@ $fromu="mi";$cm=160934.4;$me=1609.344;$km=1.609344;$ft=5280;$in=63360;$mi=1;$ya=
 case 7:
 $fromu="yd";$cm=91.44;$me=0.9144;$km=0.0009144;$ft=3;$in=36;$mi=0.000568181;$ya=1;break;
 }
- echo "<br><br><table border='3' style='margin-bottom:20px;font-size:20px;width:80%;'>
+ echo "<br><br><table border='3' style='margin-bottom:20px;font-size:20px;width:260px;'>
  <tr align=right><td>",(double)($val*$cm),"</td><td align=right>cm (厘米)</td></tr>
  <tr align=right><td>",(double)($val*$me),"</td><td align=right>m (米)</td></tr>
  <tr align=right><td>",(double)($val*$km),"</td><td align=right> km (千米)</td></tr>
