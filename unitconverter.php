@@ -96,7 +96,6 @@
 
     </nav>
 
-    <!-- page 1 -->
     <section class="page3" id="self-info">
         <div class="container">
             <div class="row">
@@ -109,7 +108,7 @@
                             <li><a onclick="setTab('help',4,9)" id="help4">Mass Converter</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-9 contain" align="center">
+                    <div class="col-lg-9 contain height-control" align="center">
                             <div class="center">
                             <div id="con_help_1">
                             <h2> Length Converter</h2>

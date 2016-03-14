@@ -338,9 +338,13 @@ div.tooltip {
   width: 100%;
 }
 
+.height-control {
+  height: 100%;
+}
+
 /* ajust the page by different size*/
 
-@media(min-width:1280px) {
+@media(min-width:1080px) {
     .intro .intro-body .brand-heading {
         font-size: 60px;
     }
@@ -355,9 +359,12 @@ div.tooltip {
     .map {
       height: 100%;
     }
+    .page3{
+      height: 83%;
+    }
 }
 
-@media(max-width:1280px) {
+@media(max-width:1080px) {
     .intro .intro-body .brand-heading {
         font-size: 70px;
     }
@@ -413,6 +420,9 @@ div.tooltip {
 
     .map {
         padding-bottom: 30px;
+    }
+    .height-control {
+        min-height: 400px;        
     }
 }
 
