@@ -61,31 +61,31 @@
 
 <body id="page-top">
 
-	<nav id="mainNav" class="navbar-page">
+	<nav id="mainNav" class="navbar-default navbar-page">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-list">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle collapsed navbar-page" style="color:#969696;" data-toggle="collapse" data-target="#navbar-list">
+                    <span class="sr-only" style="color:#969696;">Toggle navigation</span>
+                    <span class="icon-bar" style="color:#969696;"></span>
+                    <span class="icon-bar" style="color:#969696;"></span>
+                    <span class="icon-bar" style="color:#969696;"></span>
                 </button>
                 <img src="images/pika.png" id="pika" class="navbar-brand scroll" alt="Smiley face" href="#page-top">
-                <a class="navbar-brand scroll" href="http://www.dingkevin.com/">DkevDou</a>
+                <a class="navbar-brand scroll" href="http://www.dingkevin.com/" style="color:#969696;">DkevDou</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-list">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="scroll" data-transition="slide" href="http://www.dingkevin.com/">Home</a>
+                        <a class="scroll" data-transition="slide" href="http://www.dingkevin.com/" style="color:#969696;">Home</a>
                     </li>
                     <li>
-                        <a class="scroll " data-transition="slide" href="http://www.dingkevin.com/#projects">Projects</a>
+                        <a class="scroll " data-transition="slide" href="http://www.dingkevin.com/#projects" style="color:#969696;">Projects</a>
 				    </li>
                     <li>
-                        <a class="scroll" data-transition="slide" href="http://www.dingkevin.com/blog/">Blog</a>
+                        <a class="scroll" data-transition="slide" href="http://www.dingkevin.com/blog/" style="color:#969696;">Blog</a>
                     </li>
                     <li>
                         <a class="scroll" data-transition="slide" href="#"></a>

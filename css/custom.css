@@ -213,7 +213,6 @@ footer {
 
 .navbar-page {
   border: none;
-  color: #969696;
   z-index: 100;
   margin-bottom: 0;
   border-radius: 0;
@@ -397,7 +396,7 @@ div.tooltip {
         padding-bottom: 30px;
     }
 
-@media(max-width:768px) {
+@media(max-width: 800px) {
     .intro .intro-body .brand-heading {
         font-size: 40px;
     }
