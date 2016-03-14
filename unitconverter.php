@@ -132,16 +132,17 @@
                             <hr/>
                             <div class="right">
                                 <form action="unitconverter.php" method="POST">
-                                <p class="btn" style="font-size: 25px;">from: </p>
+                                <p class="btn" style="font-size: 25px;">Input: </p>
                                 <input class="btn" type="text" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>">
-                                <select class="btn-convertor" name="from">
-                                    <option value=1> m 米</option>
-                                    <option value=2>cm 厘米</option>
-                                    <option value=3>km 千米</option>
-                                    <option value=4>ft 英尺</option>
-                                    <option value=5>in 英寸</option>
-                                    <option value=6>mi 英里</option>
-                                    <option value=7>yd 码</option>
+                                <?php $select_value = isset($_POST['from']) ? $_POST['from'] : ''; ?> 
+                                <select class="btn-convertor" name=from>
+                                    <option value=1 <?php echo $select_value == 1 ? 'selected="selected"' : ''?> > m 米</option>
+                                    <option value=2 <?php echo $select_value == 2 ? 'selected="selected"' : ''?> >cm 厘米</option>
+                                    <option value=3 <?php echo $select_value == 3 ? 'selected="selected"' : ''?> >km 千米</option>
+                                    <option value=4 <?php echo $select_value == 4 ? 'selected="selected"' : ''?> >ft 英尺</option>
+                                    <option value=5 <?php echo $select_value == 5 ? 'selected="selected"' : ''?> >in 英寸</option>
+                                    <option value=6 <?php echo $select_value == 6 ? 'selected="selected"' : ''?> >mi 英里</option>
+                                    <option value=7 <?php echo $select_value == 7 ? 'selected="selected"' : ''?> >yd 码</option>
                                 </select>
                                 <input class="btn"  type=submit value=Convert>
                                 <?php include 'php/length.php';?>
