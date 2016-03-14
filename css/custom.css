@@ -48,6 +48,7 @@ header {
 
 .btn {
     border-radius: 0;
+    background:#6495ed;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
@@ -250,8 +251,6 @@ footer {
   /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
   opacity: .5;
 }
-
-.submit { -webkit-appearance: none; }
 
 /* for the bar chart */
 .bar {
