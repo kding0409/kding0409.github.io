@@ -139,6 +139,7 @@ header {
 footer {
     height: 5%;
     padding: 1%;
+    bottom:0px;
 }
 
 /* changing the navbar to transparent */
@@ -319,19 +320,16 @@ div.tooltip {
 
 .page2 {
   background-color: #69606b;
-  height: 100%;
   width: 100%;
 }
 
 .page1 {
   background-color: rgba(1, 1, 1, 0.1);
-  height: 100%;
   width: 100%;
 }
 
 .page3 {
   background-color: rgba(1, 1, 1, 0.1);
-  height: 85%;
   width: 100%;
 }
 

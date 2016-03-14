@@ -47,22 +47,6 @@
     <link rel="stylesheet" href="css/pace.css">
 
     <script type="text/javascript">
-
-    window.onresize = resize;
-
-    function resize()
-    {
-     window.location.reload();
-    }
-
-    </script>
-
-    <script src="js/wow.min.js"></script>
-          <script>
-          new WOW().init();
-    </script>
-
-    <script type="text/javascript">
     function setTab(name,cursel,n){
     for(i=1;i<=n;i++){
     var menu=document.getElementById(name+i);//alert(name+i);
@@ -132,8 +116,8 @@
                             <hr/>
                             <div class="right">
                                 <form action="unitconverter.php" method="POST">
-                                <p class="btn" style="font-size: 25px;">Input: </p>
-                                <input class="btn" type="text" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>">
+                                <p class="btn" style="font-size: 20px;">from: </p>
+                                <input type="text" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>">
                                 <?php $select_value = isset($_POST['from']) ? $_POST['from'] : ''; ?> 
                                 <select class="btn-convertor" name=from>
                                     <option value=1 <?php echo $select_value == 1 ? 'selected="selected"' : ''?> > m 米</option>
