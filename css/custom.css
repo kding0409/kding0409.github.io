@@ -59,7 +59,7 @@ header {
 .btn-circle {
     width: 70px;
     height: 70px;
-    margin-top: 50px;
+    margin-top: 2%;
     margin-bottom: 5%;
     padding: 7px 16px;
     border: 2px solid #fff;
@@ -129,7 +129,8 @@ header {
 }
 
 footer {
-    margin: 20px 20px 20px 20px;
+    height: 5%;
+    padding: 1%;
 }
 
 /* changing the navbar to transparent */
@@ -141,6 +142,16 @@ footer {
   z-index: 100;
   margin-bottom: 0;
   border-radius: 0;
+}
+
+.fillall {
+  margin-top: 7%;
+  background-color:white;
+}
+
+.li-margin {
+  margin-top: 7%;
+  background-color:white;
 }
 
 /* Adjusting the brand and link colors */
@@ -189,6 +200,14 @@ footer {
 }
 .navbar.opaque .navbar-nav > li > a:active {
   text-decoration: underline;
+}
+
+.navbar-page {
+  border: none;
+  color: #969696;
+  z-index: 100;
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
 
@@ -298,6 +317,14 @@ div.tooltip {
 
 .page1 {
   background-color: rgba(1, 1, 1, 0.1);
+  height: 100%;
+  width: 100%;
+}
+
+.page3 {
+  background-color: rgba(1, 1, 1, 0.1);
+  height: 85%;
+  width: 100%;
 }
 
 .page0 {
