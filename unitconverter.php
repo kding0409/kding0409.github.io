@@ -137,7 +137,7 @@
                             <div class="center">
                             <div id="con_help_1">
                             <h2> Unit Convertor</h2>
-                            <p>Please input the number then space then the unit of the number, like : "100 cm"</p>
+                            <p>Please input the number then space then the unit of the number, like : "100 cm" or "123 meter" or "30 千米"</p>
                             <hr/>
                             <div class="right">
                                 <form action="unitconverter.php" method="POST">
