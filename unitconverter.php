@@ -56,6 +56,26 @@
     }
     }
     </script>
+
+
+    <script>
+    function showHint(str) {
+      var xhttp;
+      if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          document.getElementById("txtHint").innerHTML = xhttp.responseText;
+        }
+      };
+      xhttp.open("GET", "php/convertor.php?q=" + str, true);
+      xhttp.send();   
+    }
+    </script>
+
 </head>
 
 
@@ -102,38 +122,34 @@
                 <div class="col-lg-12 text-center">
                     <div class="col-lg-3 text-center" >
                         <ul class="nav fillall">
-                            <li><a onclick="setTab('help',1,9)" id="help1">Length Converter</a></li>
-                            <li><a onclick="setTab('help',2,9)" id="help2">Volume Converter</a></li>
-                            <li><a onclick="setTab('help',3,9)" id="help3">Temperature Converter</a></li>
-                            <li><a onclick="setTab('help',4,9)" id="help4">Mass Converter</a></li>
+                            <li style="background-color: #BBBBBB;font-size:160%;text-align: left;font-weight: bold;"><a>Supported Units</a></li>
+                            <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Length Unitd</a></li>
+                            <p style="font-size:110%;font-weight: bold;">cm, m, km, ft, in, mi, yd</p>
+                            <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Volume Units</a></li>
+                            not yet
+                            <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Temperature Units</a></li>
+                            not yet
+                            <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Mass Units</a></li>
+                            not yet
                         </ul>
                     </div>
                     <div class="col-lg-9 contain height-control" align="center">
                             <div class="center">
                             <div id="con_help_1">
-                            <h2> Length Converter</h2>
+                            <h2> Unit Convertor</h2>
+                            <p>Please input the number then space then the unit of the number, like : "100 cm"</p>
                             <hr/>
                             <div class="right">
                                 <form action="unitconverter.php" method="POST">
-                                <input type="text" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>">
-                                <?php $select_value = isset($_POST['from']) ? $_POST['from'] : ''; ?> 
-                                <select class="btn-convertor" name=from>
-                                    <option value=1 <?php echo $select_value == 1 ? 'selected="selected"' : ''?> > m 米</option>
-                                    <option value=2 <?php echo $select_value == 2 ? 'selected="selected"' : ''?> >cm 厘米</option>
-                                    <option value=3 <?php echo $select_value == 3 ? 'selected="selected"' : ''?> >km 千米</option>
-                                    <option value=4 <?php echo $select_value == 4 ? 'selected="selected"' : ''?> >ft 英尺</option>
-                                    <option value=5 <?php echo $select_value == 5 ? 'selected="selected"' : ''?> >in 英寸</option>
-                                    <option value=6 <?php echo $select_value == 6 ? 'selected="selected"' : ''?> >mi 英里</option>
-                                    <option value=7 <?php echo $select_value == 7 ? 'selected="selected"' : ''?> >yd 码</option>
-                                </select>
-                                <input class="btn submit"  type=submit value=Convert>
-                                <?php include 'php/length.php';?>
+                                <input type="text" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>" onkeyup="showHint(this.value)">
                                 </form>
+                                <p><span id="txtHint"></span></p> 
                             </div>
                             </div>
                             <div id="con_help_2" style="display:none;">
                             <h2> Volume Converter</h2>
-                            <div class="right">Coming Soon</div>
+                            <div class="right">
+                            </div>
                             </div>
                             <div id="con_help_3" style="display:none;">
                             <h2> Temperature Converter</h2>
