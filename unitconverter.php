@@ -124,7 +124,7 @@
                         <ul class="nav fillall">
                             <li style="background-color: #BBBBBB;font-size:160%;text-align: left;font-weight: bold;"><a>Supported Units</a></li>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Length Unitd</a></li>
-                            <p style="font-size:110%;font-weight: bold;">cm, m, km, ft, in, mi, yd</p>
+                            <p style="font-size:110%;font-weight: bold;">cm/centimeter/厘米, m/meter/米, km/kilometer/千米, ft/feet/千米, in/inch/英寸, mi/mile/英里, yd/yard/码</p>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Volume Units</a></li>
                             not yet
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Temperature Units</a></li>

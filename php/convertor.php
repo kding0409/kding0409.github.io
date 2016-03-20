@@ -58,7 +58,7 @@ if ($q !== "") {
 
         case "cm":
         $fromu="cm";$cm=1;$me=0.01;$km=0.00001;$ft=0.3280839;$in=0.39370078;$mi=0.000006213;$ya=0.010936132;break;
-        case "centermeter":
+        case "centimeter":
         $fromu="cm";$cm=1;$me=0.01;$km=0.00001;$ft=0.3280839;$in=0.39370078;$mi=0.000006213;$ya=0.010936132;break;
         case "厘米":
         $fromu="cm";$cm=1;$me=0.01;$km=0.00001;$ft=0.3280839;$in=0.39370078;$mi=0.000006213;$ya=0.010936132;break; 
@@ -90,7 +90,7 @@ if ($q !== "") {
         $fromu="mi";$cm=160934.4;$me=1609.344;$km=1.609344;$ft=5280;$in=63360;$mi=1;$ya=1760;break;
         case "英里":
         $fromu="mi";$cm=160934.4;$me=1609.344;$km=1.609344;$ft=5280;$in=63360;$mi=1;$ya=1760;break;
-        
+
         case "yd":
         $fromu="yd";$cm=91.44;$me=0.9144;$km=0.0009144;$ft=3;$in=36;$mi=0.000568181;$ya=1;break;
         case "yard":
@@ -105,8 +105,8 @@ if ($q !== "") {
         <tr align=right><td>",(double)($val*$cm),"</td><td align=right>cm (厘米)</td></tr>
         <tr align=right><td>",(double)($val*$me),"</td><td align=right>m (米)</td></tr>
         <tr align=right><td>",(double)($val*$km),"</td><td align=right> km (千米)</td></tr>
-        <tr align=right><td>",(double)($val*$in),"</td><td align=right> in (英尺)</td></tr>
-        <tr align=right><td>",(double)($val*$ft),"</td><td align=right> ft (英寸)</td></tr>
+        <tr align=right><td>",(double)($val*$in),"</td><td align=right> in (英寸)</td></tr>
+        <tr align=right><td>",(double)($val*$ft),"</td><td align=right> ft (英尺)</td></tr>
         <tr align=right><td>",(double)($val*$mi),"</td><td align=right> mi (英里)</td></tr>
         <tr align=right><td>",(double)($val*$ya),"</td><td align=right> yd (码)</td></tr></table>";    
     }
