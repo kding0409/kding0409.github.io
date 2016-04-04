@@ -124,13 +124,13 @@
                         <ul class="nav fillall">
                             <li style="background-color: #BBBBBB;font-size:160%;text-align: left;font-weight: bold;"><a>Supported Units</a></li>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Length Units</a></li>
-                            <p style="font-size:110%;font-weight: bold;">cm/centimeter/厘米, m/meter/米, km/kilometer/千米, ft/feet/千米, in/inch/英寸, mi/mile/英里, yd/yard/码</p>
+                            <p style="font-size:105%;font-weight: bold;">cm/centimeter/厘米, m/meter/米, km/kilometer/千米, ft/feet/千米, in/inch/英寸, mi/mile/英里, yd/yard/码</p>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Volume Units</a></li>
-                            not yet
+                            <p style="font-size:105%;font-weight: bold;">gal/gallon/加仑, qt/quart/夸脱, l/liter/升, ml/milliliter/毫升</p>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Temperature Units</a></li>
-                            not yet
+                            <p style="font-size:105%;font-weight: bold;">c/celsius/摄氏度, f/fahrenheit/华氏度</p>
                             <li style="background-color: #DDDDDD;font-size:120%;text-align: left;font-weight: bold;"><a>Mass Units</a></li>
-                            not yet
+                            <p style="font-size:105%;font-weight: bold;">kg/kilogram/千克, g/gram/克, lb/pound/磅, oz/ounce/盎司, mg/milligram/毫克</p>
                         </ul>
                     </div>
                     <div class="col-lg-9 contain height-control" align="center">
