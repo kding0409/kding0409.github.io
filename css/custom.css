@@ -318,12 +318,22 @@ div.tooltip {
 }
 
 .page2 {
-  background-color: #56BAEC;
+  background: -moz-linear-gradient(top, #B9C7FB, #B9BAFB);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#B9C7FB), to(#B9BAFB));
+  background: -o-linear-gradient(top, #B9C7FB, #B9BAFB);
+  background: -ms-linear-gradient(#B9C7FB 0%,#B9BAFB 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B9C7FB',endColorstr='#B9BAFB',grandientType=1); /** IE7 **/
+  -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B9C7FB',endColorstr='#B9BAFB',grandientType=1); /** IE8 **/
   width: 100%;
 }
 
 .page1 {
-  background-color: #9BCA3E;
+  background: -moz-linear-gradient(top, #56BAEC, #B9C7FB);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#56BAEC), to(#B9C7FB));
+  background: -o-linear-gradient(top, #56BAEC, #B9C7FB);
+  background: -ms-linear-gradient(#56BAEC 0%,#B9C7FB 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#56BAEC',endColorstr='#B9C7FB',grandientType=1); /** IE7 **/
+  -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#56BAEC',endColorstr='#B9C7FB',grandientType=1); /** IE8 **/
   width: 100%;
 }
 
