@@ -324,9 +324,9 @@ div.tooltip {
 
 .page1 {
   background: url(../images/bg3.jpg) no-repeat center center fixed;
-  filter:alpha(opacity=50); /*IE,透明度50%*/
-  -moz-opacity:0.5; /*Firefox,透明度50%*/
-  opacity:0.5;/*其他浏览器,透明度50%*/
+  filter:alpha(opacity=90); /*IE,透明度50%*/
+  -moz-opacity:0.9; /*Firefox,透明度50%*/
+  opacity:0.9;/*其他浏览器,透明度50%*/
   width: 100%;
 }
 
