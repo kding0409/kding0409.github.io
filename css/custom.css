@@ -323,7 +323,10 @@ div.tooltip {
 }
 
 .page1 {
-  background-color: #B0E57C;
+  background-color: #9BCA3E;
+  filter:alpha(opacity=50); /*IE,透明度50%*/
+  -moz-opacity:0.5; /*Firefox,透明度50%*/
+  opacity:0.5;/*其他浏览器,透明度50%*/
   width: 100%;
 }
 
