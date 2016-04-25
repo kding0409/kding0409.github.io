@@ -28,4 +28,6 @@ delete_option( 'cresta_social_shares_enable_shadow' );
 delete_option( 'cresta_social_shares_enable_shadow_buttons' );
 delete_option( 'cresta_social_shares_z_index' );
 delete_option( 'cresta_social_shares_button_hide_show' );
+delete_option( 'cresta_social_shares_custom_css' );
+delete_option( 'cresta_social_shares_twitter_shares' );
 ?>

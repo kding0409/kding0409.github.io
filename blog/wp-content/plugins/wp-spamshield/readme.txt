@@ -1,9 +1,9 @@
 ﻿=== WP-SpamShield Anti-Spam ===
-Contributors: RedSand
+Contributors: RedSand, blackhawkcybersec
 Donate link: http://www.redsandmarketing.com/wp-spamshield-donate/
 Tags: akismet, all-in-one, anti-captcha, anti-spam, antispam, antispambot, bbpress, blacklist, block spam, bot, bots, buddypress, captcha, cf7, comment, comment spam, comments, contact, contact form, contact form 7, contact form plugin, contact form spam, contact forms, e-mail, email, email address, encode, encoder, encoding, filter, form, formidable, formidable forms, forms, free, gravity forms, harvester, javascript, jetpack, jquery, login, mail, mailchimp, mailto, multisite, ninja, ninja forms, no captcha, nocaptcha, obfuscate, obfuscation, plugin, protect, protection, recaptcha, register, registration, registration spam, robot, robots, s2member, secure, security, signup, signup spam, spam, spam blocker, spam comments, spam filter, spambot, trackback, trackbacks, user, user registration spam, users, validation, widget, woocommerce
 Requires at least: 4.0
-Tested up to: 4.4
+Tested up to: 4.5
 Stable tag: trunk
 License: GPLv2
 
@@ -224,6 +224,27 @@ If you have any further questions, please submit them on the main [WP-SpamShield
 10. Widget - WP-SpamShield Counter - Graphic: Style 9
 
 == Changelog ==
+
+= 1.9.7.7 =
+*released 03/25/16*
+
+* Fixed 2 minor bugs.
+* Updated the anti-spam filters.
+
+= 1.9.7.6 =
+*released 03/23/16*
+
+* Fixed a bug affecting ecommerce compatibility.
+* Updated the anti-spam filters.
+
+= 1.9.7.5 =
+*released 03/21/16*
+
+* Fixed a bug in the translations.
+* Added more ecommerce and cache plugins that the plugin can detect.
+* More compatibility improvements for surrogates (gateway caches/reverse proxies, see RFC 3040).
+* Made various code improvements.
+* Updated the anti-spam filters.
 
 = 1.9.7.4 =
 *released 03/11/16*
@@ -799,9 +820,9 @@ If you have any further questions, please submit them on the main [WP-SpamShield
 For a complete list of changes to the plugin, view the [Version History/Changelog](http://www.redsandmarketing.com/plugins/wp-spamshield/version-history/).
 
 == Upgrade Notice ==
-= 1.9.7.4 =
+= 1.9.7.7 =
 
-* Fixed a backwards compatibility issue for old WordPress versions (4.0-4.2), minor translation improvements, compatibility improvements for surrogates, pre-emptive security enhancements, and updated the anti-spam filters. Please see Changelog for details.
+*  Fixed 2 minor bugs, and updated the anti-spam filters. Please see Changelog for details.
 
 == Other Notes ==
 

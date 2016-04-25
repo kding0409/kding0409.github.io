@@ -1,8 +1,8 @@
 <?php
-/***
-* WP-SpamShield Security
-* Ver 1.9.6.1
-***/
+/**
+ * WP-SpamShield Security
+ * Ver 1.9.7.7
+ */
 
 if( !defined( 'ABSPATH' ) || !defined( 'WPSS_VERSION' ) ) {
 	if( !headers_sent() ) { header('HTTP/1.1 403 Forbidden'); }
@@ -11,20 +11,20 @@ if( !defined( 'ABSPATH' ) || !defined( 'WPSS_VERSION' ) ) {
 
 class WPSS_Security {
 
-	/***
-	* WP-SpamShield Security Class
-	***/
+	/**
+	 * WP-SpamShield Security Class
+	 */
 
 	function __construct() {
-		/***
-		* Do nothing...for now
-		***/
+		/**
+		 * Do nothing...for now
+		 */
 	}
 
 	public function check_post_sec() {
-		/***
-		* Check if POST submission is security threat: hack attempt or vulnerability probe
-		***/
+		/**
+		 * Check if POST submission is security threat: hack attempt or vulnerability probe
+		 */
 
 		$site_url	= WPSS_SITE_URL;
 		$site_dom	= WPSS_SITE_DOMAIN;
@@ -35,7 +35,7 @@ class WPSS_Security {
 		$user_agent = rs_wpss_get_user_agent();
 		$req_url	= rs_wpss_casetrans( 'lower', rs_wpss_get_url() );
 		$req_ajax	= rs_wpss_is_ajax_request();
-		$req_404	= rs_wpss_is_404(); /* Not all WP sites return proper 404 status. The fact this security check even got activated means it was a 404. */
+		$req_404	= rs_wpss_is_404( TRUE ); /* Not all WP sites return proper 404 status. The fact this security check even got activated means it was a 404. */
 		$req_hal	= rs_wpss_get_http_accept( TRUE, TRUE, TRUE );
 		$req_ha		= rs_wpss_get_http_accept( TRUE, TRUE );
 
@@ -250,11 +250,11 @@ class WPSS_Security {
 	}
 
 	public function ip_ban( $method = 'set' ) {
-		/***
-		* Ban users by IP address or check if they have been banned
-		* Added 1.9.4
-		* $method: 'set','chk'
-		***/
+		/**
+		 * Ban users by IP address or check if they have been banned
+		 * Added 1.9.4
+		 * $method: 'set','chk'
+		 */
 		if( FALSE === WPSS_IP_BAN_ENABLE || TRUE === WPSS_IP_BAN_CLEAR ) { self::clear_ip_ban(); return FALSE; }
 		$wpss_ip_ban_disable = get_option('spamshield_ip_ban_disable');
 		if( !empty( $wpss_ip_ban_disable ) ) { self::clear_ip_ban(); return FALSE; }
@@ -286,10 +286,10 @@ class WPSS_Security {
 	}
 
 	private function ip_ban_htaccess() {
-		/***
-		* Write the updated list of banned IP's to .htaccess.
-		* Added 1.9.4
-		***/
+		/**
+		 * Write the updated list of banned IP's to .htaccess.
+		 * Added 1.9.4
+		 */
 		$hta_bak_dir		= WPSS_CONTENT_DIR_PATH.'/backup';
 		$hta_wpss_bak_dir	= $hta_bak_dir.'/wp-spamshield';
 		$hta_file			= ABSPATH.'/.htaccess';
@@ -341,19 +341,19 @@ class WPSS_Security {
 	}
 
 	static public function clear_ip_ban() {
-		/***
-		* Clear IP ban from database and .htaccess.
-		* Added 1.9.4
-		***/
+		/**
+		 * Clear IP ban from database and .htaccess.
+		 * Added 1.9.4
+		 */
 		update_option( 'spamshield_ip_ban', array() );
 		self::clear_ip_ban_htaccess();
 	}
 
 	static private function clear_ip_ban_htaccess() {
-		/***
-		* Clear banned IP info from .htaccess.
-		* Added 1.9.4
-		***/
+		/**
+		 * Clear banned IP info from .htaccess.
+		 * Added 1.9.4
+		 */
 		$hta_bak_dir		= WPSS_CONTENT_DIR_PATH.'/backup';
 		$hta_wpss_bak_dir	= $hta_bak_dir.'/wp-spamshield';
 		$hta_file			= ABSPATH.'/.htaccess';
@@ -386,11 +386,11 @@ class WPSS_Security {
 	}
 
 	static public function check_admin_sec() {
-		/***
-		* Admin Security Checks
-		* Check for specific plugin security issues and apply fix or workaround
-		* Added 1.9.5.8
-		***/
+		/**
+		 * Admin Security Checks
+		 * Check for specific plugin security issues and apply fix or workaround
+		 * Added 1.9.5.8
+		 */
 		
 		if( rs_wpss_is_admin_sproc( TRUE ) ) { return; }
 
@@ -402,11 +402,11 @@ class WPSS_Security {
 	}
 
 	static private function admin_sec_fix_nua() {
-		/***
-		* Plugin:		New User Approve <= 1.7.2 (unfixed)
-		* Issue:		Plugin "phones home" to retrieve data without informing site owner or requesting consent.
-		* Reference:	WordPress Plugin Developer Guidelines, Rule 7 - https://wordpress.org/plugins/about/guidelines/
-		***/
+		/**
+		 * Plugin:		New User Approve <= 1.7.2 (unfixed)
+		 * Issue:		Plugin "phones home" to retrieve data without informing site owner or requesting consent.
+		 * Reference:	WordPress Plugin Developer Guidelines, Rule 7 - https://wordpress.org/plugins/about/guidelines/
+		 */
 		if( class_exists( 'pw_new_user_approve_admin_approve' ) && method_exists( 'pw_new_user_approve_admin_approve', 'add_meta_boxes' ) && has_filter( 'admin_init', array( pw_new_user_approve_admin_approve::instance(), 'add_meta_boxes' ) ) ) {
 			$mslug = 'users_page_new-user-approve-admin';
 			$args = array( 'plugin_name' => 'New User Approve' );

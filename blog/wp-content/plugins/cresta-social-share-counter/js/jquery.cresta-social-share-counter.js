@@ -76,28 +76,19 @@
 			}
 			
 			// Twitter Shares Count
-			/*
 			function twitterShares($URL) {
-				if ( $('#twitter-cresta').hasClass('twitter-cresta-share') ) {
-					$.ajax({
-						url: "http://urls.api.twitter.com/1/urls/count.json?url=" + $URL + "&callback=?",
-						type: "GET",
-						dataType: "json",
-						timeout: 3500,
-						error: function(jqXHR, status, errorThrown){   
-							$('#twitter-count').text(0)
-							$('#total-shares').attr('data-twitterShares', 0)
-						},
-						success: function (twitdata) {
-							$('#twitter-count').text( ReplaceNumberWithCommas(twitdata.count) )
-							$('#total-shares').attr('data-twitterShares', twitdata.count)
+				if ( $('#twitter-cresta').hasClass('twitter-cresta-share') && $('#twitter-cresta').hasClass('withCount') ) {
+					$.getJSON('https://public.newsharecounts.com/count.json?url=' + $URL + '&callback=?', function (twitterdata) {
+						var twittervar = $('<span class="cresta-the-count" id="twitter-count"></span>').text(ReplaceNumberWithCommas(twitterdata.count));
+						if (twitterdata.count > 0 || $ismorezero == 'nomore') {
+							$('.twitter-cresta-share.float a').after(twittervar)
 						}
+						$('#total-shares').attr('data-twitterShares', twitterdata.count)
 					});
 				} else {
 					$('#total-shares').attr('data-twitterShares', 0)
 				}
 			}
-			*/
 
 			// LinkedIn Shares Count
 			function linkedInShares($URL) {
@@ -132,7 +123,9 @@
 			// Check if all JSON calls are finished or not
 			function checkJSON_getSum() {
 				if ($('#total-shares, #total-shares-content').attr('data-facebookShares') != undefined &&
-				$('#total-shares, #total-shares-content').attr('data-linkedinShares') != undefined && $('#total-shares, #total-shares-content').attr('data-pinterestShares') != undefined &&
+				$('#total-shares, #total-shares-content').attr('data-linkedinShares') != undefined &&
+				$('#total-shares, #total-shares-content').attr('data-pinterestShares') != undefined &&
+				$('#total-shares, #total-shares-content').attr('data-twitterShares') != undefined &&
 				$('#total-shares, #total-shares-content').attr('data-googleplusShares') != undefined) {
 
 					if ( $('#facebook-cresta').hasClass('facebook-cresta-share')) {
@@ -140,13 +133,11 @@
 					} else {
 						var fbShares = 0;
 					}
-					/*
-					if ( $('#twitter-cresta').hasClass('twitter-cresta-share')) {
+					if ( $('#twitter-cresta').hasClass('twitter-cresta-share') && $('#twitter-cresta').hasClass('withCount')) {
 						var twitShares = parseInt($('#total-shares').attr('data-twitterShares'));
 					} else {
 						var twitShares = 0;
 					}
-					*/
 					if ( $('#linkedin-cresta').hasClass('linkedin-cresta-share')) {
 						var linkedInShares = parseInt($('#total-shares').attr('data-linkedinShares'));
 					} else {
@@ -168,14 +159,14 @@
 						checkJSON_getSum();
 					}, 200);
 				}
-					var totalShares = fbShares + linkedInShares + pinterestShares + googleplusShares;
+					var totalShares = fbShares + linkedInShares + pinterestShares + googleplusShares + twitShares;
 					$('#total-count').text( ReplaceNumberWithCommas(totalShares) || 0 )
 
 			}
 
 			function totalShares($URL) {
 				linkedInShares($URL);
-				//twitterShares($URL);
+				twitterShares($URL);
 				facebookShares($URL);
 				pinterestShares($URL);
 				googleplusShares($URL);
