@@ -1,5 +1,5 @@
 # WP-SpamShield - "/wp-spamshield/" .htaccess
-# Version 1.9.1
+# File Version 1.9.8
 
 # Control direct access to certain files.
 # Apache 2.2 and 2.4 compatible

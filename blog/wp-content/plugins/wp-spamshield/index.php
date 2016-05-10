@@ -1,25 +1,51 @@
 <?php
 /*
 index.php
-Version: 20160311.01
+Version: 20160404.01
 Author: Red Sand
 http://www.redsandmarketing.com/plugins/
 
 This script keeps search engines, bots, and unwanted visitors from viewing your private plugin directory contents.
  
 You can avoid the need for pages like this by adding a single line of code to the beginning of your .htaccess file:
+
 	## Add the following line to the beginning of your .htaccess for security and SEO.
-	Options All -Indexes
+	Options -Indexes
 	## This will turn off indexes so your site won't reveal contents of directories that don't have an index file.
+
 */
 
 @ini_set('display_errors', 0);
 error_reporting(0);
 
-/* We're going to redirect bots and human visitors to the website root. */
+/* We're going to block bad bots/visitors and redirect human visitors to the website root. */
 idx_getenv();
-$new_url = idx_get_site_url();
-header( 'Location: '.$new_url, TRUE, 301 );
+$new_url	= idx_get_site_url();
+$code		= '403';
+$status		= 'Forbidden';
+if( !headers_sent() ) {
+	header_remove();
+	header($_SERVER['SERVER_PROTOCOL'].' '.$code.' '.$status);
+	header('Refresh: 0; url='.$new_url,TRUE);
+	/* Using 'Refresh:' instead of 'Location:' allows you to set 403 status code first. */
+}
+
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?php echo $code.' - '.$status; ?></title>
+<meta name="description" content="" /><meta name="keywords" content="" />
+<meta name="ROBOTS" content="NONE" />
+<link rel="canonical" href="<?php echo $site_url; ?>" />
+</head>
+<body>
+<?php
+echo str_repeat( '&nbsp;', 512 );
+?>
+
+</body>
+</html><?php
+exit();
 
 function idx_getenv( $e = FALSE, $add_vars = array() ) {
 	global $_IDX_ENV;

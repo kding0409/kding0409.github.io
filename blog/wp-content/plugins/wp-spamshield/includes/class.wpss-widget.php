@@ -1,11 +1,11 @@
 <?php
 /***
 * WP-SpamShield Widgets
-* Ver 1.9.7.5
+* Ver 1.9.7.8
 ***/
 
 if( !defined( 'ABSPATH' ) || !defined( 'WPSS_VERSION' ) ) {
-	if( !headers_sent() ) { header('HTTP/1.1 403 Forbidden'); }
+	if( !headers_sent() ) { header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden'); }
 	die( 'ERROR: Direct access to this file is not allowed.' );
 }
 

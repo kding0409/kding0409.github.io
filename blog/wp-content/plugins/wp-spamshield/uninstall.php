@@ -1,12 +1,15 @@
 <?php
 /**
  * WP-SpamShield - uninstall.php
- * Version: 1.9.7.6
+ * Version: 1.9.7.8
  *
  * This script uninstalls WP-SpamShield and removes all options and traces of its existence.
  */
 
-if( !defined( 'ABSPATH' ) || !defined( 'WP_UNINSTALL_PLUGIN' ) ) { die(); }
+if( !defined( 'ABSPATH' ) || !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	if( !headers_sent() ) { header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden'); }
+	die( 'ERROR: This plugin requires WordPress and will not function if called directly.' );
+}
 
 if( !defined( 'WPSS_DEBUG' ) )	 				{ define( 'WPSS_DEBUG', FALSE ); }
 if( !defined( 'WPSS_CONTENT_DIR_PATH' ) ) 		{ define( 'WPSS_CONTENT_DIR_PATH', WP_CONTENT_DIR ); }
@@ -16,6 +19,9 @@ function rs_wpss_uninstall_plugin() {
 	/* Delete Options */
 	$del_options = array( 'wp_spamshield_version', 'spamshield_options', 'spamshield_widget_settings', 'spamshield_last_admin', 'spamshield_admins', 'spamshield_admin_notices', 'spamshield_count', 'spamshield_reg_count', 'spamshield_procdat', 'spamshield_install_status', 'spamshield_warning_status', 'spamshield_regalert_status', 'spamshield_nonces', 'spamshield_wpssmid_cache', 'spamshield_ubl_cache', 'spamshield_ubl_cache_disable', 'spamshield_ip_ban_disable', 'spamshield_ip_ban', 'spamshield_whitelist_keys', 'ak_count_pre', 'spamshield_init_user_approve_run' );
 	foreach( $del_options as $i => $option ) { delete_option( $option ); } /* TO DO: When Network Activation enabled, add Multisite - delete_site_option() */
+	/* Delete Transients */
+	$del_trans = array( 'wpss_iswpv_check', );
+	foreach( $del_trans as $i => $transient ) { delete_transient( $transient ); delete_site_transient( $transient ); }
 	/* Unregister Widgets */
 	$unreg_widgets = array( 'WP_SpamShield_Counter_LG', 'WP_SpamShield_Counter_CG', 'WP_SpamShield_End_Blog_Spam' );
 	foreach( $unreg_widgets as $i => $widget ) { unregister_widget( $widget ); }

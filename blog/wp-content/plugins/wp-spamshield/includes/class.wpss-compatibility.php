@@ -1,11 +1,11 @@
 <?php
 /**
  * WP-SpamShield Compatibility
- * Ver 1.9.7.7
+ * File Version 1.9.7.8
  */
 
 if( !defined( 'ABSPATH' ) || !defined( 'WPSS_VERSION' ) ) {
-	if( !headers_sent() ) { header('HTTP/1.1 403 Forbidden'); }
+	if( !headers_sent() ) { header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden'); }
 	die( 'ERROR: Direct access to this file is not allowed.' );
 }
 
@@ -45,7 +45,7 @@ class WPSS_Compatibility {
 			/* Cache Plugins */
 			'w3-total-cache/w3-total-cache.php' => array( 'cn' => 'W3TC_VERSION', 'cl' => '' ), 'wp-fastest-cache/wpFastestCache.php' => array( 'cn' => 'WPFC_WP_PLUGIN_DIR', 'cl' => 'WpFastestCache' ), 'wp-fastest-cache-premium/wpFastestCachePremium.php' => array( 'cn' => '', 'cl' => '' ), 'wp-rocket/wp-rocket.php' => array( 'cn' => 'WP_ROCKET_VERSION', 'cl' => '' ), 
 			/* Ecommerce Plugins */
-			'affiliates/affiliates.php' => array( 'cn' => 'AFFILIATES_CORE_VERSION', 'cl' => '' ), 'caldera-forms/caldera-core.php' => array( 'cn' => 'CFCORE_VER', 'cl' => '' ), 'download-manager/download-manager.php' => array( 'cn' => 'WPDM_Version', 'cl' => '' ), 'easy-digital-downloads/easy-digital-downloads.php' => array( 'cn' => 'EDD_VERSION', 'cl' => '' ), 'ecommerce-product-catalog/ecommerce-product-catalog.php' => array( 'cn' => 'AL_BASE_PATH', 'cl' => 'eCommerce_Product_Catalog' ), 'ecwid-shopping-cart/ecwid-shopping-cart.php' => array( 'cn' => 'ECWID_PLUGIN_DIR', 'cl' => '' ), 'events-made-easy/events-manager.php' => array( 'cn' => 'EME_DB_VERSION', 'cl' => '' ), 'events-manager/events-manager.php' => array( 'cn' => 'EM_VERSION', 'cl' => '' ), 'eshop/eshop.php' => array( 'cn' => 'ESHOP_VERSION', 'cl' => '' ), 'give/give.php' => array( 'cn' => 'GIVE_VERSION', 'cl' => 'Give' ), 'gravity-forms-stripe/gravity-forms-stripe.php' => array( 'cn' => 'GFP_STRIPE_FILE', 'cl' => '' ), 'gravityformspaypal/paypal.php' => array( 'cn' => 'GF_PAYPAL_VERSION', 'cl' => 'GF_PayPal_Bootstrap' ), 'ithemes-exchange/init.php' => array( 'cn' => '', 'cl' => 'IT_Exchange' ), 'jigoshop/jigoshop.php' => array( 'cn' => 'JIGOSHOP_VERSION', 'cl' => '' ), 'paid-memberships-pro/paid-memberships-pro.php' => array( 'cn' => 'PMPRO_VERSION', 'cl' => '' ), 's2member/s2member-o.php' => array( 'cn' => 'WS_PLUGIN__S2MEMBER_VERSION', 'cl' => '' ), 'shopp/Shopp.php' => array( 'cn' => '', 'cl' => 'ShoppLoader' ), 'simple-membership/simple-wp-membership.php' => array( 'cn' => 'SIMPLE_WP_MEMBERSHIP_VER', 'cl' => '' ), 'stripe/stripe-checkout.php' => array( 'cn' => 'SIMPAY_VERSION', 'cl' => '' ), 'ultimate-product-catalogue/UPCP_Main.php' => array( 'cn' => 'UPCP_CD_PLUGIN_PATH', 'cl' => '' ), 'usc-e-shop/usc-e-shop.php' => array( 'cn' => 'USCES_VERSION', 'cl' => '' ), 'users-ultra/xoousers.php' => array( 'cn' => 'xoousers_url', 'cl' => '' ), 'wc-vendors/class-wc-vendors.php' => array( 'cn' => 'wcv_plugin_dir', 'cl' => 'WC_Vendors' ), 'woocommerce/woocommerce.php' => array( 'cn' => 'WOOCOMMERCE_VERSION', 'cl' => 'WooCommerce' ), 'woocommerce-paypal-pro-payment-gateway/woo-paypal-pro.php' => array( 'cn' => 'WC_PP_PRO_ADDON_VERSION', 'cl' => 'WC_Paypal_Pro_Gateway_Addon' ), 'wordpress-ecommerce/marketpress.php' => array( 'cn' => 'MP_LITE', 'cl' => 'MarketPress' ), 'wordpress-simple-paypal-shopping-cart/wp_shopping_cart.php' => array( 'cn' => 'WP_CART_VERSION', 'cl' => '' ), 'wp-e-commerce/wp-shopping-cart.php' => array( 'cn' => 'WPSC_VERSION', 'cl' => 'WP_eCommerce' ), 'wp-easycart/wpeasycart.php' => array( 'cn' => 'EC_CURRENT_VERSION', 'cl' => '' ), 'wp-shop-original/wp-shop.php' => array( 'cn' => 'WPSHOP_DIR', 'cl' => '' ), 'wp-ultra-simple-paypal-shopping-cart/wp_ultra_simple_shopping_cart.php' => array( 'cn' => 'WUSPSC_VERSION', 'cl' => '' ), 'wppizza/wppizza.php' => array( 'cn' => 'WPPIZZA_VERSION', 'cl' => '' ), 'yith-woocommerce-stripe/init.php' => array( 'cn' => 'YITH_WCSTRIPE_VERSION', 'cl' => '' ), 
+			'affiliates/affiliates.php' => array( 'cn' => 'AFFILIATES_CORE_VERSION', 'cl' => '' ), 'caldera-forms/caldera-core.php' => array( 'cn' => 'CFCORE_VER', 'cl' => '' ), 'download-manager/download-manager.php' => array( 'cn' => 'WPDM_Version', 'cl' => '' ), 'easy-digital-downloads/easy-digital-downloads.php' => array( 'cn' => 'EDD_VERSION', 'cl' => 'Easy_Digital_Downloads' ), 'ecommerce-product-catalog/ecommerce-product-catalog.php' => array( 'cn' => 'AL_BASE_PATH', 'cl' => 'eCommerce_Product_Catalog' ), 'ecwid-shopping-cart/ecwid-shopping-cart.php' => array( 'cn' => 'ECWID_PLUGIN_DIR', 'cl' => '' ), 'eshop/eshop.php' => array( 'cn' => 'ESHOP_VERSION', 'cl' => '' ), 'events-made-easy/events-manager.php' => array( 'cn' => 'EME_DB_VERSION', 'cl' => '' ), 'events-manager/events-manager.php' => array( 'cn' => '', 'cl' => '' ), 'formidable-paypal/formidable-paypal.php' => array( 'cn' => '', 'cl' => '' ), 'give/give.php' => array( 'cn' => 'GIVE_VERSION', 'cl' => 'Give' ), 'gravity-forms-stripe/gravity-forms-stripe.php' => array( 'cn' => 'GFP_STRIPE_FILE', 'cl' => '' ), 'gravityformsauthorizenet/authorizenet.php' => array( 'cn' => 'GF_AUTHORIZENET_VERSION', 'cl' => 'GF_AuthorizeNet_Bootstrap' ), 'gravityformspayfast/payfast.php' => array( 'cn' => 'GF_PAYFAST_VERSION', 'cl' => 'GF_PayFast_Bootstrap' ), 'gravityformsstripe/stripe.php' => array( 'cn' => 'GF_STRIPE_VERSION', 'cl' => 'GF_Stripe_Bootstrap' ), 'gravityformspaypal/paypal.php' => array( 'cn' => 'GF_PAYPAL_VERSION', 'cl' => 'GF_PayPal_Bootstrap' ), 'ithemes-exchange/init.php' => array( 'cn' => '', 'cl' => 'IT_Exchange' ), 'jigoshop/jigoshop.php' => array( 'cn' => 'JIGOSHOP_VERSION', 'cl' => '' ), 'memberpress/memberpress.php' => array( 'cn' => 'MEPR_VERSION', 'cl' => '' ), 'paid-memberships-pro/paid-memberships-pro.php' => array( 'cn' => 'PMPRO_VERSION', 'cl' => '' ), 's2member/s2member-o.php' => array( 'cn' => 'WS_PLUGIN__S2MEMBER_VERSION', 'cl' => '' ), 'shopp/Shopp.php' => array( 'cn' => '', 'cl' => 'ShoppLoader' ), 'simple-membership/simple-wp-membership.php' => array( 'cn' => 'SIMPLE_WP_MEMBERSHIP_VER', 'cl' => '' ), 'stripe/stripe-checkout.php' => array( 'cn' => 'SIMPAY_VERSION', 'cl' => '' ), 'ultimate-product-catalogue/UPCP_Main.php' => array( 'cn' => 'UPCP_CD_PLUGIN_PATH', 'cl' => '' ), 'usc-e-shop/usc-e-shop.php' => array( 'cn' => 'USCES_VERSION', 'cl' => '' ), 'users-ultra/xoousers.php' => array( 'cn' => 'xoousers_url', 'cl' => '' ), 'wc-vendors/class-wc-vendors.php' => array( 'cn' => 'wcv_plugin_dir', 'cl' => 'WC_Vendors' ), 'woocommerce-paypal-pro-payment-gateway/woo-paypal-pro.php' => array( 'cn' => 'WC_PP_PRO_ADDON_VERSION', 'cl' => 'WC_Paypal_Pro_Gateway_Addon' ), 'woocommerce/woocommerce.php' => array( 'cn' => 'WOOCOMMERCE_VERSION', 'cl' => 'WooCommerce' ), 'wordpress-ecommerce/marketpress.php' => array( 'cn' => 'MP_LITE', 'cl' => 'MarketPress' ), 'wordpress-simple-paypal-shopping-cart/wp_shopping_cart.php' => array( 'cn' => 'WP_CART_VERSION', 'cl' => '' ), 'wp-e-commerce/wp-shopping-cart.php' => array( 'cn' => 'WPSC_VERSION', 'cl' => 'WP_eCommerce' ), 'wp-easycart/wpeasycart.php' => array( 'cn' => 'EC_CURRENT_VERSION', 'cl' => '' ), 'wp-shop-original/wp-shop.php' => array( 'cn' => 'WPSHOP_DIR', 'cl' => '' ), 'wp-ultra-simple-paypal-shopping-cart/wp_ultra_simple_shopping_cart.php' => array( 'cn' => 'WUSPSC_VERSION', 'cl' => '' ), 'wppizza/wppizza.php' => array( 'cn' => 'WPPIZZA_VERSION', 'cl' => '' ), 'yith-woocommerce-stripe/init.php' => array( 'cn' => 'YITH_WCSTRIPE_VERSION', 'cl' => '' ), 
 			/* Page Builder Plugins */
 			'beaver-builder-lite-version/fl-builder.php' => array( 'cn' => 'FL_BUILDER_VERSION', 'cl' => 'FLBuilder' ), 'bb-plugin/fl-builder.php' => array( 'cn' => 'FL_BUILDER_VERSION', 'cl' => 'FLBuilder' ), 
 			/* All others */
@@ -208,11 +208,19 @@ class WPSS_Compatibility {
 		if( defined( 'WPRP_PLUGIN_SLUG' ) && !empty( $_POST['wpr_verify_key'] ) && preg_match( "~\ WP\-Remote$~", $user_agent ) && preg_match( "~\.amazonaws\.com$~", $reverse_dns ) ) { return TRUE; }
 
 		/* Ecommerce Plugins */
-		if( ( rs_wpss_is_ssl() || !empty( $_POST['add-to-cart'] ) || !empty( $_POST['add_to_cart'] ) || !empty( $_POST['addtocart'] ) || !empty( $_POST['product-id'] ) || !empty( $_POST['product_id'] ) || !empty( $_POST['productid'] ) || ( preg_match( "~^PayPal\ IPN~", $user_agent ) && preg_match( "~(^|\.)paypal\.com$~", $reverse_dns ) ) ) && self::is_ecom_enabled() ) { return TRUE; }
+		if( ( rs_wpss_is_ssl() || !empty( $_POST['add-to-cart'] ) || !empty( $_POST['add_to_cart'] ) || !empty( $_POST['addtocart'] ) || !empty( $_POST['product-id'] ) || !empty( $_POST['product_id'] ) || !empty( $_POST['productid'] ) || ( $user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' && preg_match( "~(^|\.)paypal\.com$~", $reverse_dns ) && $fcrdns === '[Verified]' ) ) && self::is_ecom_enabled() ) { return TRUE; }
+		if( ( rs_wpss_is_ssl() || self::is_ecom_enabled() ) && $fcrdns === '[Verified]' ) {
+			/* PayPal, Stripe, Authorize.net, Worldpay, etc */
+			if( 
+				( $user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' && preg_match( "~(^|\.)paypal\.com$~", $reverse_dns ) ) || 
+				$reverse_dns === 'api.stripe.com' || 
+				preg_match( "~(^|\.)(authorize\.net|worldpay\.com|payfast\.co\.za|api\.mollie\.nl|api\.simplifycommerce\.com|wepayapi\.com|2checkout\.com|paylane\.com)$~", $reverse_dns ) 
+			) { return TRUE; }
+		}
 
 		/* WooCommerce Payment Gateways */
 		if( self::is_woocom_enabled() ) {
-			if( ( preg_match( "~^PayPal\ IPN~", $user_agent ) && preg_match( "~(^|\.)paypal\.com$~", $reverse_dns ) ) || strpos( $req_uri, 'WC_Gateway_Paypal' ) !== FALSE ) { return TRUE; }
+			if( ( $user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' && preg_match( "~^(ipn|ipnpb|notify|reports)(\.sandbox)?\.paypal\.com$~", $reverse_dns ) ) || strpos( $req_uri, 'WC_Gateway_Paypal' ) !== FALSE ) { return TRUE; }
 			if( preg_match( "~(^|\.)payfast\.co\.za$~", $reverse_dns ) || ( strpos( $req_uri, 'wc-api' ) !== FALSE && strpos( $req_uri, 'WC_Gateway_PayFast' ) !== FALSE ) ) { return TRUE; }
 			/* Plugin: 'woocommerce-gateway-payfast/gateway-payfast.php' */
 			if( preg_match( "~((\?|\&)wc\-api\=WC_(Addons_)?Gateway_|/wc\-api/.*WC_(Addons_)?Gateway_)~", $req_uri ) ) { return TRUE; }
@@ -221,7 +229,7 @@ class WPSS_Compatibility {
 
 		/* Easy Digital Downloads Payment Gateways */
 		if( defined( 'EDD_VERSION' ) ) {
-			if( ( preg_match( "~^PayPal\ IPN~", $user_agent ) && preg_match( "~(^|\.)paypal\.com$~", $reverse_dns ) ) || ( !empty( $_GET['edd-listener'] ) && $_GET['edd-listener'] === 'IPN' )  || ( strpos( $req_uri, 'edd-listener' ) !== FALSE && strpos( $req_uri, 'IPN' ) !== FALSE ) ) { return TRUE; }
+			if( ( $user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' && preg_match( "~^(ipn|ipnpb|notify|reports)(\.sandbox)?\.paypal\.com$~", $reverse_dns ) ) || ( !empty( $_GET['edd-listener'] ) && $_GET['edd-listener'] === 'IPN' )  || ( strpos( $req_uri, 'edd-listener' ) !== FALSE && strpos( $req_uri, 'IPN' ) !== FALSE ) ) { return TRUE; }
 			if( ( !empty( $_GET['edd-listener'] ) && $_GET['edd-listener'] === 'amazon' ) || ( strpos( $req_uri, 'edd-listener' ) !== FALSE && strpos( $req_uri, 'amazon' ) !== FALSE ) ) { return TRUE; }
 			if( !empty( $_GET['edd-listener'] ) || strpos( $req_uri, 'edd-listener' ) !== FALSE ) { return TRUE; }
 		}
@@ -231,16 +239,14 @@ class WPSS_Compatibility {
 			if( $url === WPSS_SITE_URL.'/?page=gf_paypal_ipn' && isset( $_POST['ipn_track_id'], $_POST['payer_id'], $_POST['receiver_id'], $_POST['txn_id'], $_POST['txn_type'], $_POST['verify_sign'] ) ) { return TRUE; }
 		}
 
-
 		/* PayPal IPN */
 		if(
-			isset( $_POST['ipn_track_id'], $_POST['payer_id'], $_POST['payment_type'], $_POST['payment_status'], $_POST['receiver_id'], $_POST['txn_id'], $_POST['txn_type'], $_POST['verify_sign'] ) &&
-			FALSE !== strpos( $req_uri_lc, 'paypal' ) &&
-			FALSE !== strpos( $req_uri_lc, 'ipn' ) &&
-			$user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' &&
-			$reverse_dns === 'notify.paypal.com' &&
-			$fcrdns === '[Verified]'
-			) { return TRUE; }
+			isset( $_POST['ipn_track_id'], $_POST['payer_id'], $_POST['payment_type'], $_POST['payment_status'], $_POST['receiver_id'], $_POST['txn_id'], $_POST['txn_type'], $_POST['verify_sign'] ) && 
+			FALSE !== strpos( $req_uri_lc, 'paypal' ) && 
+			$user_agent === 'PayPal IPN ( https://www.paypal.com/ipn )' && 
+			preg_match( "~^(ipn|ipnpb|notify|reports)(\.sandbox)?\.paypal\.com$~", $reverse_dns ) && 
+			$fcrdns === '[Verified]' 
+		) { return TRUE; }
 
 		/* Clef */
 		if( defined( 'CLEF_VERSION' ) ) {
@@ -272,24 +278,21 @@ class WPSS_Compatibility {
 		 * Detect popular e-commerce plugins
 		 */
 		$ecom_plug_constants = array( 
-			'WC_VERSION', 'WOOCOMMERCE_VERSION', 'WPDM_Version', 'WPDM_BASE_DIR', 'EDD_VERSION', 'ECWID_PLUGIN_DIR', 'ESHOP_VERSION', 'GF_PAYPAL_VERSION', 'JIGOSHOP_VERSION', 'USCES_VERSION', 'MP_LITE', 'WP_CART_VERSION', 'WPSC_FILE_PATH', 
-			'AFFILIATES_CORE_VERSION', 'AL_BASE_PATH', 'CFCORE_VER', 'EC_CURRENT_VERSION', 'EM_VERSION', 'EME_DB_VERSION', 'GFP_STRIPE_FILE', 'GIVE_VERSION', 'PMPRO_VERSION', 'SIMPAY_VERSION', 'SIMPLE_WP_MEMBERSHIP_VER', 'UPCP_CD_PLUGIN_PATH', 'WC_PP_PRO_ADDON_VERSION', 'wcv_plugin_dir', 'WP_CART_VERSION', 'WPPIZZA_VERSION', 'WPSC_VERSION', 'WPSHOP_DIR', 'WS_PLUGIN__S2MEMBER_VERSION', 'WUSPSC_VERSION', 'xoousers_url', 'YITH_WCSTRIPE_VERSION', 
+			'AFFILIATES_CORE_VERSION', 'AL_BASE_PATH', 'CFCORE_VER', 'EC_CURRENT_VERSION', 'ECWID_PLUGIN_DIR', 'EDD_VERSION', 'EME_DB_VERSION', 'ESHOP_VERSION', 'GF_AUTHORIZENET_VERSION', 'GF_PAYFAST_VERSION', 'GF_PAYPAL_VERSION', 'GF_STRIPE_VERSION', 'GFP_STRIPE_FILE', 'GIVE_VERSION', 'JIGOSHOP_VERSION', 'MEPR_VERSION', 'MP_LITE', 'PMPRO_VERSION', 'SIMPAY_VERSION', 'SIMPLE_WP_MEMBERSHIP_VER', 'UPCP_CD_PLUGIN_PATH', 'USCES_VERSION', 'WC_PP_PRO_ADDON_VERSION', 'wcv_plugin_dir', 'WOOCOMMERCE_VERSION', 'WC_VERSION', 'WP_CART_VERSION', 'WPDM_Version', 'WPPIZZA_VERSION', 'WPSC_VERSION', 'WPSHOP_DIR', 'WS_PLUGIN__S2MEMBER_VERSION', 'WUSPSC_VERSION', 'xoousers_url', 'uultraxoousers_pro_url', 'YITH_WCSTRIPE_VERSION', 
 			);
 		foreach( $ecom_plug_constants as $k => $p ) { if( defined( $p ) ) { $wpss_ecom_enabled = TRUE; return TRUE; } }
 		$ecom_plug_classes = array( 
-			'GF_PayPal_Bootstrap', 'IT_Exchange', 'ShoppLoader', 'MarketPress', 
-			'eCommerce_Product_Catalog', 'Give', 'Shopify_ECommerce_Plugin', 'WC_Vendors', 'WC_Paypal_Pro_Gateway_Addon', 'WP_eCommerce', 
+			'Easy_Digital_Downloads', 'eCommerce_Product_Catalog', 'GF_AuthorizeNet_Bootstrap', 'GF_PayFast_Bootstrap', 'GF_PayPal_Bootstrap', 'GF_Stripe_Bootstrap', 'Give', 'IT_Exchange', 'MarketPress', 'ShoppLoader', 'WC_Paypal_Pro_Gateway_Addon', 'WC_Vendors', 'WooCommerce', 'WP_eCommerce', 
 		);
 		foreach( $ecom_plug_classes as $k => $p ) { if( class_exists( $p ) ) { $wpss_ecom_enabled = TRUE; return TRUE; } }
 		$ecom_plugs = array( 
-			'woocommerce/woocommerce.php', 'download-manager/download-manager.php', 'easy-digital-downloads/easy-digital-downloads.php', 'ecwid-shopping-cart/ecwid-shopping-cart.php', 'eshop/eshop.php', 'gravityformspaypal/paypal.php', 'ithemes-exchange/init.php', 'jigoshop/jigoshop.php', 'shopp/Shopp.php', 'usc-e-shop/usc-e-shop.php', 'wordpress-ecommerce/marketpress.php', 'wordpress-simple-paypal-shopping-cart/wp_shopping_cart.php', 'wp-e-commerce/wp-shopping-cart.php', 
-			'affiliates/affiliates.php', 'caldera-forms/caldera-core.php', 'ecommerce-product-catalog/ecommerce-product-catalog.php', 'events-made-easy/events-manager.php', 'events-manager/events-manager.php', 'give/give.php', 'gravity-forms-stripe/gravity-forms-stripe.php', 'paid-memberships-pro/paid-memberships-pro.php', 's2member/s2member-o.php', 'simple-membership/simple-wp-membership.php', 'stripe/stripe-checkout.php', 'ultimate-product-catalogue/UPCP_Main.php', 'users-ultra/xoousers.php', 'wc-vendors/class-wc-vendors.php', 'woocommerce-paypal-pro-payment-gateway/woo-paypal-pro.php', 'wp-easycart/wpeasycart.php', 'wppizza/wppizza.php', 'wp-shop-original/wp-shop.php', 'wp-ultra-simple-paypal-shopping-cart/wp_ultra_simple_shopping_cart.php', 'yith-woocommerce-stripe/init.php', 
+			'affiliates/affiliates.php', 'caldera-forms/caldera-core.php', 'download-manager/download-manager.php', 'easy-digital-downloads/easy-digital-downloads.php', 'ecommerce-product-catalog/ecommerce-product-catalog.php', 'ecwid-shopping-cart/ecwid-shopping-cart.php', 'eshop/eshop.php', 'events-made-easy/events-manager.php', 'events-manager/events-manager.php', 'formidable-paypal/formidable-paypal.php', 'give/give.php', 'gravity-forms-stripe/gravity-forms-stripe.php', 'gravityformsauthorizenet/authorizenet.php', 'gravityformspayfast/payfast.php', 'gravityformsstripe/stripe.php', 'gravityformspaypal/paypal.php', 'ithemes-exchange/init.php', 'jigoshop/jigoshop.php', 'memberpress/memberpress.php', 'paid-memberships-pro/paid-memberships-pro.php', 's2member/s2member-o.php', 'shopp/Shopp.php', 'simple-membership/simple-wp-membership.php', 'stripe/stripe-checkout.php', 'ultimate-product-catalogue/UPCP_Main.php', 'usc-e-shop/usc-e-shop.php', 'users-ultra/xoousers.php', 'wc-vendors/class-wc-vendors.php', 'woocommerce-paypal-pro-payment-gateway/woo-paypal-pro.php', 'woocommerce/woocommerce.php', 'wordpress-ecommerce/marketpress.php', 'wordpress-simple-paypal-shopping-cart/wp_shopping_cart.php', 'wp-e-commerce/wp-shopping-cart.php', 'wp-easycart/wpeasycart.php', 'wp-shop-original/wp-shop.php', 'wp-ultra-simple-paypal-shopping-cart/wp_ultra_simple_shopping_cart.php', 'wppizza/wppizza.php', 'yith-woocommerce-stripe/init.php', 
 		);
 		foreach( $ecom_plugs as $k => $p ) { if( self::is_plugin_active( $p ) ) { $wpss_ecom_enabled = TRUE; return TRUE; } }
-		$ecom_plug_str = array(
-			'memberpress/', 
-		);
-		$ecom_plug_regex = array();
+		/**
+		 * $ecom_plug_str = array();
+		 * $ecom_plug_regex = array();
+		 */
 		return FALSE;
 	}
 

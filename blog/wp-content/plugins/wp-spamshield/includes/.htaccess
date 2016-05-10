@@ -1,7 +1,7 @@
-# WP-SpamShield - File Backups .htaccess
-# Version 1.9.4
+# WP-SpamShield - .htaccess
+# Version 1.9.7.8
 
-# Block access to backup files.
+# Block access to files.
 # Apache 2.2 and 2.4 compatible
 
 # All Files - Deny

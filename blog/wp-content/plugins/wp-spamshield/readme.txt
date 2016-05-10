@@ -49,8 +49,8 @@ The plugin helps keep your WordPress database slimmer and more efficient (keepin
 = ZERO False Positives =
 It does all this with *ZERO false positives*, because of *the method used to block spam*. Notice we didn't say a "low false positive rate" - we said *ZERO false positives*. If a comment/contact form/registration gets blocked as spam, the user is given instant feedback and has a chance to correct their comment/contact form/registration/etc and try again, which means there cannot be false positives. This leads to fewer frustrated website visitors, and less work for you. We are committed to keeping the promise of zero false positives.
 
-= 100% Trackback Validation and Anti-Spam =
-The trackback validation contains a filter that compares the client IP address of the incoming trackback against the IP address of the server where the link is supposedly coming from. If they don't match, then it is guaranteed spam, without fail. This alone eliminates more than 99.99% of trackback spam. Trackback spammers don't send spam out from the same server where their clients' websites reside. There are algorithmic anti-spam filters in place to ensure 100% trackback spam blocking. Although it's far more rare, the plugin protects again pingback spam as well. You can be confident that only legitimate trackbacks and pingbacks will get through.
+= 100% Pingback/Trackback Validation and Anti-Spam =
+The trackback validation contains a filter that compares the client IP address of the incoming trackbacks and pingbacks against the IP address of the server where the link is supposedly coming from. If they don't come from the same server, then it is guaranteed spam, without fail. This alone eliminates more than 99.99% of trackback & pingback spam. Trackback spammers don't send spam out from the same server where their clients' websites reside. There are algorithmic anti-spam filters in place to ensure 100% trackback/pingback spam blocking. You can be confident that only legitimate trackbacks and pingbacks will get through.
 
 = Includes a Spam-Free Contact Form, and Anti-Spam for Contact Form 7, Gravity Forms, Ninja Forms, JetPack Contact Forms, and Most Other Forms =
 Includes drop-in spam-free contact form, with easy one-click installation. Easy to use - no configuration necessary, but you can configure it if you like. (See [Installation](https://wordpress.org/plugins/wp-spamshield/installation/) for info.) WP-SpamShield also includes automatic anti-spam protection for Contact Form 7, Gravity Forms, Ninja Forms, JetPack Contact Forms, Fast Secure Contact Forms, Formidable Forms, and more. (You don't have to do a thing...just add your Contact Form 7, Gravity Forms, Ninja Forms, JetPack Contact Forms, or other forms to your site, and they will automatically be protected.) It will automatically protect *most forms* on your WordPress site from automated spam, even if they are not listed here.
@@ -92,7 +92,7 @@ If you have any issues with the plugin, we are here to help. Simply submit a sup
 7. Compatible with, and optimized for *all* major cache plugins, including WP Super Cache and many others. Not all anti-spam plugins can say that.
 8. Display your blocked spam stats on your site. Customizable widgets for graphic counters to display spam stats, in multiple colors, sizes and options.
 9. Works in WordPress Multisite as well. (See the related [FAQ](http://www.redsandmarketing.com/plugins/wp-spamshield/faqs/#faqs_3) for details.)
-10. Enhanced Comment Blacklist option. Instead of just sending comments to moderation as with WordPress's default Comment Blacklist functionality, with this turned on, anything that matches a string in the blacklist will be **completely blocked**. Block specific human spammers by IP, email address, or a number of other options. The Enhanced Comment Blacklist has some improvements over the default WordPress blacklist functionality, and adds a link in the comment & contact form notification emails that will let you blacklist a spammer's IP with one click. It also provides some advanced custom options for blocking spam on the built-in contact form.
+10. Enhanced Comment Blacklist option. Instead of just sending comments to moderation as with WordPress's default Comment Blacklist functionality, with this turned on, anything that matches a string in the blacklist will be **completely blocked**. Block specific human spammers by IP, email address, or a number of other options. The Enhanced Comment Blacklist has some improvements over the default WordPress blacklist functionality, and adds a link in the comment & contact form notification emails that will let you blacklist a spammer's IP with one click. It also provides some advanced custom options for blocking spam on everything else that WP-SpamShield protects.
 11. WP-SpamShield Whitelist option. Allows you to specify certain users who you want to let bypass the antispam filters.
 12. This plugin is legal to use in Germany and the EU, and does not violate European privacy laws. It does not use any type of cloud-based service, spam data is not transmitted from your server to any other server, and all anti-spam processing happens directly on your website's server.
 13. A truly plug and play replacement and upgrade for WP-SpamFree. (This plugin is a far more advanced fork of WP-SpamFree with dramatically improved page load speed, security, and spam blocking power, by its original author.) It will import your old data from WP-SpamFree automatically upon installation and activation, and features you were using on your site previously such as contact forms and spam stats will continue to work without any changes to pages, posts, or theme.
@@ -112,7 +112,7 @@ If you would like to help translate, please [get in touch with us](http://www.re
 = Minimum Requirements =
 
 * **WordPress 4.0 or higher** (Recommended: WordPress 4.4 or higher)
-* **PHP 5.3.21 or higher** (Recommended: PHP 5.5 or higher)
+* **PHP 5.3 or higher** (Recommended: PHP 5.5 or higher)
 * **Your server must be configured to allow the use of an `.htaccess` file.** (This is enabled by default on the vast majority of servers.)
 
 Please see the plugin documentation's [minimum requirements section](http://www.redsandmarketing.com/plugins/wp-spamshield/#wpss_requirements) for more information.
@@ -225,6 +225,29 @@ If you have any further questions, please submit them on the main [WP-SpamShield
 
 == Changelog ==
 
+= 1.9.8 =
+*released 05/01/16*
+
+* Updated the anti-spam filters.
+
+= 1.9.7.9 =
+*released 04/27/16*
+
+* Fixed a bug affecting pingback and trackback validation.
+* Improved some of the filters in the anti-spam algorithm.
+
+= 1.9.7.8 =
+*released 04/26/16*
+
+* Added detection and security warning notices for old versions of WordPress with known security vulnerabilities. The plugin will now periodically check the installed WordPress version against the [WPScan Vulnerability Database](https://wpvulndb.com/) for any known vulnerabilities.
+* Made some improvements to the built-in contact form and email formatting.
+* Added improved support for payment gateways and webhooks.
+* Added detection for more ecommerce plugins.
+* Extended the Enhanced Comment Blacklist (ECBL) protection from only comments and the built-in contact form, to now full protection of everything else WP-SpamShield protects: Contact Form 7, Gravity Forms, all miscellaneous 3rd party forms, and registration forms. Now, if you have a user who you want to block from signing up, you can block them by IP address or email, by enabling ECBL in the settings and entering that info into the blacklist.
+* Made various code enhancements and improvements.
+* Improved some of the filters in the anti-spam algorithm.
+* Updated the anti-spam filters.
+
 = 1.9.7.7 =
 *released 03/25/16*
 
@@ -241,7 +264,7 @@ If you have any further questions, please submit them on the main [WP-SpamShield
 *released 03/21/16*
 
 * Fixed a bug in the translations.
-* Added more ecommerce and cache plugins that the plugin can detect.
+* Added detection for more ecommerce and cache plugins.
 * More compatibility improvements for surrogates (gateway caches/reverse proxies, see RFC 3040).
 * Made various code improvements.
 * Updated the anti-spam filters.
@@ -820,9 +843,9 @@ If you have any further questions, please submit them on the main [WP-SpamShield
 For a complete list of changes to the plugin, view the [Version History/Changelog](http://www.redsandmarketing.com/plugins/wp-spamshield/version-history/).
 
 == Upgrade Notice ==
-= 1.9.7.7 =
+= 1.9.8 =
 
-*  Fixed 2 minor bugs, and updated the anti-spam filters. Please see Changelog for details.
+* Updated the anti-spam filters. Please see Changelog for details.
 
 == Other Notes ==
 
