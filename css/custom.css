@@ -401,7 +401,7 @@ div.tooltip {
     .self-info {
         padding-bottom: 30px;
     }
-
+}
 
 @media(max-width: 800px) {
     .intro .intro-body .brand-heading {
