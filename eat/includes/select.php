@@ -7,7 +7,7 @@
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-	$result = mysqli_query($conn, "select restaurant_id,restaurant_name,city,priority,keyword,catagory,eat_flag from restaurants where restaurant_id='$id';") or die(mysql_error());
+	$result = mysqli_query($conn, "select * from restaurants where restaurant_id='$id';") or die(mysql_error());
 
 
 	$data = array();

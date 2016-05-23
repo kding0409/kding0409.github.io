@@ -31,7 +31,7 @@ sec_session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="homepage of kevin">
+    <meta name="description" content="must eat">
     <meta name="author" content="kevin">
 
     <title>DkevDou backyard</title>
@@ -100,7 +100,7 @@ sec_session_start();
                 var a = a.split("<")[0];
                 layer.open({
                     type: 2,
-                    title: 'edit record',
+                    title: '餐馆信息更新',
                     maxmin: true,
                     shadeClose: true,
                     area : ['70%' , '70%'],
@@ -125,7 +125,7 @@ sec_session_start();
     function addNew() {
         layer.open({
             type: 2,
-            title: 'add new record',
+            title: '新增饭店信息',
             maxmin: true,
             shadeClose: true,
             area : ['70%' , '70%'],
@@ -157,7 +157,7 @@ sec_session_start();
                     <span class="icon-bar" style="color:#969696;"></span>
                 </button>
                 <img src="../images/pika.png" id="pika" class="navbar-brand scroll" alt="Smiley face" href="#page-top">
-                <a class="navbar-brand scroll" href="" style="color:#969696;">Must To Eat</a>
+                <a class="navbar-brand scroll" href="" style="color:#969696;">Food Monster</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -189,7 +189,7 @@ sec_session_start();
         <div class="">
             <div > 
                 <div class="col-lg-12 text-center" >
-                <h1>Need to eat checklist</h1>   
+                <h1>Must eat checklist</h1>   
                 <br/> 
                     <div style="width:80%;margin-left:10%" > 
                         
@@ -213,13 +213,13 @@ sec_session_start();
                             <table id="myTable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>编号</th>
+                                        <th>餐馆编号</th>
                                         <th>餐馆</th>
                                         <th>城市</th>
                                         <th>必吃指数</th>
                                         <th>关键字</th>
                                         <th>种类</th>
-                                        <th>吃过没</th>
+                                        <th>吃否</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -228,13 +228,12 @@ sec_session_start();
                             <table id="myTable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>编号</th>   
-                                        <th>餐馆</th>
+                                        <th>餐馆编号</th>
                                         <th>城市</th>
                                         <th>必吃指数</th>
                                         <th>关键字</th>
                                         <th>种类</th>
-                                        <th>吃过没</th>
+                                        <th>吃否</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -243,13 +242,13 @@ sec_session_start();
                             <table id="myTable3" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>编号</th>
+                                        <th>餐馆编号</th>
                                         <th>餐馆</th>
                                         <th>城市</th>
                                         <th>必吃指数</th>
                                         <th>关键字</th>
                                         <th>种类</th>
-                                        <th>吃过没</th>
+                                        <th>吃否</th>
                                     </tr>
                                 </thead>
                             </table>

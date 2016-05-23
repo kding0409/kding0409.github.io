@@ -29,6 +29,8 @@ p {
 
 }
 
+.updateTable tr { height: 20px; }
+
 .page1 {
 	background: #FFF; 
 	-webkit-background-size: cover;

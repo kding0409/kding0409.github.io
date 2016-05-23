@@ -54,7 +54,7 @@ if (login_check($mysqli) == true) {
     
         <script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script> 
-
+    <script type="text/javascript" src="js/layer.js"></script>
     <script type="text/javascript">
 
 
@@ -71,7 +71,66 @@ if (login_check($mysqli) == true) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var obj = JSON.parse(xmlhttp.responseText);
 
-            document.getElementById("result").innerHTML = "<form action=\"includes/update.php\" method=\"post\">饭店编号：<input type=\"restaurant_id\" name=\"restaurant_id\" readonly value=\""+obj.data[0].restaurant_id+"\" /><br/>饭店名称：<input type=\"restaurant_name\" name=\"restaurant_name\" value=\""+obj.data[0].restaurant_name+"\" /><br/>城市：<input type=\"city\" name=\"city\" value=\""+obj.data[0].city+"\" /><br/>必吃指数：<input type=\"priority\" name=\"priority\" value=\""+obj.data[0].priority+"\" /><br/>关键词：<input type=\"keyword\" name=\"keyword\" value=\""+obj.data[0].keyword+"\" /><br/>种类：<input type=\"catagory\" name=\"catagory\" value=\""+obj.data[0].catagory+"\" /><br/>吃过了没：<input type=\"eat_flag\" name=\"eat_flag\" value=\""+obj.data[0].eat_flag+"\" /><input type=\"submit\" /></form>";
+            var priority1 = (obj.data[0].priority=="1")?"checked":" ";
+            var priority2 = (obj.data[0].priority=="2")?"checked":" ";
+            var priority3 = (obj.data[0].priority=="3")?"checked":" ";
+            var priority4 = (obj.data[0].priority=="4")?"checked":" ";
+            var priority5 = (obj.data[0].priority=="5")?"checked":" ";
+
+            var catagory1 = (obj.data[0].catagory=="正餐")?"checked":" ";
+            var catagory2 = (obj.data[0].catagory=="小吃")?"checked":" ";
+
+            var spicylevel1 = (obj.data[0].spicy_level=="1")?"checked":" ";
+            var spicylevel2 = (obj.data[0].spicy_level=="2")?"checked":" ";
+            var spicylevel3 = (obj.data[0].spicy_level=="3")?"checked":" ";
+            var spicylevel4 = (obj.data[0].spicy_level=="4")?"checked":" ";
+            var spicylevel5 = (obj.data[0].spicy_level=="5")?"checked":" ";
+
+            var clean_level1 = (obj.data[0].clean_level=="1")?"checked":" ";
+            var clean_level2 = (obj.data[0].clean_level=="2")?"checked":" ";
+            var clean_level3 = (obj.data[0].clean_level=="3")?"checked":" ";
+            var clean_level4 = (obj.data[0].clean_level=="4")?"checked":" ";
+            var clean_level5 = (obj.data[0].clean_level=="5")?"checked":" ";
+
+            var review_star1 = (obj.data[0].review_star=="1")?"checked":" ";
+            var review_star2 = (obj.data[0].review_star=="2")?"checked":" ";
+            var review_star3 = (obj.data[0].review_star=="3")?"checked":" ";
+            var review_star4 = (obj.data[0].review_star=="4")?"checked":" ";
+            var review_star5 = (obj.data[0].review_star=="5")?"checked":" ";
+
+            var tryAgain2 = (obj.data[0].tryAgain=="0")?"checked":" "; 
+            var tryAgain1 = (obj.data[0].tryAgain=="1")?"checked":" "; 
+
+            var eat_flag2 = (obj.data[0].eat_flag=="0")?"checked":" "; 
+            var eat_flag1 = (obj.data[0].eat_flag=="1")?"checked":" "; 
+
+            document.getElementById("result").innerHTML = "<center><form action=\"includes/update.php\" method=\"post\"><table class=\"updateTable\"><tr><td>饭店编号</td><td><input type=\"restaurant_id\" class=\"record_id\" name=\"restaurant_id\" readonly value=\""+
+            obj.data[0].restaurant_id+
+            "\" /></td></tr><tr><td>饭店名称</rd><td><input type=\"restaurant_name\" name=\"restaurant_name\" value=\""+
+            obj.data[0].restaurant_name+
+            "\" /></td></tr><tr><td>城市</rd><td><input type=\"city\" name=\"city\" value=\""+
+            obj.data[0].city+
+            "\" /></td></tr><tr><td>必吃指数</rd><td><input type=\"radio\" name=\"priority\" value=\"1\" "+priority1+">1<input type=\"radio\" name=\"priority\" value=\"2\" "+priority2+">2<input type=\"radio\" name=\"priority\" value=\"3\" "+priority3+">3<input type=\"radio\" name=\"priority\" value=\"4\" "+priority4+">4<input type=\"radio\" name=\"priority\" value=\"5\" "+priority5+">5</td></tr><tr><td>关键词</rd><td><input type=\"keyword\" name=\"keyword\" value=\""+
+            obj.data[0].keyword+
+            "\" /></td></tr><tr><td>种类</rd><td><input type=\"radio\" name=\"catagory\" value=\"正餐\" "+catagory1+">正餐<input type=\"radio\" name=\"catagory\" value=\"小吃\" "+catagory2+
+            ">小吃</td></tr><tr><td>辣度</rd><td><input type=\"radio\" name=\"spicy_level\" value=\"1\" "+spicylevel1+">1<input type=\"radio\" name=\"spicy_level\" value=\"2\" "+spicylevel2+">2<input type=\"radio\" name=\"spicy_level\" value=\"3\" "+spicylevel3+">3<input type=\"radio\" name=\"spicy_level\" value=\"4\" "+spicylevel4+">4<input type=\"radio\" name=\"spicy_level\" value=\"5\" "+spicylevel5+
+            ">5</td></tr><tr><td>干净度</rd><td><input type=\"radio\" name=\"clean_level\" value=\"1\" "+clean_level1+"/>1<input type=\"radio\" name=\"clean_level\" value=\"2\" "+clean_level2+"/>2<input type=\"radio\" name=\"clean_level\" value=\"3\" "+clean_level3+"/>3<input type=\"radio\" name=\"clean_level\" value=\"4\" "+clean_level4+"/>4<input type=\"radio\" name=\"clean_level\" value=\"5\" "+clean_level5+
+            ">5</td></tr><tr><td>计划去吃</rd><td><input type=\"date\" name=\"plan_eat_time\" value=\""+
+            obj.data[0].plan_eat_time+            
+            "\" /></td></tr><tr><td>吃到打卡</rd><td><input type=\"date\" name=\"eat_time\" value=\""+
+            obj.data[0].eat_time+            
+            "\" /></td></tr><tr><td>评价</rd><td><input type=\"radio\" name=\"review_star\" value=\"1\" "+review_star1+ "/>1<input type=\"radio\" name=\"review_star\" value=\"2\" "+review_star2+"/>2<input type=\"radio\" name=\"review_star\" value=\"3\" "+review_star3+"/>3<input type=\"radio\" name=\"review_star\" value=\"4\" "+review_star4+"/>4<input type=\"radio\" name=\"review_star\" value=\"5\" "+review_star5+
+            ">5</td></tr><tr><td>点评</rd><td><textarea type=\"comments\" name=\"comments\" >"+
+            obj.data[0].comments+            
+            "</textarea></td></tr><tr><td>是否想再去</rd><td><input type=\"radio\" name=\"tryAgain\" value=\"1\" "+tryAgain1+"/>是<input type=\"radio\" name=\"tryAgain\" value=\"0\" "+tryAgain2+
+            ">否</td></tr><tr><td>几人团</rd><td><input type=\"numberOfGroup\" name=\"numberOfGroup\" value=\""+
+            obj.data[0].numberOfGroup+            
+            "\" /></td></tr><tr><td>花了多少钱</rd><td><input type=\"how_much\" name=\"how_much\" value=\""+
+            obj.data[0].how_much+            
+            "\" /></td></tr><tr><td>哪次游玩</rd><td><input type=\"whichTrip\" name=\"whichTrip\" readonly value=\""+
+            obj.data[0].whichTrip +
+            "\" /></td></tr><tr><td>吃过了没</rd><td><input type=\"radio\" name=\"eat_flag\" value=\"1\" "+eat_flag1+"/>是<input type=\"radio\" name=\"eat_flag\" value=\"0\" "+eat_flag2+
+            ">否</td></tr><tr><td><input type=\"submit\" /></td><td></td></tr></table></form></center><br/>";
         }
         };
         xmlhttp.open("GET","includes/select.php?id="+id,true);
@@ -83,7 +142,30 @@ if (login_check($mysqli) == true) {
 
     </script>
 
+    <script>
+    function myFunction()
+    {
 
+        layer.confirm('确定要从数据库中删除这个餐馆吗？', {
+          btn: ['是','否'] //按钮
+        }, function(){
+            var id = document.querySelector('.record_id').value;
+
+                $.ajax({
+                    url: 'includes/delete.php',
+                    type: 'get',
+                    data: { "id": id},
+                    success: function(response) { 
+                        layer.msg(response);
+                    }
+                });
+
+
+        }, function(){
+        });
+    
+    }
+    </script>
 
 </head>
 
@@ -91,10 +173,10 @@ if (login_check($mysqli) == true) {
 <body class="page1">
 
     <div class="col-lg-12" >
-        
-        <h2>饭店信息</h2>
-        <div id="result"></div>
+        <br/>
 
+        <div id="result"></div>
+        <center><button onclick="myFunction()">Delete</button><br/></center>
     </div>
 
 </body>

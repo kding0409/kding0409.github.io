@@ -65,18 +65,65 @@ if (login_check($mysqli) == true) {
 <body class="page1">
 
     <div class="col-lg-12" >
-        
-        <h2>新饭店信息</h2>
+        <center>
+            <br/>
         <form action="includes/insert.php" method="post">
-            饭店名称：<input type="restaurant_name" name="restaurant_name"/><br/>
-            城市：<input type="city" name="city" /><br/>
-            必吃指数：<input type="priority" name="priority" /><br/>
-            关键词：<input type="keyword" name="keyword"  /><br/>
-            种类：<input type="catagory" name="catagory" /><br/>
-            吃过了没：<input type="eat_flag" name="eat_flag" />
-            <input type="submit" />
+            <table>
+            <tr>
+                <td>饭店名称</td>
+                <td>
+                    <input type="restaurant_name" name="restaurant_name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>城市</td>
+                <td>
+                    <input type="city" name="city" />
+                </td>
+            </tr>
+            <tr>
+                <td>必吃指数</td>
+                <td>
+                    <input type="radio" name="priority" value="1"/>1
+                    <input type="radio" name="priority" value="2"/>2
+                    <input type="radio" name="priority" value="3"/>3
+                    <input type="radio" name="priority" value="4"/>4
+                    <input type="radio" name="priority" value="5"/>5
+                </td>
+            </tr>
+            <tr>
+                <td>关键词</td>
+                <td>
+                    <input type="keyword" name="keyword"  />
+                </td>
+            </tr>
+            <tr>
+                <td>种类</td>
+                <td>
+                    <input type="radio" name="catagory" value="正餐" checked/>正餐
+                    <input type="radio" name="catagory" value="小吃"/>小吃
+                </td>
+            </tr>
+            <tr>
+                <td>吃过了没</td>
+                <td>
+                    <input type="radio" name="eat_flag" value="1"/>是
+                    <input type="radio" name="eat_flag" value="0" checked/>否
+                </td>
+            </tr>
+            <tr>
+                <td>哪次旅行</td>
+                <td>
+                    <input type="radio" name="whichTrip" value="08/16回国" checked/>08/16回国
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" />
+                </td>
+            </tr>
         </form>
-
+    </center>
     </div>
 
 </body>
