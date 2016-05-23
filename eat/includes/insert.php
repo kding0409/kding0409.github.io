@@ -8,6 +8,7 @@
     $keyword = htmlspecialchars($_POST["keyword"]);
     $catagory = htmlspecialchars($_POST["catagory"]);
     $eat_flag = htmlspecialchars($_POST["eat_flag"]);
+    $whichTrip = htmlspecialchars($_POST["whichTrip"]);
 
     // Create connection
     $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
@@ -15,7 +16,7 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "insert into `restaurants` (`restaurant_name`,`city`, `priority`,`keyword`,`catagory`,`eat_flag`) values('$restaurant_name','$city','$priority','$keyword','$catagory','$eat_flag');";
+    $sql = "insert into `restaurants` (`restaurant_name`,`city`, `priority`,`keyword`,`catagory`,`eat_flag`,`whichTrip`) values('$restaurant_name','$city','$priority','$keyword','$catagory','$eat_flag','$whichTrip');";
 
     if ($conn->query($sql) === TRUE) {
       echo "Insert successful!"; 
