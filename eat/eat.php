@@ -115,7 +115,7 @@ sec_session_start();
     } );
 
     // Apply a search to the second table for the demo
-    $('#myTable2').DataTable().search( '主食' ).draw();
+    $('#myTable2').DataTable().search( '正餐' ).draw();
     $('#myTable3').DataTable().search( '小吃' ).draw();
     } );
 
@@ -201,7 +201,7 @@ sec_session_start();
                             <a href="#tab-table1" style="color:#d90007;" data-toggle="tab">All</a>
                         </li>
                         <li>
-                            <a href="#tab-table2" style="color:#d90007;" data-toggle="tab">主食</a>
+                            <a href="#tab-table2" style="color:#d90007;" data-toggle="tab">正餐</a>
                         </li>
                         <li>
                             <a href="#tab-table3" style="color:#d90007;" data-toggle="tab">小吃</a>
