@@ -127,9 +127,7 @@
                             <p>Please input the original item price</p>
                             <hr/>
                             <div class="right">
-                                <form action="calculate.php" method="POST">
                                 <input type="text" style="height:40px;" name=val value="<?php echo isset($_POST['val']) ? $_POST['val'] : '' ?>" onkeyup="showHint(this.value)">
-                                </form>
                                 <p><span id="txtHint"></span></p> 
                             </div>
                             </div>
