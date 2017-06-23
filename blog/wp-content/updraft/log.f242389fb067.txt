@@ -1,0 +1,343 @@
+0294.135 (1) Opened log file at time: Tue, 13 Jun 2017 02:26:02 +0000 on http://www.dingkevin.com/blog
+0294.135 (1) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.5M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+0294.136 (1) Free space on disk containing Updraft's temporary directory: 11250.7 MB
+0294.146 (1) Backup run: resumption=1, nonce=f242389fb067, begun at=1497320468 (294s ago), job type=backup, previous check-in=1.8s
+0294.147 (1) Scheduling a resumption (2) after 300 seconds (1497321062) in case this run gets aborted
+0294.153 (1) Checking if we have a zip executable available
+0294.156 (1) Creation of backups of directories: already finished
+0294.157 (1) Saving backup status to database (elements: 4)
+0294.161 (1) Database dump (WordPress DB): Creation was completed already
+0294.166 (1) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0294.167 (1) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+0294.168 (1) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+0294.170 (1) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+0294.177 (1) Saving backup history. Total backup size: Unknown
+0294.181 (1) Requesting upload of the files that have not yet been successfully uploaded (2)
+0294.184 (1) Cloud backup selection (1/1): email (last)
+0294.186 (1) Beginning dispatch of backup to remote (email)
+0294.187 (1) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+0294.398 (1) Mails were not sent successfully
+0294.399 (1) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+0294.588 (1) Mails were not sent successfully
+0294.591 (1) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+0294.593 (1) Number of backup sets in history: 2; groups (db): 1
+0294.594 (1) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+0294.595 (1) This backup set is the backup set just made, so will not be deleted.
+0294.596 (1) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+0294.597 (1) Number of backup sets in history: 2; groups (files): 1
+0294.597 (1) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+0294.598 (1) This backup set is the backup set just made, so will not be deleted.
+0294.599 (1) This backup set is the backup set just made, so will not be deleted.
+0294.599 (1) This backup set remains non-empty (f=1/d=1); will retain in history
+0294.600 (1) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+0294.600 (1) This backup set remains non-empty (f=1/d=0); will retain in history
+0294.601 (1) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0294.603 (1) Resume backup (f242389fb067, 1): finish run
+0294.605 (1) There were errors in the uploads, so the 'resume' event is remaining scheduled
+0294.606 (1) The backup has not finished; a resumption is scheduled
+0992.833 (2) Opened log file at time: Tue, 13 Jun 2017 02:37:41 +0000 on http://www.dingkevin.com/blog
+0992.833 (2) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+0992.834 (2) Free space on disk containing Updraft's temporary directory: 11250.6 MB
+0992.836 (2) Backup run: resumption=2, nonce=f242389fb067, begun at=1497320468 (993s ago), job type=backup
+0992.837 (2) Scheduling a resumption (3) after 300 seconds (1497321761) in case this run gets aborted
+0992.838 (2) Checking if we have a zip executable available
+0992.839 (2) Creation of backups of directories: already finished
+0992.839 (2) Saving backup status to database (elements: 4)
+0992.841 (2) Database dump (WordPress DB): Creation was completed already
+0992.843 (2) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0992.844 (2) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+0992.844 (2) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+0992.846 (2) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+0992.848 (2) Saving backup history. Total backup size: Unknown
+0992.850 (2) Requesting upload of the files that have not yet been successfully uploaded (2)
+0992.851 (2) Cloud backup selection (1/1): email (last)
+0992.852 (2) Beginning dispatch of backup to remote (email)
+0992.852 (2) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+0993.065 (2) Mails were not sent successfully
+0993.066 (2) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+0993.271 (2) Mails were not sent successfully
+0993.272 (2) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+0993.273 (2) Number of backup sets in history: 2; groups (db): 1
+0993.274 (2) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+0993.274 (2) This backup set is the backup set just made, so will not be deleted.
+0993.275 (2) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+0993.276 (2) Number of backup sets in history: 2; groups (files): 1
+0993.276 (2) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+0993.277 (2) This backup set is the backup set just made, so will not be deleted.
+0993.277 (2) This backup set is the backup set just made, so will not be deleted.
+0993.278 (2) This backup set remains non-empty (f=1/d=1); will retain in history
+0993.278 (2) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+0993.279 (2) This backup set remains non-empty (f=1/d=0); will retain in history
+0993.280 (2) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0993.281 (2) Resume backup (f242389fb067, 2): finish run
+0993.282 (2) There were errors in the uploads, so the 'resume' event is remaining scheduled
+0993.284 (2) The backup has not finished; a resumption is scheduled
+2358.273 (3) Opened log file at time: Tue, 13 Jun 2017 03:00:26 +0000 on http://www.dingkevin.com/blog
+2358.274 (3) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+2358.275 (3) Free space on disk containing Updraft's temporary directory: 11250.4 MB
+2358.276 (3) Backup run: resumption=3, nonce=f242389fb067, begun at=1497320468 (2358s ago), job type=backup
+2358.277 (3) Long time past since expected resumption time: approx expected=1497321760.8, now=1497322826.9, diff=1066.1
+2358.277 (3) [Warning] Your website is visited infrequently and UpdraftPlus is not getting the resources it hoped for; please read this page: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+2358.278 (3) Scheduling a resumption (4) after 300 seconds (1497323126) in case this run gets aborted
+2358.280 (3) Checking if we have a zip executable available
+2358.280 (3) Creation of backups of directories: already finished
+2358.281 (3) Saving backup status to database (elements: 4)
+2358.283 (3) Database dump (WordPress DB): Creation was completed already
+2358.285 (3) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+2358.286 (3) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+2358.287 (3) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+2358.288 (3) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+2358.291 (3) Saving backup history. Total backup size: Unknown
+2358.293 (3) Requesting upload of the files that have not yet been successfully uploaded (2)
+2358.294 (3) Cloud backup selection (1/1): email (last)
+2358.295 (3) Beginning dispatch of backup to remote (email)
+2358.296 (3) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+2358.479 (3) Mails were not sent successfully
+2358.481 (3) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+2358.663 (3) Mails were not sent successfully
+2358.665 (3) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+2358.666 (3) Number of backup sets in history: 2; groups (db): 1
+2358.666 (3) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+2358.667 (3) This backup set is the backup set just made, so will not be deleted.
+2358.667 (3) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+2358.668 (3) Number of backup sets in history: 2; groups (files): 1
+2358.668 (3) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+2358.669 (3) This backup set is the backup set just made, so will not be deleted.
+2358.670 (3) This backup set is the backup set just made, so will not be deleted.
+2358.670 (3) This backup set remains non-empty (f=1/d=1); will retain in history
+2358.670 (3) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+2358.671 (3) This backup set remains non-empty (f=1/d=0); will retain in history
+2358.672 (3) Retain: saving new backup history (sets now: 2) and finishing retain operation
+2358.674 (3) Resume backup (f242389fb067, 3): finish run
+2358.675 (3) There were errors in the uploads, so the 'resume' event is remaining scheduled
+2358.676 (3) The backup has not finished; a resumption is scheduled
+4956.651 (4) Opened log file at time: Tue, 13 Jun 2017 03:43:45 +0000 on http://www.dingkevin.com/blog
+4956.652 (4) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+4956.653 (4) Free space on disk containing Updraft's temporary directory: 11250.3 MB
+4956.655 (4) Backup run: resumption=4, nonce=f242389fb067, begun at=1497320468 (4957s ago), job type=backup
+4956.656 (4) Long time past since expected resumption time: approx expected=1497323126.3, now=1497325425.3, diff=2299
+4956.657 (4) [Warning] Your website is visited infrequently and UpdraftPlus is not getting the resources it hoped for; please read this page: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+4956.657 (4) Scheduling a resumption (5) after 300 seconds (1497325725) in case this run gets aborted
+4956.659 (4) Checking if we have a zip executable available
+4956.660 (4) Creation of backups of directories: already finished
+4956.660 (4) Saving backup status to database (elements: 4)
+4956.662 (4) Database dump (WordPress DB): Creation was completed already
+4956.664 (4) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+4956.665 (4) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+4956.666 (4) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+4956.668 (4) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+4956.670 (4) Saving backup history. Total backup size: Unknown
+4956.673 (4) Requesting upload of the files that have not yet been successfully uploaded (2)
+4956.675 (4) Cloud backup selection (1/1): email (last)
+4956.676 (4) Beginning dispatch of backup to remote (email)
+4956.676 (4) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+4956.871 (4) Mails were not sent successfully
+4956.872 (4) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+4957.089 (4) Mails were not sent successfully
+4957.091 (4) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+4957.092 (4) Number of backup sets in history: 2; groups (db): 1
+4957.093 (4) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+4957.094 (4) This backup set is the backup set just made, so will not be deleted.
+4957.094 (4) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+4957.095 (4) Number of backup sets in history: 2; groups (files): 1
+4957.096 (4) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+4957.096 (4) This backup set is the backup set just made, so will not be deleted.
+4957.097 (4) This backup set is the backup set just made, so will not be deleted.
+4957.097 (4) This backup set remains non-empty (f=1/d=1); will retain in history
+4957.098 (4) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+4957.098 (4) This backup set remains non-empty (f=1/d=0); will retain in history
+4957.099 (4) Retain: saving new backup history (sets now: 2) and finishing retain operation
+4957.101 (4) Resume backup (f242389fb067, 4): finish run
+4957.102 (4) There were errors in the uploads, so the 'resume' event is remaining scheduled
+4957.103 (4) The backup has not finished; a resumption is scheduled
+5854.262 (5) Opened log file at time: Tue, 13 Jun 2017 03:58:42 +0000 on http://www.dingkevin.com/blog
+5854.263 (5) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+5854.266 (5) Free space on disk containing Updraft's temporary directory: 11250.1 MB
+5854.269 (5) Backup run: resumption=5, nonce=f242389fb067, begun at=1497320468 (5854s ago), job type=backup
+5854.270 (5) Scheduling a resumption (6) after 300 seconds (1497326622) in case this run gets aborted
+5854.273 (5) Checking if we have a zip executable available
+5854.274 (5) Creation of backups of directories: already finished
+5854.276 (5) Saving backup status to database (elements: 4)
+5854.280 (5) Database dump (WordPress DB): Creation was completed already
+5854.283 (5) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+5854.286 (5) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+5854.287 (5) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+5854.290 (5) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+5854.294 (5) Saving backup history. Total backup size: Unknown
+5854.298 (5) Requesting upload of the files that have not yet been successfully uploaded (2)
+5854.302 (5) Cloud backup selection (1/1): email (last)
+5854.309 (5) Beginning dispatch of backup to remote (email)
+5854.311 (5) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+5854.542 (5) Mails were not sent successfully
+5854.543 (5) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+5854.739 (5) Mails were not sent successfully
+5854.741 (5) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+5854.742 (5) Number of backup sets in history: 2; groups (db): 1
+5854.743 (5) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+5854.743 (5) This backup set is the backup set just made, so will not be deleted.
+5854.744 (5) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+5854.744 (5) Number of backup sets in history: 2; groups (files): 1
+5854.745 (5) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+5854.746 (5) This backup set is the backup set just made, so will not be deleted.
+5854.746 (5) This backup set is the backup set just made, so will not be deleted.
+5854.746 (5) This backup set remains non-empty (f=1/d=1); will retain in history
+5854.747 (5) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+5854.748 (5) This backup set remains non-empty (f=1/d=0); will retain in history
+5854.748 (5) Retain: saving new backup history (sets now: 2) and finishing retain operation
+5854.750 (5) Resume backup (f242389fb067, 5): finish run
+5854.751 (5) There were errors in the uploads, so the 'resume' event is remaining scheduled
+5854.752 (5) The backup has not finished; a resumption is scheduled
+8147.264 (6) Opened log file at time: Tue, 13 Jun 2017 04:36:55 +0000 on http://www.dingkevin.com/blog
+8147.269 (6) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+8147.270 (6) Free space on disk containing Updraft's temporary directory: 11250 MB
+8147.272 (6) Backup run: resumption=6, nonce=f242389fb067, begun at=1497320468 (8147s ago), job type=backup
+8147.272 (6) Long time past since expected resumption time: approx expected=1497326622.1, now=1497328615.9, diff=1993.8
+8147.274 (6) [Warning] Your website is visited infrequently and UpdraftPlus is not getting the resources it hoped for; please read this page: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+8147.275 (6) Scheduling a resumption (7) after 300 seconds (1497328915) in case this run gets aborted
+8147.280 (6) Checking if we have a zip executable available
+8147.282 (6) Creation of backups of directories: already finished
+8147.283 (6) Saving backup status to database (elements: 4)
+8147.289 (6) Database dump (WordPress DB): Creation was completed already
+8147.292 (6) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+8147.293 (6) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+8147.295 (6) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+8147.297 (6) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+8147.303 (6) Saving backup history. Total backup size: Unknown
+8147.309 (6) Requesting upload of the files that have not yet been successfully uploaded (2)
+8147.311 (6) Cloud backup selection (1/1): email (last)
+8147.312 (6) Beginning dispatch of backup to remote (email)
+8147.312 (6) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+8147.519 (6) Mails were not sent successfully
+8147.520 (6) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+8147.733 (6) Mails were not sent successfully
+8147.735 (6) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+8147.736 (6) Number of backup sets in history: 2; groups (db): 1
+8147.737 (6) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+8147.738 (6) This backup set is the backup set just made, so will not be deleted.
+8147.738 (6) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+8147.739 (6) Number of backup sets in history: 2; groups (files): 1
+8147.739 (6) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+8147.740 (6) This backup set is the backup set just made, so will not be deleted.
+8147.741 (6) This backup set is the backup set just made, so will not be deleted.
+8147.741 (6) This backup set remains non-empty (f=1/d=1); will retain in history
+8147.741 (6) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+8147.742 (6) This backup set remains non-empty (f=1/d=0); will retain in history
+8147.743 (6) Retain: saving new backup history (sets now: 2) and finishing retain operation
+8147.744 (6) Resume backup (f242389fb067, 6): finish run
+8147.746 (6) There were errors in the uploads, so the 'resume' event is remaining scheduled
+8147.747 (6) The backup has not finished; a resumption is scheduled
+9029.276 (7) Opened log file at time: Tue, 13 Jun 2017 04:51:37 +0000 on http://www.dingkevin.com/blog
+9029.277 (7) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+9029.278 (7) Free space on disk containing Updraft's temporary directory: 11249.8 MB
+9029.279 (7) Backup run: resumption=7, nonce=f242389fb067, begun at=1497320468 (9029s ago), job type=backup
+9029.280 (7) Scheduling a resumption (8) after 300 seconds (1497329797) in case this run gets aborted
+9029.281 (7) Checking if we have a zip executable available
+9029.282 (7) Creation of backups of directories: already finished
+9029.283 (7) Saving backup status to database (elements: 4)
+9029.284 (7) Database dump (WordPress DB): Creation was completed already
+9029.286 (7) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+9029.287 (7) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+9029.287 (7) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+9029.289 (7) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+9029.291 (7) Saving backup history. Total backup size: Unknown
+9029.293 (7) Requesting upload of the files that have not yet been successfully uploaded (2)
+9029.294 (7) Cloud backup selection (1/1): email (last)
+9029.295 (7) Beginning dispatch of backup to remote (email)
+9029.296 (7) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+9029.495 (7) Mails were not sent successfully
+9029.496 (7) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+9029.694 (7) Mails were not sent successfully
+9029.696 (7) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+9029.697 (7) Number of backup sets in history: 2; groups (db): 1
+9029.697 (7) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+9029.698 (7) This backup set is the backup set just made, so will not be deleted.
+9029.699 (7) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+9029.699 (7) Number of backup sets in history: 2; groups (files): 1
+9029.700 (7) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+9029.701 (7) This backup set is the backup set just made, so will not be deleted.
+9029.702 (7) This backup set is the backup set just made, so will not be deleted.
+9029.702 (7) This backup set remains non-empty (f=1/d=1); will retain in history
+9029.702 (7) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+9029.703 (7) This backup set remains non-empty (f=1/d=0); will retain in history
+9029.704 (7) Retain: saving new backup history (sets now: 2) and finishing retain operation
+9029.705 (7) Resume backup (f242389fb067, 7): finish run
+9029.706 (7) There were errors in the uploads, so the 'resume' event is remaining scheduled
+9029.708 (7) The backup has not finished; a resumption is scheduled
+13404.007 (8) Opened log file at time: Tue, 13 Jun 2017 06:04:32 +0000 on http://www.dingkevin.com/blog
+13404.009 (8) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 33.6M | 36.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+13404.011 (8) Free space on disk containing Updraft's temporary directory: 11249.6 MB
+13404.015 (8) Backup run: resumption=8, nonce=f242389fb067, begun at=1497320468 (13404s ago), job type=backup
+13404.018 (8) Long time past since expected resumption time: approx expected=1497329797.2, now=1497333872.7, diff=4075.5
+13404.019 (8) [Warning] Your website is visited infrequently and UpdraftPlus is not getting the resources it hoped for; please read this page: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+13404.020 (8) Scheduling a resumption (9) after 300 seconds (1497334172) in case this run gets aborted
+13404.025 (8) Checking if we have a zip executable available
+13404.026 (8) Creation of backups of directories: already finished
+13404.028 (8) Saving backup status to database (elements: 4)
+13404.033 (8) Database dump (WordPress DB): Creation was completed already
+13404.038 (8) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+13404.039 (8) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+13404.040 (8) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+13404.041 (8) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+13404.046 (8) Saving backup history. Total backup size: Unknown
+13404.052 (8) Requesting upload of the files that have not yet been successfully uploaded (2)
+13404.054 (8) Cloud backup selection (1/1): email (last)
+13404.058 (8) Beginning dispatch of backup to remote (email)
+13404.059 (8) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+13404.327 (8) Mails were not sent successfully
+13404.332 (8) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+13404.542 (8) Mails were not sent successfully
+13404.544 (8) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+13404.545 (8) Number of backup sets in history: 2; groups (db): 1
+13404.545 (8) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+13404.546 (8) This backup set is the backup set just made, so will not be deleted.
+13404.546 (8) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+13404.547 (8) Number of backup sets in history: 2; groups (files): 1
+13404.548 (8) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+13404.548 (8) This backup set is the backup set just made, so will not be deleted.
+13404.549 (8) This backup set is the backup set just made, so will not be deleted.
+13404.549 (8) This backup set remains non-empty (f=1/d=1); will retain in history
+13404.550 (8) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+13404.550 (8) This backup set remains non-empty (f=1/d=0); will retain in history
+13404.551 (8) Retain: saving new backup history (sets now: 2) and finishing retain operation
+13404.552 (8) Resume backup (f242389fb067, 8): finish run
+13404.554 (8) There were errors in the uploads, so the 'resume' event is remaining scheduled
+13404.555 (8) The backup has not finished; a resumption is scheduled
+13770.470 (9) Opened log file at time: Tue, 13 Jun 2017 06:10:39 +0000 on http://www.dingkevin.com/blog
+13770.471 (9) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.13.1 WP: 4.7.5 PHP: 5.4.41 (fpm-fcgi, Linux ubuntu 4.5.0-x86_64-linode65 #2 SMP Mon Mar 14 18:01:58 EDT 2016 x86_64) MySQL: 5.6.23 WPLANG: en_US Server: nginx/1.8.0 safe_mode: 0 max_execution_time: 900 memory_limit: 268435456 (used: 38.1M | 40.3M) multisite: N openssl: OpenSSL 1.0.2d 9 Jul 2015 mcrypt: Y LANG:  ZipArchive::addFile: Y
+13770.472 (9) Free space on disk containing Updraft's temporary directory: 11249.4 MB
+13770.473 (9) Backup run: resumption=9, nonce=f242389fb067, begun at=1497320468 (13771s ago), job type=backup
+13770.474 (9) The current run is resumption number 9, and there was nothing useful done on the last run (last useful run: 0) - will not schedule a further attempt until we see something useful happening this time
+13770.474 (9) Creation of backups of directories: already finished
+13770.475 (9) Saving backup status to database (elements: 4)
+13770.476 (9) Database dump (WordPress DB): Creation was completed already
+13770.478 (9) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+13770.479 (9) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: others: This file has not yet been successfully uploaded: will queue
+13770.479 (9) backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz: db: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem (/home/wwwroot/default/blog/wp-content/updraft/backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz)
+13770.481 (9) Recording as successfully uploaded: backup_2017-06-12-1921_Kevin_blog_f242389fb067-db.gz (22dddf91a0ab3f368e9f0c3842e25c3e)
+13770.483 (9) Saving backup history. Total backup size: Unknown
+13770.484 (9) Requesting upload of the files that have not yet been successfully uploaded (2)
+13770.485 (9) Cloud backup selection (1/1): email (last)
+13770.486 (9) Beginning dispatch of backup to remote (email)
+13770.487 (9) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-uploads.zip: email to: kding...
+13770.713 (9) Mails were not sent successfully
+13770.714 (9) backup_2017-06-12-1921_Kevin_blog_bf77d7b8f42c-others.zip: email to: kding...
+13770.937 (9) Mails were not sent successfully
+13770.938 (9) Retain: beginning examination of existing backup sets; user setting: retain_files=1, retain_db=1
+13770.940 (9) Number of backup sets in history: 2; groups (db): 1
+13770.940 (9) Examining (for databases) backup set with group_id=0, nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+13770.941 (9) This backup set is the backup set just made, so will not be deleted.
+13770.942 (9) Examining (for databases) backup set with group_id=0, nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+13770.942 (9) Number of backup sets in history: 2; groups (files): 1
+13770.943 (9) Examining (for files) backup set with nonce=f242389fb067, datestamp=1497320468 (Jun 13 2017 02:21:08)
+13770.944 (9) This backup set is the backup set just made, so will not be deleted.
+13770.944 (9) This backup set is the backup set just made, so will not be deleted.
+13770.945 (9) This backup set remains non-empty (f=1/d=1); will retain in history
+13770.945 (9) Examining (for files) backup set with nonce=c2526b5b55c3, datestamp=1492136533 (Apr 14 2017 02:22:13)
+13770.946 (9) This backup set remains non-empty (f=1/d=0); will retain in history
+13770.947 (9) Retain: saving new backup history (sets now: 2) and finishing retain operation
+13770.948 (9) Resume backup (f242389fb067, 9): finish run
+13770.950 (9) There were errors in the uploads, so the 'resume' event is remaining scheduled
+13770.951 (9) Fetching RSS news feed
+13770.954 (9) Fetched RSS news feed; result is a: SimplePie
+13770.957 (9) Sending email ('Files and database (Full backup)') report (attachments: 1, size: 34.6 KB) to: kding...
+13771.161 (9) The backup attempt has finished, apparently unsuccessfully

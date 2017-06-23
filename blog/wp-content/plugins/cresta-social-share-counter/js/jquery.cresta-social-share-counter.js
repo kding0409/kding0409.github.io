@@ -1,15 +1,12 @@
 (function($) {
 	"use strict";
-	
 	$(document).ready(function() {
-	
 		/*-----------------------------------------------------------------------------------*/
 		/*  Social Counter JS
 		/*-----------------------------------------------------------------------------------*/ 		
 		var $URL = crestaPermalink.thePermalink;
 		var $ismorezero = crestaPermalink.themorezero;
 		totalShares($URL);
-		
 			function ReplaceNumberWithCommas(shareNumber) {
 				 if (shareNumber >= 1000000000) {
 					return (shareNumber / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
@@ -22,7 +19,6 @@
 				 }
 				 return shareNumber;
 			}
-
 			// Google Plus Shares Count
 			function googleplusShares($URL) {
 				if ( $('#googleplus-cresta').hasClass('googleplus-cresta-share') ) {
@@ -40,7 +36,6 @@
 						"key":"p",
 						"apiVersion":"v1"
 					}];
-
 					$.ajax({
 						url: "https://clients6.google.com/rpc?key=AIzaSyCKSbrvQasunBoV16zDH9R33D88CeLr9gQ",
 						type: "POST",
@@ -59,56 +54,102 @@
 					$('#total-shares').attr('data-googleplusShares', 0)
 				}
 			}
-				
 			// Facebook Shares Count
 			function facebookShares($URL) {
 				if ( $('#facebook-cresta').hasClass('facebook-cresta-share') ) {
-					$.getJSON('https://graph.facebook.com/?id=' + $URL, function (fbdata) {
-						var facebookvar = $('<span class="cresta-the-count" id="facebook-count"></span>').text(ReplaceNumberWithCommas(fbdata.shares || 0));
-						if (fbdata.shares > 0 || $ismorezero == 'nomore') {
+					var token = crestaShareSSS.FacebookCount;
+					if ( token != 'nope' ) {
+						// Facebook Shares Count via PHP
+						var facebookvar = $('<span class="cresta-the-count" id="facebook-count"></span>').text(ReplaceNumberWithCommas(token));
+						if (token > 0 || $ismorezero == 'nomore') {
 							$('.facebook-cresta-share.float a').after(facebookvar)
 						}
-						$('#total-shares').attr('data-facebookShares', fbdata.shares || 0)
-					});
+						$('#total-shares').attr('data-facebookShares', token)
+					} else {
+						$.getJSON('//graph.facebook.com/?id=' + $URL, function (fbdata) {
+							if(fbdata.share != undefined && fbdata.share.share_count != undefined){
+								var facebookvar = $('<span class="cresta-the-count" id="facebook-count"></span>').text(ReplaceNumberWithCommas(fbdata.share.share_count || 0));
+								if (fbdata.share.share_count > 0 || $ismorezero == 'nomore') {
+									$('.facebook-cresta-share.float a').after(facebookvar)
+								}
+								$('#total-shares').attr('data-facebookShares', fbdata.share.share_count || 0)
+							} else {
+								if ($ismorezero == 'nomore') {
+									$('.facebook-cresta-share.float a').after('<span class="cresta-the-count" id="facebook-count">0</span>')
+								}
+								$('#total-shares').attr('data-facebookShares', 0)
+							}
+						});
+					}
 				} else {
 					$('#total-shares').attr('data-facebookShares', 0)
 				}
 			}
-			
+			// Linkedin Shares Count
+			function linkedInShares($URL) {
+				if ( $('#linkedin-cresta').hasClass('linkedin-cresta-share') ) {
+					var LinkedinShares = crestaShareSS.LinkedinCount;
+					if ( LinkedinShares != 'nope' ) {
+						var linkedinvar = $('<span class="cresta-the-count" id="linkedin-count"></span>').text(ReplaceNumberWithCommas(LinkedinShares));
+						if (LinkedinShares > 0 || $ismorezero == 'nomore') {
+							$('.linkedin-cresta-share.float a').after(linkedinvar)
+						}
+						$('#total-shares').attr('data-linkedInShares', LinkedinShares)
+					} else {
+						$.ajax({
+							url: "https://www.linkedin.com/countserv/count/share?url=" + $URL + "&callback=?",
+							type: "GET",
+							dataType: "json",
+							timeout: 2500,
+							error: function(jqXHR, status, errorThrown){  
+								if ($ismorezero == 'nomore') {
+									$('.linkedin-cresta-share.float a').after('<span class="cresta-the-count" id="linkedin-count">0</span>')
+								}
+								$('#total-shares').attr('data-linkedInShares', 0)
+							},
+							success: function (linkedindata) {
+								var linkedinvar = $('<span class="cresta-the-count" id="linkedin-count"></span>').text(ReplaceNumberWithCommas(linkedindata.count));
+								if (linkedindata.count > 0 || $ismorezero == 'nomore') {
+									$('.linkedin-cresta-share.float a').after(linkedinvar)
+								}
+								$('#total-shares').attr('data-linkedInShares', linkedindata.count)
+							}
+						});	
+					}
+				} else {
+					$('#total-shares').attr('data-linkedInShares', 0)
+				}
+			}
 			// Twitter Shares Count
 			function twitterShares($URL) {
 				if ( $('#twitter-cresta').hasClass('twitter-cresta-share') && $('#twitter-cresta').hasClass('withCount') ) {
-					$.getJSON('https://public.newsharecounts.com/count.json?url=' + $URL + '&callback=?', function (twitterdata) {
-						var twittervar = $('<span class="cresta-the-count" id="twitter-count"></span>').text(ReplaceNumberWithCommas(twitterdata.count));
-						if (twitterdata.count > 0 || $ismorezero == 'nomore') {
-							$('.twitter-cresta-share.float a').after(twittervar)
+					$.ajax({
+						url: "//public.newsharecounts.com/count.json?url=" + $URL + "&callback=?",
+						type: "GET",
+						dataType: "json",
+						timeout: 2500,
+						error: function(jqXHR, status, errorThrown){  
+							if ($ismorezero == 'nomore') {
+								$('.twitter-cresta-share.float a').after('<span class="cresta-the-count" id="twitter-count">0</span>')
+							}
+							$('#total-shares').attr('data-twitterShares', 0)
+						},
+						success: function (twitterdata) {
+							var twittervar = $('<span class="cresta-the-count" id="twitter-count"></span>').text(ReplaceNumberWithCommas(twitterdata.count));
+							if (twitterdata.count > 0 || $ismorezero == 'nomore') {
+								$('.twitter-cresta-share.float a').after(twittervar)
+							}
+							$('#total-shares').attr('data-twitterShares', twitterdata.count)
 						}
-						$('#total-shares').attr('data-twitterShares', twitterdata.count)
 					});
 				} else {
 					$('#total-shares').attr('data-twitterShares', 0)
 				}
 			}
-
-			// LinkedIn Shares Count
-			function linkedInShares($URL) {
-				if ( $('#linkedin-cresta').hasClass('linkedin-cresta-share') ) {
-					$.getJSON('https://www.linkedin.com/countserv/count/share?url=' + $URL + '&callback=?', function (linkedindata) {
-						var linkedinvar = $('<span class="cresta-the-count" id="linkedin-count"></span>').text(ReplaceNumberWithCommas(linkedindata.count));
-						if (linkedindata.count > 0 || $ismorezero == 'nomore') {
-							$('.linkedin-cresta-share.float a').after(linkedinvar)
-						}
-						$('#total-shares').attr('data-linkedInShares', linkedindata.count)
-					});
-				} else {
-					$('#total-shares').attr('data-linkedInShares', 0)
-				}
-			}
-			
 			// Pinterest Shares Count
 			function pinterestShares($URL) {
 				if ( $('#pinterest-cresta').hasClass('pinterest-cresta-share') ) {
-					$.getJSON('https://api.pinterest.com/v1/urls/count.json?url=' + $URL + '&callback=?', function (pindata) {
+					$.getJSON('//api.pinterest.com/v1/urls/count.json?url=' + $URL + '&callback=?', function (pindata) {
 						var pinterestvar = $('<span class="cresta-the-count" id="pinterest-count"></span>').text(ReplaceNumberWithCommas(pindata.count));
 						if (pindata.count > 0 || $ismorezero == 'nomore') {
 							$('.pinterest-cresta-share.float a').after(pinterestvar)
@@ -119,7 +160,6 @@
 					$('#total-shares').attr('data-pinterestShares', 0)
 				}
 			}
-
 			// Check if all JSON calls are finished or not
 			function checkJSON_getSum() {
 				if ($('#total-shares, #total-shares-content').attr('data-facebookShares') != undefined &&
@@ -161,9 +201,7 @@
 				}
 					var totalShares = fbShares + linkedInShares + pinterestShares + googleplusShares + twitShares;
 					$('#total-count').text( ReplaceNumberWithCommas(totalShares) || 0 )
-
 			}
-
 			function totalShares($URL) {
 				linkedInShares($URL);
 				twitterShares($URL);
@@ -173,5 +211,4 @@
 				checkJSON_getSum();
 			}
 	});
-	
 })(jQuery);

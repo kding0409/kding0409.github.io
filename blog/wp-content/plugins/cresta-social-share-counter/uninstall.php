@@ -30,4 +30,8 @@ delete_option( 'cresta_social_shares_z_index' );
 delete_option( 'cresta_social_shares_button_hide_show' );
 delete_option( 'cresta_social_shares_custom_css' );
 delete_option( 'cresta_social_shares_twitter_shares' );
+delete_option( 'cresta_social_shares_facebook_appid' );
+delete_option( 'cresta_social_shares_facebook_appsecret' );
+delete_option( 'cresta_social_shares_pintmode' );
+delete_option( 'cresta_social_shares_linkedin_alternative_count' );
 ?>

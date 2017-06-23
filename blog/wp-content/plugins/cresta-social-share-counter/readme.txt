@@ -1,18 +1,21 @@
 === Cresta Social Share Counter ===
 Contributors: CrestaProject
-Donate link: http://crestaproject.com/downloads/cresta-social-share-counter/
+Donate link: https://crestaproject.com/downloads/cresta-social-share-counter/
 Tags: share, social, social share, social buttons, share button, share buttons, facebook, twitter, linkedin, pinterest, google plus, floating buttons, social count, social counter, sharing, social sharing, socialize, social icon, print, post, posts, page, plugin, facebook share, twitter share, google plus share, linkedin share, pinterest share
-Requires at least: 3.6
-Tested up to: 4.5
-Stable tag: 2.5.5
+Requires at least: 4.2
+Tested up to: 4.8
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Share your posts and pages quickly and easily with Cresta Social Share Count showing the share count.
+Share your posts and pages quickly and easily with Cresta Social Share Counter and show share counts.
 
 == Description ==
 
-With Cresta Social Share Counter you can share your posts and pages easily and show the social count.
+<a href="https://crestaproject.com/downloads/cresta-social-share-counter/" rel="nofollow" target="_blank">Plugin Homepage & Demo</a>
+
+Cresta Social Share Counter is a <strong>free WordPress Plugin</strong> that allows your users to <strong>share posts and pages</strong> easily using the social buttons of Facebook, Twitter, Google Plus, Linkedin and Pinterest.
+You can also choose to show the <strong>social counter</strong> for each social media and the total shares.
 
 <strong>You can select the following Social Network</strong>
 <ul>
@@ -33,16 +36,23 @@ With Cresta Social Share Counter you can share your posts and pages easily and s
 	<li>Use the shortcode <strong>[cresta-social-share]</strong> wherever you want to display the social buttons</li>
 </ul>
 
-<p>
-<strong>Plugin Homepage & Demo</strong><br />
-http://crestaproject.com/downloads/cresta-social-share-counter/
-</p>
+<strong>PRO version features</strong>
+<ul>
+	<li>StumbleUpon, Buffer, Reddit, VK, OK.ru, Xing, Telegram and WhatsApp share buttons</li>
+	<li>Change buttons colors</li>
+	<li>Choose up to 17 buttons styles</li>
+	<li>Up to 30 effects animation</li>
+	<li>10 hover button animations</li>
+	<li>Tooltips on the social buttons</li>
+	<li>and much more...</li>
+</ul>
 
 == Installation ==
 
-1. Upload the folder 'cresta-social-share-counter' to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to WordPress Main Menu -> CSSC FREE to set the options
+1. Unzip cresta-social-share-counter.zip
+2. Upload the folder 'cresta-social-share-counter' to the '/wp-content/plugins/' directory
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Go to WordPress Main Menu -> CSSC FREE to set the options
 
 
 == Frequently Asked Questions ==
@@ -74,6 +84,60 @@ Because the plugin is designed to work exclusively on individual pages (single p
 4. Social buttons before/after posts/page content
 
 == Changelog ==
+
+= 2.7.1 =
+* Added an alternative method to get Linkedin share count
+
+= 2.7.0 =
+* Minor bug fixes
+
+= 2.6.9 =
+* Added compatibility with WordPress 4.8
+
+= 2.6.8 =
+* Minor bug fixes
+
+= 2.6.7 =
+* Minor bug fixes
+
+= 2.6.6 =
+* Minor bug fixes
+
+= 2.6.5 =
+* Improved Pinterest share mode
+* Minor bug fixes
+
+= 2.6.4 =
+* Minor bug fixes
+
+= 2.6.3 =
+* Added WPML compatibility
+* Updated plugin description
+* Fixed a bug that opened two sharing windows if the site is also using the official Twitter widget
+
+= 2.6.2 =
+* Updated compatibility with WordPress 4.7
+* Minor bug fixes
+
+= 2.6.1 =
+* Improved buttons metabox
+* Minor bug fixes
+
+= 2.6.0 =
+* Minor bug fixes
+
+= 2.5.9 =
+* Now is possible to using the Facebook App to fetch share counts if the "classic method" is not working
+* Fixed a problem with the classic Facebook Share Count method when a page has 0 shares
+
+= 2.5.8 =
+* Updated Facebook Share Count API
+
+= 2.5.7 =
+* Updated compatibility with WordPress 4.6
+
+= 2.5.6 =
+* Fixed Linkedin Share Count
 
 = 2.5.5 =
 * Fixed share URL

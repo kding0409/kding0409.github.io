@@ -21,7 +21,6 @@ ul.list-group .list-group-item img {
 	background: #0074a2;
 	color: #ffffff;
 	text-decoration: none;
-	font-weight: bold;
 	padding: 8px;
 	display: inline-block;
 	margin-top: 5px;
@@ -57,12 +56,12 @@ ul.list-group .list-group-item img {
 }
 .crestaButtonUpgrade {
 	background: #d54e21;
-	color: #ffffff;
-	text-decoration: none;
-	font-weight: bold;
-	padding: 8px;
-	display: inline-block;
-	margin-top: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: bottom;
 }
 .crestaButtonUpgrade:hover {
 	background: #e47e5c;
@@ -82,7 +81,7 @@ small {
     margin-right: 10px;
 }
 .inside h3 {
-    background: #ccc;
+    background: #eeeeee;
     border: 1px solid rgba(0,0,0,.03);
     padding: 12px;
 }

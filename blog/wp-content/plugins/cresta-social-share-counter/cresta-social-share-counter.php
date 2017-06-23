@@ -1,25 +1,27 @@
 <?php
 /**
  * Plugin Name: Cresta Social Share Counter
- * Plugin URI: http://crestaproject.com/downloads/cresta-social-share-counter/
- * Description: <strong>*** <a href="http://crestaproject.com/downloads/cresta-social-share-counter/" target="_blank">Get Cresta Social Share Counter PRO</a> ***</strong> Share your posts and pages quickly and easily with Cresta Social Share Count showing the share count.
- * Version: 2.5.5
+ * Plugin URI: https://crestaproject.com/downloads/cresta-social-share-counter/
+ * Description: <strong>*** <a href="https://crestaproject.com/downloads/cresta-social-share-counter/?utm_source=plugin_counter&utm_medium=description_meta" target="_blank">Get Cresta Social Share Counter PRO</a> ***</strong> Share your posts and pages quickly and easily with Cresta Social Share Counter and show share counts.
+ * Version: 2.7.1
  * Author: CrestaProject - Rizzo Andrea
- * Author URI: http://crestaproject.com
+ * Author URI: https://crestaproject.com
  * License: GPL2
  */
 
+define( 'CRESTA_SOCIAL_PLUGIN_VERSION', '2.7.1' );
 add_action('admin_menu', 'cresta_social_share_menu');
 add_action('wp_enqueue_scripts', 'cresta_social_share_wp_enqueue_scripts');
-add_filter('the_content', 'cresta_filter_in_content' ); 
+add_filter('the_content', 'cresta_filter_in_content' );
 add_shortcode('cresta-social-share', 'add_social_button_in_content' );
 add_action('admin_enqueue_scripts', 'cresta_social_share_admin_enqueue_scripts');
 add_action('wp_head', 'cresta_social_css_top');
 
 require_once( dirname( __FILE__ ) . '/cresta-metabox.php' );
+require_once( dirname( __FILE__ ) . '/class/cresta-share-gp.php' );
 
 function crestaplugin_init() {
-	load_plugin_textdomain( 'cresta-social-share-counter', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
+	load_plugin_textdomain( 'cresta-social-share-counter', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 add_filter( 'init', 'crestaplugin_init' );
 
@@ -29,15 +31,26 @@ function cresta_social_share_menu() {
 }
 
 function cresta_social_setting_link($links) { 
-  $settings_link = '<a href="admin.php?page=cresta-social-share-counter.php">'.esc_html__( 'Settings','cresta-social-share-counter').'</a>'; 
-  array_unshift($links, $settings_link); 
-  return $links; 
+	$settings_link = array(
+		'<a href="' . admin_url('admin.php?page=cresta-social-share-counter.php') . '">' . esc_html__( 'Settings','cresta-social-share-counter') . '</a>',
+	);
+	return array_merge( $links, $settings_link );
+}
+
+function cresta_social_meta_links( $links, $file ) {
+	if ( strpos( $file, 'cresta-social-share-counter.php' ) !== false ) {
+		$new_links = array(
+			'<a href="https://crestaproject.com/downloads/cresta-social-share-counter/?utm_source=plugin_counter&utm_medium=upgrade_meta" target="_blank" rel="external" ><span class="dashicons dashicons-megaphone"></span> ' . esc_html__( 'Upgrade to PRO' ) . '</a>', 
+		);
+		$links = array_merge( $links, $new_links );
+	}
+	return $links;
 }
 
 function cresta_social_share_admin_enqueue_scripts( $hook ) {
 	global $cresta_options_page;
 	if ( $hook == $cresta_options_page ) {
-		wp_enqueue_style( 'cresta-social-admin-style', plugins_url('css/cresta-admin-css.css',__FILE__));
+		wp_enqueue_style( 'cresta-social-admin-style', plugins_url('css/cresta-admin-css.css',__FILE__), array(), CRESTA_SOCIAL_PLUGIN_VERSION);
 	}
 }
 
@@ -46,52 +59,105 @@ function cresta_social_share_wp_enqueue_scripts() {
 	$show_on = explode (',',get_option( 'cresta_social_shares_selected_page' ));
 	
 	if ( is_singular() && in_array( $cresta_current_post_type, $show_on ) ) {
+		$checkCrestaMetaBox = get_post_meta(get_the_ID(), '_get_cresta_plugin', true);
 		
-		wp_enqueue_style( 'cresta-social-crestafont', plugins_url('css/csscfont.css',__FILE__));
-		wp_enqueue_style( 'cresta-social-wp-style', plugins_url('css/cresta-wp-css.css',__FILE__));
-		
-		$show_count = get_option('cresta_social_shares_show_counter');
-		$show_floatbutton = get_option('cresta_social_shares_show_floatbutton');
-		
-		if($show_floatbutton == 1 && $show_count == 1) { 
-			$ifmorezero = get_option('cresta_social_shares_show_ifmorezero');
-			$theifmore = 'nomore';
-			if($ifmorezero == 1 ) {
-				$theifmore = 'yesmore';
+		if( $checkCrestaMetaBox != '1') {
+			wp_enqueue_style( 'cresta-social-crestafont', plugins_url('css/csscfont.css',__FILE__), array(), CRESTA_SOCIAL_PLUGIN_VERSION);
+			wp_enqueue_style( 'cresta-social-wp-style', plugins_url('css/cresta-wp-css.css',__FILE__), array(), CRESTA_SOCIAL_PLUGIN_VERSION);
+			
+			$show_count = get_option('cresta_social_shares_show_counter');
+			$show_floatbutton = get_option('cresta_social_shares_show_floatbutton');
+			$buttons = explode (',',get_option( 'selected_button' ));
+			
+			if($show_floatbutton == 1 && $show_count == 1) {
+				$ifmorezero = get_option('cresta_social_shares_show_ifmorezero');
+				$theifmore = 'nomore';
+				if($ifmorezero == 1 ) {
+					$theifmore = 'yesmore';
+				}
+				wp_enqueue_script( 'cresta-social-counter-js', plugins_url('js/jquery.cresta-social-share-counter.js',__FILE__), array('jquery'), CRESTA_SOCIAL_PLUGIN_VERSION, true );
+				if(in_array('facebook',$buttons)) {
+					$fbappid = get_option('cresta_social_shares_facebook_appid');
+					$fbappsecret = get_option('cresta_social_shares_facebook_appsecret');
+					$theToken = $fbappid.'|'.$fbappsecret;
+					if ($fbappid && $fbappsecret) {
+						$obj=new crestaShareSocialCount (get_permalink());
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSSS', array( 'FacebookCount' => $obj->get_facebook($theToken) ) );
+					} else {
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSSS', array( 'FacebookCount' => 'nope' ) );
+					}
+				}
+				if(in_array('linkedin',$buttons)) {
+					$linkedin_count_method = get_option('cresta_social_shares_linkedin_alternative_count');
+					if ($linkedin_count_method == 0) {
+						$obj=new crestaShareSocialCount (get_permalink());
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSS', array( 'LinkedinCount' => $obj->get_linkedin() ) );
+					} else {
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSS', array( 'LinkedinCount' => 'nope' ) );
+					}
+				}
+				wp_localize_script( 'cresta-social-counter-js', 'crestaPermalink', array('thePermalink' => get_permalink(), 'themorezero' => $theifmore ) );
 			}
-			wp_enqueue_script( 'cresta-social-counter-js', plugins_url('js/jquery.cresta-social-share-counter.js',__FILE__), array('jquery'), '1.0', true );
-			wp_localize_script( 'cresta-social-counter-js', 'crestaPermalink', array('thePermalink' => get_permalink(), 'themorezero' => $theifmore ) );
+			wp_enqueue_script( 'cresta-social-effect-js', plugins_url('js/jquery.cresta-social-effect.js',__FILE__), array('jquery'), CRESTA_SOCIAL_PLUGIN_VERSION, true );
+			$query_args = array(
+				'family' => 'Noto+Sans:400,700'
+			);
+			wp_enqueue_style( 'cresta-social-googlefonts', add_query_arg( $query_args, "//fonts.googleapis.com/css" ), array(), null );
 		}
-		wp_enqueue_script( 'cresta-social-effect-js', plugins_url('js/jquery.cresta-social-effect.js',__FILE__), array('jquery'), '1.0', true );
-		$protocol = is_ssl() ? 'https' : 'http';
-		wp_enqueue_style( 'cresta-social-googlefonts', $protocol.'://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 	}
 
 	global $post;
 	if ( is_singular() && !in_array( $cresta_current_post_type, $show_on ) && has_shortcode( $post->post_content, 'cresta-social-share' ) ) {
-		wp_enqueue_style( 'cresta-social-crestafont', plugins_url('css/csscfont.css',__FILE__));
-		wp_enqueue_style( 'cresta-social-wp-style', plugins_url('css/cresta-wp-css.css',__FILE__));
+		$checkCrestaMetaBox = get_post_meta(get_the_ID(), '_get_cresta_plugin', true);
 		
-		$show_count = get_option('cresta_social_shares_show_counter');
-		$show_floatbutton = get_option('cresta_social_shares_show_floatbutton');
-		
-		if($show_floatbutton == 1 && $show_count == 1) {
-			$ifmorezero = get_option('cresta_social_shares_show_ifmorezero');
-			$theifmore = 'nomore';
-			if($ifmorezero == 1 ) {
-				$theifmore = 'yesmore';
+		if( $checkCrestaMetaBox != '1') {
+			wp_enqueue_style( 'cresta-social-crestafont', plugins_url('css/csscfont.css',__FILE__), array(), CRESTA_SOCIAL_PLUGIN_VERSION);
+			wp_enqueue_style( 'cresta-social-wp-style', plugins_url('css/cresta-wp-css.css',__FILE__), array(), CRESTA_SOCIAL_PLUGIN_VERSION);
+			
+			$show_count = get_option('cresta_social_shares_show_counter');
+			$show_floatbutton = get_option('cresta_social_shares_show_floatbutton');
+			$buttons = explode (',',get_option( 'selected_button' ));
+			
+			if($show_floatbutton == 1 && $show_count == 1 ) {
+				$ifmorezero = get_option('cresta_social_shares_show_ifmorezero');
+				$theifmore = 'nomore';
+				if($ifmorezero == 1 ) {
+					$theifmore = 'yesmore';
+				}
+				wp_enqueue_script( 'cresta-social-counter-js', plugins_url('js/jquery.cresta-social-share-counter.js',__FILE__), array('jquery'), CRESTA_SOCIAL_PLUGIN_VERSION, true );
+				if(in_array('facebook',$buttons)) {
+					$fbappid = get_option('cresta_social_shares_facebook_appid');
+					$fbappsecret = get_option('cresta_social_shares_facebook_appsecret');
+					$theToken = $fbappid.'|'.$fbappsecret;
+					if ($fbappid && $fbappsecret) {
+						$obj=new crestaShareSocialCount (get_permalink());
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSSS', array( 'FacebookCount' => $obj->get_facebook($theToken) ) );
+					} else {
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSSS', array( 'FacebookCount' => 'nope' ) );
+					}
+				}
+				if(in_array('linkedin',$buttons)) {
+					$linkedin_count_method = get_option('cresta_social_shares_linkedin_alternative_count');
+					if ($linkedin_count_method == 0) {
+						$obj=new crestaShareSocialCount (get_permalink());
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSS', array( 'LinkedinCount' => $obj->get_linkedin() ) );
+					} else {
+						wp_localize_script( 'cresta-social-counter-js', 'crestaShareSS', array( 'LinkedinCount' => 'nope' ) );
+					}
+				}
+				wp_localize_script( 'cresta-social-counter-js', 'crestaPermalink', array('thePermalink' => get_permalink(), 'themorezero' => $theifmore ) );
 			}
-			wp_enqueue_script( 'cresta-social-counter-js', plugins_url('js/jquery.cresta-social-share-counter.js',__FILE__), array('jquery'), '1.0', true );
-			wp_localize_script( 'cresta-social-counter-js', 'crestaPermalink', array('thePermalink' => get_permalink(), 'themorezero' => $theifmore ) );
+			wp_enqueue_script( 'cresta-social-effect-js', plugins_url('js/jquery.cresta-social-effect.js',__FILE__), array('jquery'), CRESTA_SOCIAL_PLUGIN_VERSION, true );
+			$query_args = array(
+				'family' => 'Noto+Sans:400,700'
+			);
+			wp_enqueue_style( 'cresta-social-googlefonts', add_query_arg( $query_args, "//fonts.googleapis.com/css" ), array(), null );
 		}
-		wp_enqueue_script( 'cresta-social-effect-js', plugins_url('js/jquery.cresta-social-effect.js',__FILE__), array('jquery'), '1.0', true );
-		$protocol = is_ssl() ? 'https' : 'http';
-		wp_enqueue_style( 'cresta-social-googlefonts', $protocol.'://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 	}
 }
- 
-$plugin = plugin_basename(__FILE__); 
-add_filter("plugin_action_links_$plugin", 'cresta_social_setting_link' );
+
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'cresta_social_setting_link' );
+add_filter('plugin_row_meta', 'cresta_social_meta_links', 10 , 2 );
 
 function register_social_button_setting() {
 	register_setting( 'csscplugin', 'selected_button','crestasocialshare_options_validate_1' );
@@ -119,6 +185,10 @@ function register_social_button_setting() {
 	register_setting( 'csscplugin', 'cresta_social_shares_button_hide_show','crestasocialshare_options_validate_23' );
 	register_setting( 'csscplugin', 'cresta_social_shares_custom_css','crestasocialshare_options_validate_24' );
 	register_setting( 'csscplugin', 'cresta_social_shares_twitter_shares','crestasocialshare_options_validate_25' );
+	register_setting( 'csscplugin', 'cresta_social_shares_facebook_appid','crestasocialshare_options_validate_26' );
+	register_setting( 'csscplugin', 'cresta_social_shares_facebook_appsecret','crestasocialshare_options_validate_27' );
+	register_setting( 'csscplugin', 'cresta_social_shares_pintmode','crestasocialshare_options_validate_28' );
+	register_setting( 'csscplugin', 'cresta_social_shares_linkedin_alternative_count','crestasocialshare_options_validate_29' );
 	
 	add_option( 'selected_button', 'facebook,tweet,gplus,pinterest,linkedin' );
 	add_option( 'cresta_social_shares_selected_page', 'page,post' );
@@ -145,6 +215,10 @@ function register_social_button_setting() {
 	add_option( 'cresta_social_shares_button_hide_show', '0' );	
 	add_option( 'cresta_social_shares_custom_css', '' );
 	add_option( 'cresta_social_shares_twitter_shares', '0' );	
+	add_option( 'cresta_social_shares_facebook_appid', '' );
+	add_option( 'cresta_social_shares_facebook_appsecret', '' );
+	add_option( 'cresta_social_shares_pintmode', 'featimage');
+	add_option( 'cresta_social_shares_linkedin_alternative_count', '0');
 }
 add_action('admin_init', 'register_social_button_setting' );
 
@@ -169,7 +243,7 @@ function cresta_social_css_top() {
 		echo ".cresta-share-icon .sbutton {text-shadow: 1px 1px 0px rgba(0, 0, 0, .4);}";
 	}
 	
-	if ( $show_floatbutton ==1 ) {
+	if ( $show_floatbutton == 1 ) {
 		$disable = get_option('cresta_social_shares_disable_mobile');
 		$float = get_option('cresta_social_shares_float');
 		$position_top =  get_option('cresta_social_shares_position_top');
@@ -186,7 +260,7 @@ function cresta_social_css_top() {
 			}";
 		}
 		echo "
-		#crestashareicon {position:fixed; top:".esc_attr($position_top)."%; ".esc_attr($float).":".esc_attr($position_left)."px; float:left;z-index:". esc_attr($z_index) .";}
+		#crestashareicon {position:fixed; top:".intval($position_top)."%; ".esc_attr($float).":".intval($position_left)."px; float:left;z-index:". intval($z_index) .";}
 
 		#crestashareicon .sbutton {clear:both;";if($enable_animation == 1) { echo 'display:none;'; }  echo "}
 		";
@@ -209,7 +283,7 @@ function cresta_social_css_top() {
 		}
 		
 	}
-	
+	global $post;
 	if ($before_content == 1 || $after_content == 1 || has_shortcode( $post->post_content, 'cresta-social-share' )) {
 		/* Style In Content */
 		if ($buttons_position == 'center') {
@@ -219,30 +293,29 @@ function cresta_social_css_top() {
 		}
 	}
 	if ($custom_css) {
-		echo esc_attr($custom_css);
+		echo esc_html($custom_css);
 	}
 	echo "</style>";
 	
 }
 
 /* Cresta Social Share Counter In Content Position */
-function cresta_filter_in_content( $content ) { 
-	
+function cresta_filter_in_content( $content ) {
 	$cresta_current_post_type = get_post_type();
 	$before_content = get_option('cresta_social_shares_before_content');
 	$after_content = get_option('cresta_social_shares_after_content');
 	$show_on = explode (',',get_option( 'cresta_social_shares_selected_page' ));
 
 	if ( is_singular() && !in_array( $cresta_current_post_type, $show_on )  ) {
-				return $content;
+		return $content;
 	}
 	if (is_front_page() ) {
 		if ( 'page' == get_option('show_on_front') && !in_array( 'page', $show_on) ) {
-					return $content;
+			return $content;
 		}
 	}
 	if( is_search() || is_404() || is_archive() || is_home() || is_feed() ) {
-				return $content;
+		return $content;
 	}
 	$checkCrestaMetaBox = get_post_meta(get_the_ID(), '_get_cresta_plugin', true);
 	if ( $checkCrestaMetaBox == '1' ) {
@@ -268,6 +341,7 @@ function add_social_button_in_content() {
 	$button_style = get_option('cresta_social_shares_style');
 	$cresta_twitter_username = get_option('cresta_social_shares_twitter_username');
 	$enable_shadow = get_option('cresta_social_shares_enable_shadow');
+	$pinterestMode = get_option('cresta_social_shares_pintmode', 'featimage');
 	
 	global $wp_query; 
 	$post = $wp_query->post;
@@ -293,23 +367,27 @@ function add_social_button_in_content() {
 	}
 	
 	if(in_array('facebook',$buttons)) {
-		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' facebook-cresta-share" id="facebook-cresta-c"><a rel="nofollow" href="https://www.facebook.com/sharer.php?u='. urlencode(get_permalink( $post->ID )) .'&amp;t='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Facebook" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-facebook"></i></a></div>';
+		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' facebook-cresta-share" id="facebook-cresta-c"><a rel="nofollow" href="https://www.facebook.com/sharer.php?u='. urlencode(get_permalink( $post->ID )) .'&amp;t='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Facebook" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-facebook"></i></a></div>';
 	}
 
 	if(in_array('tweet',$buttons)) {
-		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' twitter-cresta-share" id="twitter-cresta-c"><a rel="nofollow" href="https://twitter.com/intent/tweet?text='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;url='. urlencode(get_permalink( $post->ID )) .''. $theTwitterUsername .'" title="Share to Twitter" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-twitter"></i></a></div>';
+		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' twitter-cresta-share" id="twitter-cresta-c"><a rel="nofollow" href="https://twitter.com/share?text='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;url='. urlencode(get_permalink( $post->ID )) .''. $theTwitterUsername .'" title="Share to Twitter" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-twitter"></i></a></div>';
 	}
 
 	if(in_array('gplus',$buttons)) {
-		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' googleplus-cresta-share" id="googleplus-cresta-c"><a rel="nofollow" href="https://plus.google.com/share?url='. urlencode(get_permalink( $post->ID )) .'" title="Share to Google Plus" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-gplus"></i></a></div>';
+		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' googleplus-cresta-share" id="googleplus-cresta-c"><a rel="nofollow" href="https://plus.google.com/share?url='. urlencode(get_permalink( $post->ID )) .'" title="Share to Google Plus" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-gplus"></i></a></div>';
 	}
 
 	if(in_array('linkedin',$buttons)) {
-		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' linkedin-cresta-share" id="linkedin-cresta-c"><a rel="nofollow" href="https://www.linkedin.com/shareArticle?mini=true&amp;url='. urlencode(get_permalink( $post->ID )) .'&amp;title='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;source='. esc_url( home_url( '/' )) .'" title="Share to LinkedIn" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-linkedin"></i></a></div>';
+		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' linkedin-cresta-share" id="linkedin-cresta-c"><a rel="nofollow" href="https://www.linkedin.com/shareArticle?mini=true&amp;url='. urlencode(get_permalink( $post->ID )) .'&amp;title='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;source='. esc_url( home_url( '/' )) .'" title="Share to LinkedIn" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-linkedin"></i></a></div>';
 	}
 
 	if(in_array('pinterest',$buttons)) {
-		$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share" id="pinterest-cresta-c"><a rel="nofollow" href="https://pinterest.com/pin/create/bookmarklet/?url='.urlencode(get_permalink( $post->ID )) .'&amp;media='. $pinImage .'&amp;description='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8').'" title="Share to Pinterest" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+		if ($pinterestMode == 'featimage') {
+			$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share" id="pinterest-cresta-c"><a rel="nofollow" href="https://pinterest.com/pin/create/bookmarklet/?url='.urlencode(get_permalink( $post->ID )) .'&amp;media='. esc_url($pinImage) .'&amp;description='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8').'" title="Share to Pinterest" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+		} else {
+			$allButtonsSelected .= '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share" id="pinterest-cresta-c"><a rel="nofollow" href="javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;https://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());" title="Share to Pinterest"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+		}
 	}
 	
 	if(in_array('print',$buttons)) {
@@ -324,7 +402,7 @@ function add_social_button_in_content() {
 function add_social_button() {
 	$show_floatbutton = get_option('cresta_social_shares_show_floatbutton');
 	
-	if ( $show_floatbutton ==1 ) {
+	if ( $show_floatbutton == 1 ) {
 	
 	$buttons = explode (',',get_option( 'selected_button' ));
 	$show_on = explode (',',get_option( 'cresta_social_shares_selected_page' ));
@@ -339,6 +417,7 @@ function add_social_button() {
 	$enable_sameColors = get_option('cresta_social_shares_enable_samecolors');
 	$button_hide_show = get_option('cresta_social_shares_button_hide_show');
 	$newTwitter = get_option('cresta_social_shares_twitter_shares');
+	$pinterestMode = get_option('cresta_social_shares_pintmode', 'featimage');
 	global $wp_query;
 	$post = $wp_query->post;
 	
@@ -361,17 +440,17 @@ function add_social_button() {
 	}
 	
 	if($disable == 1 && wp_is_mobile()) {
-	return;
+		return;
 	} else {
 
 	if( is_page() && !in_array( 'page', $show_on ) ) {
-				return;
+		return;
 	}
 	if( is_singular('post') && !in_array( 'post', $show_on ) ) {
-				return;
+		return;
 	}
 	if( is_attachment() && !in_array( 'attachment', $show_on ) ) {
-				return;
+		return;
 	}
 	$args = array(
 		'public'   => true,
@@ -385,26 +464,26 @@ function add_social_button() {
 	}
 	if (is_front_page() ) {
 		if ( 'page' == get_option('show_on_front') && !in_array( 'page', $show_on) ) {
-					return;
+			return;
 		}
 	}
 	if( is_search() || is_404() || is_archive() || is_home() || is_feed() ) {
-				return;
+		return;
 	}
 	if( in_array( 'get_the_excerpt', $GLOBALS['wp_current_filter'] ) ) {
-				return;
+		return;
 	}
 	$checkCrestaMetaBox = get_post_meta($post->ID, '_get_cresta_plugin', true);
 	if ( $checkCrestaMetaBox == '1' ) {
-				return;
+		return;
 	}
 	
 
 if ( '' != get_the_post_thumbnail( $post->ID ) ) {
-		$pinterestimage = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-		$pinImage = $pinterestimage[0];
+	$pinterestimage = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+	$pinImage = $pinterestimage[0];
 } else {
-		$pinImage = esc_url(plugins_url( '/images/no-image-found.png' , __FILE__ ));
+	$pinImage = esc_url(plugins_url( '/images/no-image-found.png' , __FILE__ ));
 }
 
 echo '<!--www.crestaproject.com Social Button Floating Start--><div id="crestashareicon" class="cresta-share-icon '.esc_attr($crestaSame).' '.esc_attr($button_style) .' '; if($show_count == 1) { echo 'show-count-active'; } echo'">';
@@ -413,22 +492,26 @@ if($button_hide_show == 1) {
 }
 
 if(in_array('facebook',$buttons)) {
-	echo '<div class="sbutton '. esc_attr($crestaShadow) .' facebook-cresta-share float" id="facebook-cresta"><a rel="nofollow" href="https://www.facebook.com/sharer.php?u='. urlencode(get_permalink( $post->ID )) .'&amp;t='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Facebook" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-facebook"></i></a></div>';
+	echo '<div class="sbutton '. esc_attr($crestaShadow) .' facebook-cresta-share float" id="facebook-cresta"><a rel="nofollow" href="https://www.facebook.com/sharer.php?u='. urlencode(get_permalink( $post->ID )) .'&amp;t='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Facebook" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-facebook"></i></a></div>';
 }
 if(in_array('tweet',$buttons)) {
-	echo '<div class="sbutton '. esc_attr($crestaShadow) .' twitter-cresta-share float '. esc_attr($theNewTwitter) .'" id="twitter-cresta"><a rel="nofollow" href="https://twitter.com/intent/tweet?text='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;url='. urlencode(get_permalink( $post->ID )) .''; if($cresta_twitter_username) { echo '&amp;via=' . esc_attr($cresta_twitter_username) . ''; } echo '" title="Share to Twitter" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-twitter"></i></a></div>';
+	echo '<div class="sbutton '. esc_attr($crestaShadow) .' twitter-cresta-share float '. esc_attr($theNewTwitter) .'" id="twitter-cresta"><a rel="nofollow" href="https://twitter.com/share?text='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;url='. urlencode(get_permalink( $post->ID )) .''; if($cresta_twitter_username) { echo '&amp;via=' . esc_attr($cresta_twitter_username) . ''; } echo '" title="Share to Twitter" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-twitter"></i></a></div>';
 }
 
 if(in_array('gplus',$buttons)) {
-	echo '<div class="sbutton '. esc_attr($crestaShadow) .' googleplus-cresta-share float" id="googleplus-cresta"><a rel="nofollow" href="https://plus.google.com/share?url='. urlencode(get_permalink( $post->ID )) .'" title="Share to Google Plus" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-gplus"></i></a></div>';
+	echo '<div class="sbutton '. esc_attr($crestaShadow) .' googleplus-cresta-share float" id="googleplus-cresta"><a rel="nofollow" href="https://plus.google.com/share?url='. urlencode(get_permalink( $post->ID )) .'" title="Share to Google Plus" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-gplus"></i></a></div>';
 }
 
 if(in_array('linkedin',$buttons)) {
-	echo '<div class="sbutton '. esc_attr($crestaShadow) .' linkedin-cresta-share float" id="linkedin-cresta"><a rel="nofollow" href="https://www.linkedin.com/shareArticle?mini=true&amp;url='. urlencode(get_permalink( $post->ID )) .'&amp;title='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;source='. esc_url( home_url( '/' )) .'" title="Share to LinkedIn" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-linkedin"></i></a></div>';
+	echo '<div class="sbutton '. esc_attr($crestaShadow) .' linkedin-cresta-share float" id="linkedin-cresta"><a rel="nofollow" href="https://www.linkedin.com/shareArticle?mini=true&amp;url='. urlencode(get_permalink( $post->ID )) .'&amp;title='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'&amp;source='. esc_url( home_url( '/' )) .'" title="Share to LinkedIn" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-linkedin"></i></a></div>';
 }
 
 if(in_array('pinterest',$buttons)) {
-	echo '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share float" id="pinterest-cresta"><a rel="nofollow" href="https://pinterest.com/pin/create/bookmarklet/?url='.urlencode(get_permalink( $post->ID )) .'&amp;media='. $pinImage .'&amp;description='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Pinterest" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=450\');return false;"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+	if ($pinterestMode == 'featimage') {
+		echo '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share float" id="pinterest-cresta"><a rel="nofollow" href="https://pinterest.com/pin/create/bookmarklet/?url='.urlencode(get_permalink( $post->ID )) .'&amp;media='. esc_url($pinImage) .'&amp;description='. htmlspecialchars(urlencode(html_entity_decode(the_title_attribute( array( 'echo' => 0, 'post' => $post->ID ) ), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8') .'" title="Share to Pinterest" onclick="window.open(this.href,\'targetWindow\',\'toolbars=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,width=640,height=320,left=200,top=200\');return false;"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+	} else {
+		echo '<div class="sbutton '. esc_attr($crestaShadow) .' pinterest-cresta-share float" id="pinterest-cresta"><a rel="nofollow" href="javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;https://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());" title="Share to Pinterest"><i class="cs c-icon-cresta-pinterest"></i></a></div>';
+	}
 }
 
 if(in_array('print',$buttons)) {
@@ -436,7 +519,7 @@ if(in_array('print',$buttons)) {
 }
 
 if($show_count == 1) {
-	echo '<div class="sbutton" id="total-shares">'; if($show_total == 1) { echo '<span class="cresta-the-total-count" id="total-count"><i class="cs c-icon-cresta-spinner animate-spin"></i></span><span class="cresta-the-total-text">' .esc_attr($total_text). '</span>'; } echo '</div>';
+	echo '<div class="sbutton" id="total-shares">'; if($show_total == 1) { echo '<span class="cresta-the-total-count" id="total-count"><i class="cs c-icon-cresta-spinner animate-spin"></i></span><span class="cresta-the-total-text">' .esc_html($total_text). '</span>'; } echo '</div>';
 }
 
 if($show_credit == 1) {
@@ -463,7 +546,7 @@ function cresta_social_share_option() {
 	
 <div class="wrap">
 <div id="icon-options-general" class="icon32"></div>
-<h2>Cresta Social Share Counter FREE</h2><a class="crestaButtonUpgrade" href="http://crestaproject.com/downloads/cresta-social-share-counter/" target="_blank" title="See Details: Cresta Social Share Counter PRO">Upgrade to PRO Version!</a>
+<h2>Cresta Social Share Counter FREE</h2><a class="crestaButtonUpgrade" href="https://crestaproject.com/downloads/cresta-social-share-counter/?utm_source=plugin_counter&utm_medium=insideoption_meta" target="_blank" title="See Details: Cresta Social Share Counter PRO"><span class="dashicons dashicons-megaphone"></span> Upgrade to PRO Version!</a>
 
 <script type="text/javascript">
 jQuery(document).ready(function(){
@@ -532,13 +615,13 @@ jQuery(document).ready(function(){
 					<?php $buttons = explode (',',get_option( 'selected_button' )); ?>
 						<ul>
 							<li>
-								<label><input type="checkbox" <?php if(in_array('facebook',$buttons)) { echo 'checked="checked"'; }?> name="selected_button[]" value="facebook"/>FaceBook</label>
+								<label><input type="checkbox" <?php if(in_array('facebook',$buttons)) { echo 'checked="checked"'; }?> name="selected_button[]" value="facebook"/>Facebook</label>
 							</li>
 							<li>
 								<label><input type="checkbox" <?php if(in_array('tweet',$buttons)) { echo 'checked="checked"'; }?> name="selected_button[]" value="tweet" class="crestatwitterenable <?php if(in_array('tweet',$buttons)) { echo 'active'; }?>"/>Twitter <span class="description">(Official counter no longer available, new counter available through newsharecounts.com API)</span></label>
 							</li>
 							<li class="crestashowtwittername">
-								<label><?php esc_html_e('Twitter username (optional):', 'cresta-social-share-counter'); ?> @<input type="text" name="cresta_social_shares_twitter_username" value="<?php echo esc_html(get_option('cresta_social_shares_twitter_username'));?>"/></label>
+								<label><?php esc_html_e('Twitter username (optional):', 'cresta-social-share-counter'); ?> @<input type="text" name="cresta_social_shares_twitter_username" value="<?php echo esc_attr(get_option('cresta_social_shares_twitter_username'));?>"/></label>
 							</li>
 							<li>
 								<label><input type="checkbox" <?php if(in_array('gplus',$buttons)) { echo 'checked="checked"'; }?> name="selected_button[]" value="gplus"/>Google Plus</label>
@@ -553,7 +636,7 @@ jQuery(document).ready(function(){
 								<label><input type="checkbox" <?php if(in_array('print',$buttons)) { echo 'checked="checked"'; }?> name="selected_button[]" value="print"/>Print Button</label>
 							</li>
 							<li>
-								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />Stumbleupon <span><?php esc_html_e('PRO version', 'cresta-social-share-counter'); ?></span></label>
+								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />StumbleUpon <span><?php esc_html_e('PRO version', 'cresta-social-share-counter'); ?></span></label>
 							</li>
 							<li>
 								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />Buffer <span><?php esc_html_e('PRO version', 'cresta-social-share-counter'); ?></span></label>
@@ -572,6 +655,9 @@ jQuery(document).ready(function(){
 							</li>
 							<li>
 								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />WhatsApp Button <i><?php esc_html_e('(only visible on smartphones Android and iPhone)', 'cresta-social-share-counter'); ?></i> <span><?php _e('PRO version', 'cresta-social-share-counter'); ?></span></label>
+							</li>	
+							<li>
+								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />Telegram Button <i><?php esc_html_e('(only visible on smartphones Android and iPhone)', 'cresta-social-share-counter'); ?></i> <span><?php _e('PRO version', 'cresta-social-share-counter'); ?></span></label>
 							</li>	
 							<li>
 								<label class="crestaDisabled"><input type="checkbox" name="crestaForPRO" disabled />Email Share Button <span><?php esc_html_e('PRO version', 'cresta-social-share-counter'); ?></span></label>
@@ -669,6 +755,19 @@ jQuery(document).ready(function(){
 						<span class="description"><?php esc_html_e('To use newsharecounts.com public API, you have to enter your website url', 'cresta-social-share-counter'); ?> <strong><?php echo esc_url( home_url( '/' ) ); ?></strong> <?php esc_html_e('and sign in using your Twitter Account at their website', 'cresta-social-share-counter'); ?> <a target="_blank" href="http://newsharecounts.com">newsharecounts.com</a></span>
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e( 'Pinterest share mode', 'cresta-social-share-counter' ); ?></th>
+					<td>
+						<ul>
+							<li>
+								<label><input type="radio" name='cresta_social_shares_pintmode' value='featimage' <?php checked( 'featimage', get_option('cresta_social_shares_pintmode') ); ?>><?php esc_html_e('Share Featured Image', 'cresta-social-share-counter'); ?></label>
+							</li>
+							<li>
+								<label><input type="radio" name='cresta_social_shares_pintmode' value='allimage' <?php checked( 'allimage', get_option('cresta_social_shares_pintmode') ); ?>><?php esc_html_e('Shows all the possible images to share', 'cresta-social-share-counter'); ?></label>
+							</li>
+						</ul>
+					</td>
+				</tr>
 				<tr valign="top" class="crestachoosetoshow">
 					<th scope="row"><?php esc_html_e( 'Show single shares count only if is more than 0', 'cresta-social-share-counter' ); ?></th>
 					<td>						
@@ -684,7 +783,7 @@ jQuery(document).ready(function(){
 				<tr valign="top" class="crestachoosetoshow crestachoosetotalshares">
 					<th scope="row"><?php esc_html_e( 'Total Shares Text', 'cresta-social-share-counter' ); ?></th>
 					<td>						
-						<input type="text" id="chksocialtotal" name="cresta_social_shares_total_text" value="<?php echo esc_html(get_option('cresta_social_shares_total_text'));?>"/>
+						<input type="text" id="chksocialtotal" name="cresta_social_shares_total_text" value="<?php echo esc_attr(get_option('cresta_social_shares_total_text'));?>"/>
 					</td>
 				</tr>
 			</tbody>	
@@ -714,19 +813,19 @@ jQuery(document).ready(function(){
 				<tr valign="top">
 					<th scope="row"><?php esc_html_e( 'Distance From Top:', 'cresta-social-share-counter' ); ?></th>
 					<td>						
-						<input type="text" name="cresta_social_shares_position_top" value="<?php echo esc_attr(get_option('cresta_social_shares_position_top'));?>">%
+						<input type="text" name="cresta_social_shares_position_top" value="<?php echo intval(get_option('cresta_social_shares_position_top'));?>">%
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php esc_html_e( 'Distance From Left or Right:', 'cresta-social-share-counter' ); ?></th>
 					<td>						
-						<input type="text" name="cresta_social_shares_position_left" value="<?php echo esc_attr(get_option('cresta_social_shares_position_left'));?>">px
+						<input type="text" name="cresta_social_shares_position_left" value="<?php echo intval(get_option('cresta_social_shares_position_left'));?>">px
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php esc_html_e( 'Z-Index:', 'cresta-social-share-counter' ); ?></th>
 					<td>						
-						<input type="text" name="cresta_social_shares_z_index" value="<?php echo esc_attr(get_option('cresta_social_shares_z_index'));?>">
+						<input type="text" name="cresta_social_shares_z_index" value="<?php echo intval(get_option('cresta_social_shares_z_index'));?>">
 						<span class="description"><?php esc_html_e('Increase this number if the floating buttons are covered by other items on the screen.', 'cresta-social-share-counter'); ?></span>
 					</td>
 				</tr>
@@ -770,13 +869,13 @@ jQuery(document).ready(function(){
 					<td>	
 						<ul>
 							<li>
-								<label><input type="radio" name='cresta_social_shares_float_buttons' value='left' <?php checked( 'left', get_option('cresta_social_shares_float_buttons') ); ?>><?php _e('Left', 'cresta-social-share-counter'); ?></label>
+								<label><input type="radio" name='cresta_social_shares_float_buttons' value='left' <?php checked( 'left', get_option('cresta_social_shares_float_buttons') ); ?>><?php esc_html_e('Left', 'cresta-social-share-counter'); ?></label>
 							</li>
 							<li>
-								<label><input type="radio" name='cresta_social_shares_float_buttons' value='right' <?php checked( 'right', get_option('cresta_social_shares_float_buttons') ); ?>><?php _e('Right', 'cresta-social-share-counter'); ?></label>
+								<label><input type="radio" name='cresta_social_shares_float_buttons' value='right' <?php checked( 'right', get_option('cresta_social_shares_float_buttons') ); ?>><?php esc_html_e('Right', 'cresta-social-share-counter'); ?></label>
 							</li>
 							<li>
-								<label><input type="radio" name='cresta_social_shares_float_buttons' value='center' <?php checked( 'center', get_option('cresta_social_shares_float_buttons') ); ?>><?php _e('Center', 'cresta-social-share-counter'); ?></label>
+								<label><input type="radio" name='cresta_social_shares_float_buttons' value='center' <?php checked( 'center', get_option('cresta_social_shares_float_buttons') ); ?>><?php esc_html_e('Center', 'cresta-social-share-counter'); ?></label>
 							</li>
 						</ul>
 					</td>
@@ -785,6 +884,12 @@ jQuery(document).ready(function(){
 					<th scope="row"><?php esc_html_e( 'Shortcode', 'cresta-social-share-counter' ); ?></th>
 					<td>
 						<span class="description"><?php esc_html_e('You can place the shortcode', 'cresta-social-share-counter'); ?> <code>[cresta-social-share]</code> <?php esc_html_e('wherever you want to display the social buttons.', 'cresta-social-share-counter'); ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e( 'PHP Code', 'cresta-social-share-counter' ); ?></th>
+					<td>
+						<span class="description"><?php esc_html_e('If you want to add the social buttons in the theme code you can use this PHP code:', 'cresta-social-share-counter'); ?> <pre><code>&lt;?php if(function_exists(&#039;add_social_button_in_content&#039;)) { echo add_social_button_in_content(); } ?&gt;</code></pre></span>
 					</td>
 				</tr>
 			</tbody>	
@@ -802,16 +907,17 @@ jQuery(document).ready(function(){
 							);
 							$post_types = get_post_types( $args, 'names', 'and' ); 
 							echo '<ul>';
-							foreach ( $post_types  as $post_type ) { 
+							foreach ( $post_types as $post_type ) { 
 								$post_type_name = get_post_type_object( $post_type );
 								?>
 									<li>
-										<label><input type="checkbox" <?php if(in_array( $post_type ,$show_on)) { echo 'checked="checked"'; }?> name="cresta_social_shares_selected_page[]" value="<?php echo esc_attr($post_type); ?>"/><?php echo esc_attr($post_type_name->labels->singular_name); ?></label>
+										<label><input type="checkbox" <?php if(in_array( $post_type ,$show_on)) { echo 'checked="checked"'; }?> name="cresta_social_shares_selected_page[]" value="<?php echo esc_attr($post_type); ?>"/><?php echo esc_html($post_type_name->labels->singular_name); ?></label>
 									</li>
 								<?php
 							}
 							echo '</ul>';
 						?>
+						<small><?php esc_html_e('* Social buttons are visible only on sigle pages (posts, pages and custom post type) and not on list pages such as main blog page, category pages, tag pages, etc...', 'cresta-social-share-counter'); ?></small>
 					</td>
 				</tr>
 			</tbody>	
@@ -824,6 +930,24 @@ jQuery(document).ready(function(){
 					<td>
 						<textarea name="cresta_social_shares_custom_css" class="large-text code" rows="10"><?php echo esc_textarea(get_option('cresta_social_shares_custom_css')); ?></textarea>
 						<span class="description"><?php esc_html_e( 'Write here your custom CSS code if you want to customize the style of the buttons', 'cresta-social-share-counter' ); ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e( 'Facebook APP ID', 'cresta-social-share-counter' ); ?></th>
+					<td>
+						<span class="description"><?php esc_html_e( 'If your Facebook shares count doesn\'t work, you can try to use the APP ID.', 'cresta-social-share-counter' ); ?> <a target="_blank" href="http://crestaproject.com/add-facebook-app-id-cresta-social-share-counter-plugin/"><?php esc_html_e( 'How to create a Facebook APP ID', 'cresta-social-share-counter'); ?></a></span><br/>
+						<input type="text" name="cresta_social_shares_facebook_appid" value="<?php echo esc_attr(get_option('cresta_social_shares_facebook_appid'));?>"/>
+						<span class="description"><?php esc_html_e( 'Your Facebook APP ID', 'cresta-social-share-counter' ); ?></span>
+						<br/>
+						<input type="text" name="cresta_social_shares_facebook_appsecret" value="<?php echo esc_attr(get_option('cresta_social_shares_facebook_appsecret'));?>"/>
+						<span class="description"><?php esc_html_e( 'Your Facebook Secret Token', 'cresta-social-share-counter' ); ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e( 'Linkedin alternative share count method', 'cresta-social-share-counter' ); ?></th>
+					<td>						
+						<input type="checkbox" id="chkbeforecontent" name="cresta_social_shares_linkedin_alternative_count" value="1" <?php checked( get_option('cresta_social_shares_linkedin_alternative_count'), '1' ); ?>>
+						<span class="description"><?php esc_html_e( 'If Linkedin share count does not work, try checking this field and using an alternative method', 'cresta-social-share-counter' ); ?></span>
 					</td>
 				</tr>
 			</tbody>	
@@ -845,7 +969,7 @@ jQuery(document).ready(function(){
                                 <br/>
 								<img src="<?php echo esc_url(plugins_url( '/images/5-stars.png' , __FILE__ )); ?>">
 								<br/>
-								<a class="crestaButton" href="https://wordpress.org/plugins/cresta-social-share-counter/"title="Rate Cresta Social Share Counter on WordPress Plugins Directory" class="btn btn-primary" target="_blank">Rate Cresta Social Share Counter</a>
+								<a class="crestaButton" href="https://wordpress.org/support/plugin/cresta-social-share-counter/reviews/"title="Rate Cresta Social Share Counter on WordPress Plugins Directory" class="btn btn-primary" target="_blank">Rate Cresta Social Share Counter</a>
                             </div> <!-- .inside -->
                         </div> <!-- .postbox -->
 
@@ -853,17 +977,18 @@ jQuery(document).ready(function(){
                             
                             <h3><span><div class="dashicons dashicons-megaphone"></div> Need more? Get the PRO Version</span></h3>
                             <div class="inside">
-                                <a href="http://crestaproject.com/downloads/cresta-social-share-counter/" target="_blank" alt="Get Cresta Social Share Counter PRO"><img src="<?php echo plugins_url( '/images/banner-cresta-social-share-counter-pro.png' , __FILE__ ); ?>"></a><br/>
+                                <a href="https://crestaproject.com/downloads/cresta-social-share-counter/?utm_source=plugin_counter&utm_medium=moreinfo_meta" target="_blank" alt="Get Cresta Social Share Counter PRO"><img src="<?php echo plugins_url( '/images/banner-cresta-social-share-counter-pro.png' , __FILE__ ); ?>"></a><br/>
 								Get <strong>Cresta Social Share Counter PRO</strong> for only <strong>6,99€</strong>.<br/>
 								<ul>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> Email Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> WhatsApp Share Button</li>
-									<li><div class="dashicons dashicons-yes crestaGreen"></div> Stumbleupon Share Button</li>
+									<li><div class="dashicons dashicons-yes crestaGreen"></div> StumbleUpon Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> Buffer Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> Reddit Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> VK Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> OK.ru Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> Xing Share Button</li>
+									<li><div class="dashicons dashicons-yes crestaGreen"></div> Telegram Share Button</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> More than 30 Effects</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> 17 Exclusive Button Styles</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> Social Counter Before / After Content</li>
@@ -875,17 +1000,17 @@ jQuery(document).ready(function(){
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> 1 year updates and support</li>
 									<li><div class="dashicons dashicons-yes crestaGreen"></div> and Much More...</li>
 								</ul>
-								<a class="crestaButton" href="http://crestaproject.com/downloads/cresta-social-share-counter/" target="_blank" title="More details">More Details</a>
+								<a class="crestaButton" href="https://crestaproject.com/downloads/cresta-social-share-counter/?utm_source=plugin_counter&utm_medium=moreinfo_meta" target="_blank" title="More Informations">More Informations</a>
                             </div> <!-- .inside -->
                          </div> <!-- .postbox -->
 						 <div class="postbox" style="border: 2px solid #0074a2;">
                             
                             <h3><span><div class="dashicons dashicons-admin-plugins"></div> Cresta Posts Box Plugin</span></h3>
                             <div class="inside">
-                                <a href="http://crestaproject.com/downloads/cresta-posts-box/" target="_blank" alt="Get Cresta Posts Box"><img src="<?php echo plugins_url( '/images/banner-cresta-posts-box.png' , __FILE__ ); ?>"></a><br/>
+                                <a href="https://crestaproject.com/downloads/cresta-posts-box/" target="_blank" alt="Get Cresta Posts Box"><img src="<?php echo plugins_url( '/images/banner-cresta-posts-box.png' , __FILE__ ); ?>"></a><br/>
 								Show the next or previous post in a box that appears when <strong>the user scrolls to the bottom of a current post</strong>.<br/><br/>
 								With <strong>Cresta Posts Box</strong> you can show, in a single page (posts, pages or custom post types), a <strong>small box that allows the reader to go to the next or previous post</strong>. The box appears only when the reader finishes reading the current post.
-								<a class="crestaButton" href="http://crestaproject.com/downloads/cresta-posts-box/" target="_blank" title="Cresta Posts Box">Available in FREE and PRO version</a>
+								<a class="crestaButton" href="https://crestaproject.com/downloads/cresta-posts-box/" target="_blank" title="Cresta Posts Box">Available in FREE and PRO version</a>
                             </div> <!-- .inside -->
                          </div> <!-- .postbox -->
                     </div> <!-- .meta-box-sortables -->
@@ -1006,6 +1131,22 @@ function crestasocialshare_options_validate_24($input) {
 	return $input;
 }
 function crestasocialshare_options_validate_25($input) {
+	$input = wp_filter_nohtml_kses($input);
+	return $input;
+}
+function crestasocialshare_options_validate_26($input) {
+	$input = sanitize_text_field($input);
+	return $input;
+}
+function crestasocialshare_options_validate_27($input) {
+	$input = sanitize_text_field($input);
+	return $input;
+}
+function crestasocialshare_options_validate_28($input) {
+	$input = wp_filter_nohtml_kses($input);
+	return $input;
+}
+function crestasocialshare_options_validate_29($input) {
 	$input = wp_filter_nohtml_kses($input);
 	return $input;
 }

@@ -1,19 +1,19 @@
 <?php
-/*
-index.php
-Version: 20160404.01
-Author: Red Sand
-http://www.redsandmarketing.com/plugins/
-
-This script keeps search engines, bots, and unwanted visitors from viewing your private plugin directory contents.
- 
-You can avoid the need for pages like this by adding a single line of code to the beginning of your .htaccess file:
-
-	## Add the following line to the beginning of your .htaccess for security and SEO.
-	Options -Indexes
-	## This will turn off indexes so your site won't reveal contents of directories that don't have an index file.
-
-*/
+/**
+ *  index.php
+ *  Version: 20160817.01
+ *  Author: Red Sand
+ *  http://www.redsandmarketing.com/plugins/
+ *
+ *  This script keeps search engines, bots, and unwanted visitors from viewing your private plugin directory contents.
+ *
+ *  You can avoid the need for pages like this by adding a single line of code to the beginning of your .htaccess file:
+ *
+ *		## Add the following line to the beginning of your .htaccess for security and SEO.
+ *		Options -Indexes
+ *		## This will turn off indexes so your site won't reveal contents of directories that don't have an index file.
+ *
+ */
 
 @ini_set('display_errors', 0);
 error_reporting(0);
@@ -24,8 +24,9 @@ $new_url	= idx_get_site_url();
 $code		= '403';
 $status		= 'Forbidden';
 if( !headers_sent() ) {
-	header_remove();
-	header($_SERVER['SERVER_PROTOCOL'].' '.$code.' '.$status);
+	if(function_exists('header_remove')){@header_remove('Cache-Control');@header_remove('Last-Modified');@header_remove('ETag');}
+	header('X-Robots-Tag: none',TRUE);
+	header($_SERVER['SERVER_PROTOCOL'].' '.$code.' '.$status); /* Must use THIS version if using in conjunction with "Refresh". Allows you to set status before redirect. */
 	header('Refresh: 0; url='.$new_url,TRUE);
 	/* Using 'Refresh:' instead of 'Location:' allows you to set 403 status code first. */
 }
@@ -82,5 +83,3 @@ function idx_get_server_name() {
 	elseif(	!empty( $_IDX_ENV['SERVER_NAME'] ) )	{ $server_name = $_SERVER['HTTP_HOST'] = $_SERVER['SERVER_NAME'] = $_IDX_ENV['SERVER_NAME']; }
 	return !empty( $server_name ) && '.' !== trim( $server_name ) ? strtolower( $server_name ) : '';
 }
-
-?>

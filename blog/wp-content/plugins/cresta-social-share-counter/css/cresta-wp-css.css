@@ -1,9 +1,10 @@
 /* Share button in Content */
-/* Cresta Social Share Counter Version 2.5.5 */
+/* Cresta Social Share Counter Version 2.7.1 */
 #crestashareiconincontent {
 	margin: 0;
 	font-size: 15px;
 	line-height: 1;
+	text-rendering: optimizeLegibility;
 }
 #crestashareiconincontent .sbutton {
 	float:left;
@@ -19,6 +20,7 @@
 #crestashareicon {
 	line-height: 1;
 	font-size: 15px;
+	text-rendering: optimizeLegibility;
 }
 .cresta-share-icon .sbutton {
 	position: relative;

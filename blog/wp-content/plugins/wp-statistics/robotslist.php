@@ -8,6 +8,7 @@ $wps_robotarray = array(
 	'AcoiRobot',
 	'AddThis.com',
 	'ADmantX',
+	'AdsBot-Google',
 	'advbot',
 	'AhrefsBot',
 	'aiHitBot',
@@ -174,5 +175,5 @@ $wps_robotarray = array(
 	'ZemlyaCrawl'
 );
 
-$wps_robotslist = implode("\n", $wps_robotarray);
+$wps_robotslist = implode( "\n", $wps_robotarray );
 ?>
